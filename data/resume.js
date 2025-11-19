@@ -1,113 +1,213 @@
-// Replace this data with your resume information
+// Onkar Dubey - Professional Resume Data
 export const resumeData = {
   personal: {
     name: "Onkar Dubey",
-    title: "Full Stack Developer & AI Engineer",
-    tagline: "Building intelligent systems that solve real problems",
-    email: "onkar@example.com",
-    phone: "+1 (XXX) XXX-XXXX",
-    location: "Your Location",
-    linkedin: "https://linkedin.com/in/yourprofile",
+    title: "AI Architect & Generative AI Leader",
+    tagline: "10+ years delivering enterprise AI solutions across BFSI, aviation, retail, and real estate",
+    email: "Onkar032@gmail.com",
+    phone: "+91 XXX XXX XXXX",
+    location: "India",
+    linkedin: "https://www.linkedin.com/in/onkar-dubey-10768275/",
     github: "https://github.com/onkar032",
-    website: "https://yourwebsite.com"
+    website: "https://onkar-portfolio-beige.vercel.app"
   },
 
   about: {
-    summary: `Passionate developer with expertise in building scalable applications and AI-powered systems. 
-    Experienced in full-stack development, machine learning, and cloud technologies. 
-    Currently working on innovative RAG systems and modern web applications.`,
+    summary: `AI Architect with 10+ years of experience delivering end-to-end Generative AI, LLM, and data-driven solutions across BFSI, aviation, retail, and real estate. Skilled in LLM application design, RAG architectures, vector databases, and multi-cloud integrations across Salesforce, Python, AWS, and GCP. Experienced in building and operationalizing end-to-end AI systems covering data pipelines, integrations, LLM workflows, MLOps, evaluation, and enterprise deployment. Strong ability to work with CXOs, engineering, and product teams to turn high-level requirements into scalable AI solutions with clear business impact.`,
     
     highlights: [
-      "5+ years of experience in software development",
-      "Expert in Python, React, and cloud technologies",
-      "Built production-grade RAG systems",
-      "Strong problem-solving and analytical skills"
+      "10+ years of experience in AI architecture and enterprise solutions",
+      "Expert in GenAI, LLMs, RAG architectures, and vector databases",
+      "Led AI deployments across BFSI, aviation, retail, real estate, and pharma",
+      "Strong track record of delivering scalable AI systems with measurable business impact",
+      "Certified AWS Solutions Architect and AI Practitioner"
     ]
   },
 
   experience: [
     {
-      company: "Company Name",
-      position: "Senior Software Engineer",
-      location: "Location",
-      duration: "Jan 2023 - Present",
-      description: "Led development of AI-powered applications and microservices.",
+      company: "Salesforce",
+      position: "AI Architect",
+      location: "India",
+      duration: "June 2024 - Present",
+      description: "Leading enterprise-scale GenAI initiatives and LLM integration across Salesforce ecosystem.",
       achievements: [
-        "Built enterprise RAG system with 95% accuracy",
-        "Improved system performance by 40%",
-        "Mentored 5 junior developers"
+        "Delivered enterprise-scale LLM solutions using RAG, embeddings, vector search, and multi-cloud orchestration",
+        "Designed AI workflows combining LLM APIs, data platforms, and document intelligence systems to automate verification, summarization, and decision-support processes",
+        "Built prompt libraries, evaluation frameworks, safety guardrails, and governance models for secure enterprise LLM deployment",
+        "Delivered GenAI-powered automation across core CRM, service, and sales processes including summaries, replies, routing, classification, and knowledge-grounded reasoning",
+        "Engineered integrations using backend services, custom components, workflow engines, APIs, and event-driven architectures to support multichannel AI experiences",
+        "Led enterprise AI deployment programs including onboarding, workshops, training, and value-realization initiatives",
+        "Partnered with CXOs, IT leadership, engineering, and product teams to define AI roadmaps, governance structures, KPIs, and scale-up strategies",
+        "Architected multi-system integrations supporting high-volume operations with improved accuracy and efficiency"
       ]
     },
     {
-      company: "Previous Company",
-      position: "Software Engineer",
-      location: "Location",
-      duration: "Jan 2021 - Dec 2022",
-      description: "Developed full-stack applications using React and Python.",
+      company: "ZS Associates",
+      position: "Business Technology Consultant",
+      location: "India",
+      duration: "Oct 2020 - June 2024",
+      description: "Led cross-functional teams delivering AI, data, and technology solutions for enterprise clients.",
       achievements: [
-        "Delivered 10+ major features",
-        "Reduced API response time by 50%",
-        "Implemented CI/CD pipelines"
+        "Led cross-functional teams and supervised end-to-end delivery of client engagements, ensuring timely execution of analytical, AI, and technology initiatives",
+        "Advised CXO-level stakeholders on AI, data, and GenAI strategy, shaping solution direction, feasibility, and roadmap",
+        "Designed enterprise architectures covering data engineering, ML, and GenAI components tailored to client-specific business needs",
+        "Provided expert guidance on AI/ML methodologies, model selection, algorithmic approaches, and best practices for scalable enterprise adoption",
+        "Oversaw end-to-end implementation of AI and technology solutions, ensuring alignment with architectural standards, compliance, and engineering rigor",
+        "Built custom integrations, automated data pipelines, ML workflows, MLOps processes, and predictive models to support mission-critical initiatives",
+        "Developed scalable cloud-native components (AWS/Azure) facilitating data ingestion, model execution, orchestration, and performance optimization"
+      ]
+    },
+    {
+      company: "Evalueserve",
+      position: "Assistant Manager",
+      location: "India",
+      duration: "Nov 2017 - Oct 2020",
+      description: "Managed analytics and data science projects for global clients.",
+      achievements: [
+        "Led data analytics and business intelligence projects for Fortune 500 clients",
+        "Developed predictive models and ML solutions for business forecasting and optimization",
+        "Managed cross-functional teams delivering data-driven insights and reporting solutions",
+        "Built ETL pipelines and data integration solutions using SQL, Python, and cloud platforms"
+      ]
+    },
+    {
+      company: "Stellarix Consultancy Services",
+      position: "Senior Analyst",
+      location: "India",
+      duration: "May 2016 - Oct 2017",
+      description: "Performed business analysis and data analytics for client engagements.",
+      achievements: [
+        "Conducted comprehensive business analysis and data analytics for strategic client projects",
+        "Developed dashboards, reports, and visualization solutions using BI tools",
+        "Performed statistical analysis and data modeling to support business decisions",
+        "Collaborated with stakeholders to define requirements and deliver analytical insights"
       ]
     }
   ],
 
   skills: {
-    "Languages": ["Python", "JavaScript", "TypeScript", "SQL", "Java"],
-    "Frontend": ["React", "Next.js", "Tailwind CSS", "Streamlit"],
-    "Backend": ["FastAPI", "Node.js", "Django", "Flask"],
-    "AI/ML": ["LangChain", "OpenAI", "HuggingFace", "TensorFlow"],
-    "Databases": ["PostgreSQL", "MongoDB", "ChromaDB", "Redis"],
-    "Cloud & DevOps": ["AWS", "Docker", "Kubernetes", "CI/CD"],
-    "Tools": ["Git", "VS Code", "Jupyter", "Postman"]
+    "AI & GenAI": ["LLMs (GPT, Llama)", "RAG Architecture", "Prompt Engineering", "Embeddings", "Vector Databases (Pinecone, FAISS, ChromaDB)", "LangChain", "LangGraph", "CrewAI", "LangSmith", "TruLens", "Function Calling", "Multi-Agent Systems"],
+    "Machine Learning": ["Scikit-learn", "TensorFlow", "PyTorch", "Feature Engineering", "Model Optimization", "MLOps", "Drift Detection", "Model Monitoring"],
+    "Languages": ["Python", "SQL", "JavaScript", "Java", "R", "SAS"],
+    "Cloud Platforms": ["AWS (SageMaker, Lambda, Glue, S3, EC2)", "Azure (ADF, Synapse)", "GCP (BigQuery, Vertex AI)", "Multi-Cloud Architecture"],
+    "Data Engineering": ["Apache Airflow", "dbt", "Apache Kafka", "Apache Spark", "Databricks", "ETL/ELT", "Data Pipelines", "Streaming"],
+    "DevOps & Infrastructure": ["Docker", "Kubernetes", "Terraform", "CI/CD", "Microservices", "Serverless", "API Engineering", "Event-Driven Architecture"],
+    "Salesforce": ["Einstein AI", "Salesforce Platform", "Apex", "LWC", "Integration", "Custom Development"],
+    "Analytics & BI": ["Tableau", "Power BI", "CRM Analytics", "SQL Analytics", "KPI Modeling", "Dashboards", "Data Visualization"],
+    "API & Integration": ["FastAPI", "REST APIs", "GraphQL", "Webhooks", "Message Queues", "Event Streaming"]
   },
 
   projects: [
     {
       title: "Enterprise RAG System",
-      description: "Production-grade Retrieval Augmented Generation system with document ingestion, semantic search, and LLM integration.",
-      tech: ["Python", "FastAPI", "ChromaDB", "Streamlit", "OpenAI"],
+      description: "Production-grade Retrieval Augmented Generation system with document ingestion, semantic search, LLM integration, and embedded chat widget for intelligent Q&A.",
+      tech: ["Python", "FastAPI", "ChromaDB", "Streamlit", "Next.js", "LangChain", "OpenAI", "Docker"],
       github: "https://github.com/onkar032/enterprise-rag-system",
-      demo: "https://your-demo-url.com",
+      demo: "https://onkar-portfolio-beige.vercel.app",
       highlights: [
-        "Website crawling with intelligent chunking",
-        "Semantic search with reranking",
-        "Evaluation metrics and monitoring",
-        "Docker deployment ready"
+        "Website crawling with intelligent chunking and metadata extraction",
+        "Semantic search with query rewriting and MMR diversity",
+        "Cross-encoder reranking for improved retrieval accuracy",
+        "Evaluation framework using RAGAS metrics",
+        "Docker deployment with FastAPI backend and Streamlit UI",
+        "Embedded AI chat widget for portfolio website"
       ]
     },
     {
-      title: "Project Name 2",
-      description: "Description of your second major project",
-      tech: ["Tech1", "Tech2", "Tech3"],
-      github: "https://github.com/yourrepo",
-      demo: "https://demo-url.com",
+      title: "GenAI Workflow Automation (BFSI)",
+      description: "Designed and deployed GenAI workflow automation system for BFSI enabling LLM-driven document understanding, exception triage, and automated decisions.",
+      tech: ["LLMs", "RAG", "Vector Search", "AWS", "Python", "Enterprise Integration"],
+      github: "",
+      demo: "",
       highlights: [
-        "Key feature 1",
-        "Key feature 2",
-        "Key feature 3"
+        "LLM-driven document understanding and processing",
+        "Automated exception triage and decision workflows",
+        "Integrated retrieval, grounding, and safety layers",
+        "Improved processing speed and accuracy across high-volume operations",
+        "Enterprise system integration with security and compliance"
+      ]
+    },
+    {
+      title: "Multi-Channel Intelligence Engine (Aviation)",
+      description: "Built GenAI engine to process high-volume unstructured content and generate executive-ready summaries and insights.",
+      tech: ["GenAI", "LLM", "NLP", "Sentiment Analysis", "Entity Extraction", "Cloud"],
+      github: "",
+      demo: "",
+      highlights: [
+        "High-volume unstructured content processing",
+        "Executive-ready summaries and insights generation",
+        "LLM components for synthesis and sentiment analysis",
+        "Entity extraction and relationship mapping",
+        "Reduced analysis time and improved operational responsiveness"
+      ]
+    },
+    {
+      title: "AI-Driven Sales Intelligence (Real Estate)",
+      description: "Developed AI intelligence capability for meeting insights, customer intent signals, and contextual recommendations to boost sales productivity.",
+      tech: ["LLM", "NLP", "Salesforce", "API Integration", "ML"],
+      github: "",
+      demo: "",
+      highlights: [
+        "Meeting insights and customer intent signal detection",
+        "LLM-based summarization and scoring workflows",
+        "Contextual recommendations for sales teams",
+        "Secure API integration with CRM systems",
+        "Boosted sales productivity and forecasting accuracy"
+      ]
+    },
+    {
+      title: "Medical Insights Engine (Pharma)",
+      description: "Developed GenAI-driven insights engine to synthesize medical literature, HCP feedback, and market data into decision-ready intelligence.",
+      tech: ["GenAI", "LLM", "Medical NLP", "Knowledge Graphs", "Python"],
+      github: "",
+      demo: "",
+      highlights: [
+        "Automated evidence summarization from medical literature",
+        "HCP feedback analysis and synthesis",
+        "Competitive insights and market intelligence",
+        "Message refinement for medical-commercial alignment",
+        "Faster strategic planning and decision-making"
       ]
     }
   ],
 
   education: [
     {
-      degree: "Bachelor of Technology in Computer Science",
-      institution: "University Name",
-      location: "Location",
-      duration: "2016 - 2020",
-      gpa: "3.8/4.0",
+      degree: "Master of Technology (M.Tech) in Computer Science",
+      institution: "National Institute of Technology (NIT), Allahabad",
+      location: "Allahabad, India",
+      duration: "2014 - 2016",
+      gpa: "CGPA: 9.3/10.0",
       achievements: [
-        "Dean's List all semesters",
-        "Best Project Award 2020"
+        "Graduated with distinction",
+        "Specialized in Machine Learning and Data Science"
+      ]
+    },
+    {
+      degree: "Bachelor of Technology (B.Tech)",
+      institution: "SHIATS Allahabad",
+      location: "Allahabad, India",
+      duration: "2009 - 2013",
+      gpa: "CGPA: 8.74/10.0",
+      achievements: [
+        "Strong academic performance",
+        "Foundation in computer science and engineering"
       ]
     }
   ],
 
   certifications: [
-    "AWS Certified Solutions Architect",
-    "Google Cloud Professional",
-    "Machine Learning Specialization"
+    "AWS Certified Solutions Architect Associate",
+    "AWS Certified Developer Associate",
+    "AWS Certified Cloud Practitioner",
+    "AWS Certified AI Practitioner",
+    "IIITB PG Diploma in Artificial Intelligence",
+    "Certified Scrum Master (CSM)",
+    "SAS Certified Developer",
+    "SAS Certified Statistical Business Analyst",
+    "TIBCO Certified Associate (TCA) - Spotfire",
+    "TIBCO Certified Associate (TCA) - Data Science",
+    "Mastering Negotiations and Influence - ISB"
   ]
 }
-
