@@ -16,7 +16,7 @@ export default function PremiumFooter({ data }) {
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-10">
         <motion.div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-gray-600 rounded-full blur-3xl"
+          className="absolute top-0 left-1/4 w-96 h-96 bg-apple-blue rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -60,7 +60,7 @@ export default function PremiumFooter({ data }) {
                 <motion.li key={item}>
                   <a
                     href={item === 'Blog' ? '/blog' : `/#${item.toLowerCase()}`}
-                    className="text-gray-400 hover:text-gray-600 transition-colors text-sm flex items-center gap-2 group"
+                    className="text-gray-400 hover:text-apple-blue transition-colors text-sm flex items-center gap-2 group"
                   >
                     <motion.span
                       className="opacity-0 group-hover:opacity-100 transition-opacity"
@@ -86,10 +86,10 @@ export default function PremiumFooter({ data }) {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-gray-600 transition-colors text-sm flex items-center gap-2 group"
+                    className="text-gray-400 hover:text-apple-blue transition-colors text-sm flex items-center gap-2 group"
                   >
                     <motion.span
-                      className="text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="text-apple-blue opacity-0 group-hover:opacity-100 transition-opacity"
                       whileHover={{ x: 3 }}
                     >
                       {link.icon}
@@ -119,7 +119,7 @@ export default function PremiumFooter({ data }) {
           <div className="flex items-center gap-4">
             <motion.span 
               className="text-xs"
-              whileHover={{ scale: 1.05, color: '#52525b' }}
+              whileHover={{ scale: 1.05, color: '#0071e3' }}
             >
               Built with Next.js, Tailwind & Framer Motion
             </motion.span>
