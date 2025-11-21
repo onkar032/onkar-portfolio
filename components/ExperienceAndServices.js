@@ -53,7 +53,7 @@ export default function ExperienceAndServices({ experienceData }) {
             </motion.div>
           </div>
 
-          {/* What I Do Section - Right Side (65% on desktop) */}
+          {/* Areas of Expertise Section - Right Side (65% on desktop) */}
           <div className="lg:col-span-8">
             <WhatIDo />
           </div>

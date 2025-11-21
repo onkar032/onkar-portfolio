@@ -154,7 +154,7 @@ export default function WhatIDo() {
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-4xl md:text-5xl font-semibold mb-3 tracking-tight">
-          <GradientText>What I Do</GradientText>
+          <GradientText>Areas of Expertise</GradientText>
         </h2>
         <div className="w-12 h-0.5 bg-apple-blue mb-8"></div>
 
