@@ -44,7 +44,7 @@ export default function Hero({ data }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
           >
-            {['GenAI & LLMs', 'RAG Architectures', 'Enterprise AI', 'AI Strategy'].map((tag, index) => (
+            {['GenAI & LLMs', 'RAG Architectures', 'Enterprise AI', 'AI Strategy', 'System Design', 'Data Platforms'].map((tag, index) => (
               <motion.div
                 key={tag}
                 className="bg-apple-lightgray px-5 py-2.5 rounded-full border border-gray-200 cursor-default"
