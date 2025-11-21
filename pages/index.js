@@ -19,12 +19,16 @@ import { MorphingBackground } from '../components/SectionTransitions'
 import { SpotlightEffect } from '../components/ScrollRevealText'
 import AmbientCursor from '../components/AmbientCursor'
 import InfiniteMarquee from '../components/InfiniteMarquee'
+import PageLoader from '../components/PageLoader'
+import PremiumFooter from '../components/PremiumFooter'
 
 export default function Home() {
   const [chatOpen, setChatOpen] = useState(false)
 
   return (
     <>
+      <PageLoader />
+      
       <Head>
         <title>{resumeData.personal.name} - Portfolio</title>
         <meta name="description" content={resumeData.personal.tagline} />
@@ -89,16 +93,7 @@ export default function Home() {
           </main>
         </div>
 
-        <footer className="bg-apple-gray text-white py-12 relative z-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-gray-400">
-              © {new Date().getFullYear()} {resumeData.personal.name}. All rights reserved.
-            </p>
-            <p className="text-gray-500 mt-2 text-sm">
-              Built with Next.js, Tailwind CSS, and ❤️
-            </p>
-          </div>
-        </footer>
+        <PremiumFooter data={resumeData.personal} />
 
         {/* Chat Widget */}
         <ChatWidget isOpen={chatOpen} setIsOpen={setChatOpen} />

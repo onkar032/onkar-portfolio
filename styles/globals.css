@@ -16,6 +16,31 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
+  /* Enhanced Focus States for Accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-apple-blue ring-offset-2 ring-offset-white rounded-lg;
+  }
+  
+  a:focus-visible, button:focus-visible {
+    @apply outline-none ring-2 ring-apple-blue ring-offset-2 ring-offset-white;
+  }
+  
+  /* Reduced Motion Support - Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
 @layer utilities {
@@ -27,9 +52,9 @@
     text-wrap: balance;
   }
   
-  /* Custom scrollbar */
+  /* Premium Custom Scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
   
   ::-webkit-scrollbar-track {
@@ -37,11 +62,38 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-apple-blue/30 rounded-full;
+    @apply bg-gradient-to-b from-apple-blue to-blue-600 rounded-full;
+    transition: all 0.3s ease;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-apple-blue/50;
+    @apply from-apple-blue/80 to-blue-600/80;
+    box-shadow: 0 0 6px rgba(0, 113, 227, 0.4);
+  }
+  
+  /* Selection Styling */
+  ::selection {
+    @apply bg-apple-blue/20 text-apple-text;
+  }
+  
+  ::-moz-selection {
+    @apply bg-apple-blue/20 text-apple-text;
+  }
+  
+  /* Loading State */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(to right, transparent 0%, rgba(0, 113, 227, 0.1) 50%, transparent 100%);
+    background-size: 1000px 100%;
   }
 }
 
