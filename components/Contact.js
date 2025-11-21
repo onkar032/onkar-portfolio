@@ -1,6 +1,12 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import GradientText from './GradientText'
+
+// EmailJS Configuration - Get these from https://www.emailjs.com/
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'your_service_id'
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'your_template_id'
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key'
 
 export default function Contact({ data }) {
   const [formData, setFormData] = useState({
@@ -10,27 +16,45 @@ export default function Contact({ data }) {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitError(false)
     
-    // Create mailto link with form data
-    const subject = `Portfolio Contact from ${formData.name}`
-    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    const mailtoUrl = `mailto:${data.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    
-    // Open email client
-    window.location.href = mailtoUrl
-    
-    // Show success message
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    setSubmitSuccess(true)
-    setFormData({ name: '', email: '', message: '' })
-    
-    // Reset success message after 3 seconds
-    setTimeout(() => setSubmitSuccess(false), 3000)
+    try {
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: data.email,
+        reply_to: formData.email
+      }
+
+      const response = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      )
+
+      console.log('Email sent successfully:', response)
+      setIsSubmitting(false)
+      setSubmitSuccess(true)
+      setFormData({ name: '', email: '', message: '' })
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitSuccess(false), 5000)
+    } catch (error) {
+      console.error('Email send error:', error)
+      setIsSubmitting(false)
+      setSubmitError(true)
+      
+      // Reset error message after 5 seconds
+      setTimeout(() => setSubmitError(false), 5000)
+    }
   }
 
   return (
@@ -134,7 +158,13 @@ export default function Contact({ data }) {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-apple-blue text-white py-3.5 px-6 rounded-xl font-semibold hover:bg-blue-600 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden"
+                className={`w-full py-3.5 px-6 rounded-xl font-semibold transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden ${
+                  submitSuccess 
+                    ? 'bg-green-600 hover:bg-green-700' 
+                    : submitError 
+                    ? 'bg-red-600 hover:bg-red-700'
+                    : 'bg-apple-blue hover:bg-blue-600'
+                } text-white`}
                 whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
               >
@@ -151,7 +181,14 @@ export default function Contact({ data }) {
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    Message Sent!
+                    Message Sent Successfully!
+                  </span>
+                ) : submitError ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    </svg>
+                    Failed - Please try email link above
                   </span>
                 ) : (
                   'Send Message'
