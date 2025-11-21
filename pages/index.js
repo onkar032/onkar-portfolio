@@ -33,7 +33,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-white relative cursor-none md:cursor-none">
+      <div className="min-h-screen bg-white relative">
         {/* Custom Cursor */}
         <CustomCursor />
         

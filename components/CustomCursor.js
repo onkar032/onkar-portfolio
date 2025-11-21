@@ -4,53 +4,56 @@ import { useEffect, useState } from 'react'
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
-      setIsVisible(true)
-    }
-
-    const handleMouseEnter = (e) => {
-      if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
-        setIsHovering(true)
-      }
-    }
-
-    const handleMouseLeave = () => {
-      setIsHovering(false)
-    }
-
-    const handleMouseOut = () => {
-      setIsVisible(false)
+      
+      // Check if hovering interactive elements
+      const target = e.target
+      const isInteractive = target.closest('a, button, input, textarea, [role="button"]')
+      setIsHovering(!!isInteractive)
     }
 
     window.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseenter', handleMouseEnter, true)
-    document.addEventListener('mouseleave', handleMouseLeave, true)
-    document.addEventListener('mouseout', handleMouseOut)
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseenter', handleMouseEnter, true)
-      document.removeEventListener('mouseleave', handleMouseLeave, true)
-      document.removeEventListener('mouseout', handleMouseOut)
-    }
+    return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
   return (
     <>
-      {/* Outer cursor ring */}
+      {/* Subtle cursor ring - only shows on hover */}
       <motion.div
-        className="fixed w-10 h-10 pointer-events-none z-[9999] mix-blend-difference hidden md:block"
+        className="fixed pointer-events-none z-[9999] hidden md:block"
         style={{
-          left: mousePosition.x - 20,
-          top: mousePosition.y - 20,
+          left: mousePosition.x - 16,
+          top: mousePosition.y - 16,
+          width: 32,
+          height: 32,
+        }}
+        animate={{
+          scale: isHovering ? 1.5 : 0,
+          opacity: isHovering ? 0.6 : 0,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 400,
+          damping: 25,
+        }}
+      >
+        <div className="w-full h-full border border-apple-blue rounded-full" />
+      </motion.div>
+
+      {/* Small trailing dot - subtle shadow effect */}
+      <motion.div
+        className="fixed pointer-events-none z-[9999] hidden md:block"
+        style={{
+          left: mousePosition.x - 2,
+          top: mousePosition.y - 2,
+          width: 4,
+          height: 4,
         }}
         animate={{
           scale: isHovering ? 1.5 : 1,
-          opacity: isVisible ? 0.5 : 0,
         }}
         transition={{
           type: "spring",
@@ -58,26 +61,8 @@ export default function CustomCursor() {
           damping: 28,
         }}
       >
-        <div className="w-full h-full border-2 border-white rounded-full" />
+        <div className="w-full h-full bg-apple-blue rounded-full opacity-40" />
       </motion.div>
-
-      {/* Inner cursor dot */}
-      <motion.div
-        className="fixed w-2 h-2 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference hidden md:block"
-        style={{
-          left: mousePosition.x - 4,
-          top: mousePosition.y - 4,
-        }}
-        animate={{
-          scale: isHovering ? 0 : 1,
-          opacity: isVisible ? 1 : 0,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 28,
-        }}
-      />
     </>
   )
 }
