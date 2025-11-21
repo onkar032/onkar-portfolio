@@ -12,14 +12,25 @@ export const resumeData = {
   },
 
   about: {
-    summary: `Distinguished AI Solutions Architect and GenAI Leader with 10+ years of experience architecting and delivering transformative AI systems for Fortune 500 enterprises. Expert in designing production-grade LLM applications, RAG architectures, multi-agent systems, and enterprise AI platforms across BFSI, aviation, retail, real estate, and pharmaceutical industries. Proven track record of partnering with C-suite executives to define AI strategy, establish governance frameworks, and deliver scalable solutions that drive measurable business outcomes. Deep expertise in end-to-end AI system design—from data architecture and LLM orchestration to MLOps, evaluation frameworks, and secure enterprise deployment across AWS, GCP, and Azure ecosystems.`,
+    summary: `Distinguished AI Architect, GenAI Strategist, and Enterprise Architect with a decade of experience designing and scaling end-to-end AI ecosystems for Fortune 500 and global enterprise organizations. Renowned for architecting production-grade LLM platforms, advanced RAG pipelines, multi-agent systems, and intelligent automation frameworks that redefine operational performance across BFSI, aviation, retail, real estate, and pharmaceutical industries.`,
+    
+    summary2: `A trusted partner to C-suite executives and technology leadership, driving enterprise-wide AI transformation from strategic roadmap design and governance to engineering resilient, high-availability platforms deployed across AWS, Azure, and GCP. Combines deep engineering expertise in data platforms, vector databases, ML systems, workflow orchestration, and MLOps with strategic enterprise thinking around compliance, scale, and measurable business value.`,
+    
+    summary3: `Led 15+ enterprise AI transformation programs, delivering platforms that support millions of users and accelerate decision intelligence, efficiency, and automation across complex operations. Recognized for unifying AI strategy, architecture, and execution, enabling organizations to scale GenAI with reliability, security, and long-term architectural integrity.`,
     
     highlights: [
-      "Strategic AI advisor to CXOs and enterprise leadership teams",
-      "Expert in GenAI, LLMs, RAG architectures, multi-agent systems, and vector databases",
-      "Architected enterprise AI platforms serving millions of users with measurable ROI",
-      "Led 15+ large-scale AI transformations across BFSI, aviation, retail, and pharma sectors",
-      "AWS Certified Solutions Architect, Developer, and AI Practitioner"
+      "Trusted advisor to C-suite executives on enterprise AI transformation",
+      "Architected production-grade LLM platforms & advanced RAG systems",
+      "Led 15+ AI transformation programs serving millions of users",
+      "Expert in multi-agent systems, vector databases & intelligent automation",
+      "AWS, Azure & GCP certified across Solutions Architecture & AI"
+    ],
+    
+    expertise: [
+      { icon: "🎯", title: "AI Strategy", desc: "Enterprise roadmaps & governance" },
+      { icon: "🏗️", title: "Architecture", desc: "Scalable AI ecosystems" },
+      { icon: "⚙️", title: "Engineering", desc: "Production ML/LLM systems" },
+      { icon: "☁️", title: "Cloud-Native", desc: "AWS, Azure, GCP platforms" },
     ]
   },
 
