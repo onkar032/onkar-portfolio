@@ -7,6 +7,7 @@ import BlogCard from '../components/BlogCard'
 import BackgroundEffects from '../components/BackgroundEffects'
 import ScrollProgress from '../components/ScrollProgress'
 import GradientText from '../components/GradientText'
+import ContactWidget from '../components/ContactWidget'
 import Link from 'next/link'
 
 export default function Blog() {
@@ -29,6 +30,7 @@ export default function Blog() {
       <div className="min-h-screen bg-white relative">
         <ScrollProgress />
         <BackgroundEffects />
+        <ContactWidget />
         
         <div className="relative z-10">
           <Navbar />

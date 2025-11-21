@@ -9,6 +9,7 @@ import BackgroundEffects from '../components/BackgroundEffects'
 import CustomCursor from '../components/CustomCursor'
 import ScrollProgress from '../components/ScrollProgress'
 import AmbientCursor from '../components/AmbientCursor'
+import ContactWidget from '../components/ContactWidget'
 
 export default function ProjectsPage() {
   // Scroll to top on page load
@@ -37,6 +38,9 @@ export default function ProjectsPage() {
         
         {/* Background Effects */}
         <BackgroundEffects />
+        
+        {/* Contact Widget */}
+        <ContactWidget />
         
         {/* Main Content */}
         <div className="relative z-10">
