@@ -46,45 +46,43 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+          {/* Logo/Brand */}
           <Link href="/">
             <motion.a
-              className="flex items-center gap-2 cursor-pointer group"
+              className="flex items-center gap-2.5 cursor-pointer group"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* Icon Container */}
+              {/* Minimal Icon */}
               <motion.div 
-                className="w-10 h-10 bg-gradient-to-br from-apple-blue to-blue-600 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow"
-                whileHover={{ rotate: 5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="w-9 h-9 bg-apple-blue rounded-lg flex items-center justify-center"
+                whileHover={{ backgroundColor: "#0051a8" }}
+                transition={{ duration: 0.2 }}
               >
                 <svg 
-                  className="w-6 h-6 text-white" 
+                  className="w-5 h-5 text-white" 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
+                  strokeWidth={2.5}
                 >
                   <path 
                     strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
+                    strokeLinejoin="round"
                     d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" 
                   />
                 </svg>
               </motion.div>
               
-              {/* Optional Text - Hidden on mobile */}
-              <motion.span 
-                className="hidden sm:block text-lg font-semibold text-apple-text group-hover:text-apple-blue transition-colors"
-              >
-                Home
-              </motion.span>
+              {/* Name/Brand */}
+              <span className="text-lg font-semibold text-apple-text hidden sm:block">
+                Onkar Dubey
+              </span>
             </motion.a>
           </Link>
 
           {/* Nav Links */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => {
               const isPageLink = pageLinks.includes(item)
               const href = isPageLink ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`
@@ -93,11 +91,12 @@ export default function Navbar() {
               return isPageLink ? (
                 <Link key={item} href={href}>
                   <motion.a
-                    className={`text-sm hover:text-apple-blue transition-colors duration-200 cursor-pointer ${
-                      isActive ? 'text-apple-blue font-medium' : 'text-apple-text'
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
+                      isActive 
+                        ? 'text-apple-blue bg-apple-blue/10' 
+                        : 'text-apple-text hover:text-apple-blue hover:bg-gray-50'
                     }`}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     {item}
                   </motion.a>
@@ -106,9 +105,8 @@ export default function Navbar() {
                 <motion.a
                   key={item}
                   href={href}
-                  className="text-apple-text text-sm hover:text-apple-blue transition-colors duration-200"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  className="px-3 py-2 rounded-lg text-sm font-medium text-apple-text hover:text-apple-blue hover:bg-gray-50 transition-all duration-200"
+                  whileTap={{ scale: 0.95 }}
                 >
                   {item}
                 </motion.a>
@@ -119,11 +117,14 @@ export default function Navbar() {
           {/* CTA Button - Desktop */}
           <motion.a
             href="#contact"
-            className="hidden md:block bg-apple-blue text-white px-5 py-2 rounded-full text-sm hover:bg-apple-darkblue transition-colors duration-200"
-            whileHover={{ scale: 1.02 }}
+            className="hidden md:flex items-center gap-2 bg-apple-blue text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-apple-darkblue transition-all duration-200 shadow-sm hover:shadow-md"
+            whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
           >
-            Get in Touch
+            <span>Get in Touch</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
           </motion.a>
 
           {/* Mobile Menu Button */}
