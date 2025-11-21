@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 import { resumeData } from '../data/resume'
-import ChatWidget from '../components/ChatWidget'
+import ContactWidget from '../components/ContactWidget'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import About from '../components/About'
@@ -21,7 +21,6 @@ import InfiniteMarquee from '../components/InfiniteMarquee'
 import PremiumFooter from '../components/PremiumFooter'
 
 export default function Home() {
-  const [chatOpen, setChatOpen] = useState(false)
 
   // Scroll to top on page load
   useEffect(() => {
@@ -99,8 +98,8 @@ export default function Home() {
 
         <PremiumFooter data={resumeData.personal} />
 
-        {/* Chat Widget */}
-        <ChatWidget isOpen={chatOpen} setIsOpen={setChatOpen} />
+      {/* Contact Widget - Hybrid AI Chat + WhatsApp */}
+      <ContactWidget />
       </div>
     </>
   )
