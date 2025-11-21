@@ -78,14 +78,14 @@ export default function Hero({ data }) {
               href="/projects"
               className="bg-apple-blue text-white px-8 py-3.5 rounded-full text-base font-medium"
             >
-              View My Work
+              View Projects
             </MagneticButton>
             
             <MagneticButton
               href="#contact"
               className="bg-transparent text-apple-blue px-8 py-3.5 rounded-full text-base font-medium border-2 border-apple-blue"
             >
-              Let's Connect
+              Contact Me
             </MagneticButton>
           </motion.div>
 

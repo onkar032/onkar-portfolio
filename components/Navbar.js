@@ -114,18 +114,8 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* CTA Button - Desktop */}
-          <motion.a
-            href="#contact"
-            className="hidden md:flex items-center gap-2 bg-apple-blue text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-apple-darkblue transition-all duration-200 shadow-sm hover:shadow-md"
-            whileHover={{ scale: 1.02, y: -1 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span>Get in Touch</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </motion.a>
+          {/* Empty space for balance - Contact is in nav menu */}
+          <div className="w-10 md:w-0"></div>
 
           {/* Mobile Menu Button */}
           <motion.button
