@@ -2,25 +2,24 @@
 export const resumeData = {
   personal: {
     name: "Onkar Dubey",
-    title: "AI Architect & Generative AI Leader",
-    tagline: "10+ years delivering enterprise AI solutions across BFSI, aviation, retail, and real estate",
+    title: "AI & LLM Solutions Architect",
+    tagline: "Over a decade crafting AI products and delivering impactful enterprise solutions.",
     email: "Onkar032@gmail.com",
     phone: "+91 XXX XXX XXXX",
     location: "India",
     linkedin: "https://www.linkedin.com/in/onkar-dubey-10768275/",
-    github: "https://github.com/onkar032",
-    website: "https://onkar-portfolio-beige.vercel.app"
+    github: "https://github.com/onkar032"
   },
 
   about: {
-    summary: `AI Architect with 10+ years of experience delivering end-to-end Generative AI, LLM, and data-driven solutions across BFSI, aviation, retail, and real estate. Skilled in LLM application design, RAG architectures, vector databases, and multi-cloud integrations across Salesforce, Python, AWS, and GCP. Experienced in building and operationalizing end-to-end AI systems covering data pipelines, integrations, LLM workflows, MLOps, evaluation, and enterprise deployment. Strong ability to work with CXOs, engineering, and product teams to turn high-level requirements into scalable AI solutions with clear business impact.`,
+    summary: `Distinguished AI Solutions Architect and GenAI Leader with 10+ years of experience architecting and delivering transformative AI systems for Fortune 500 enterprises. Expert in designing production-grade LLM applications, RAG architectures, multi-agent systems, and enterprise AI platforms across BFSI, aviation, retail, real estate, and pharmaceutical industries. Proven track record of partnering with C-suite executives to define AI strategy, establish governance frameworks, and deliver scalable solutions that drive measurable business outcomes. Deep expertise in end-to-end AI system design—from data architecture and LLM orchestration to MLOps, evaluation frameworks, and secure enterprise deployment across AWS, GCP, and Azure ecosystems.`,
     
     highlights: [
-      "10+ years of experience in AI architecture and enterprise solutions",
-      "Expert in GenAI, LLMs, RAG architectures, and vector databases",
-      "Led AI deployments across BFSI, aviation, retail, real estate, and pharma",
-      "Strong track record of delivering scalable AI systems with measurable business impact",
-      "Certified AWS Solutions Architect and AI Practitioner"
+      "Strategic AI advisor to CXOs and enterprise leadership teams",
+      "Expert in GenAI, LLMs, RAG architectures, multi-agent systems, and vector databases",
+      "Architected enterprise AI platforms serving millions of users with measurable ROI",
+      "Led 15+ large-scale AI transformations across BFSI, aviation, retail, and pharma sectors",
+      "AWS Certified Solutions Architect, Developer, and AI Practitioner"
     ]
   },
 
@@ -104,14 +103,14 @@ export const resumeData = {
       description: "Production-grade Retrieval Augmented Generation system with document ingestion, semantic search, LLM integration, and embedded chat widget for intelligent Q&A.",
       tech: ["Python", "FastAPI", "ChromaDB", "Streamlit", "Next.js", "LangChain", "OpenAI", "Docker"],
       github: "https://github.com/onkar032/enterprise-rag-system",
-      demo: "https://onkar-portfolio-beige.vercel.app",
+      demo: "",
       highlights: [
         "Website crawling with intelligent chunking and metadata extraction",
         "Semantic search with query rewriting and MMR diversity",
         "Cross-encoder reranking for improved retrieval accuracy",
         "Evaluation framework using RAGAS metrics",
         "Docker deployment with FastAPI backend and Streamlit UI",
-        "Embedded AI chat widget for portfolio website"
+        "Embedded AI chat widget with conversational interface"
       ]
     },
     {

@@ -23,7 +23,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <div className="min-h-screen bg-white">
         <Navbar />
         
         <main>
@@ -52,4 +52,5 @@ export default function Home() {
     </>
   )
 }
+
 

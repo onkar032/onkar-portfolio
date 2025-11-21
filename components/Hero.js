@@ -10,7 +10,7 @@ export default function Hero({ data }) {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-6xl md:text-8xl font-bold text-apple-gray mb-6"
+            className="text-5xl md:text-7xl font-semibold text-apple-text mb-4 tracking-tight leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -19,7 +19,7 @@ export default function Hero({ data }) {
           </motion.h1>
 
           <motion.h2
-            className="text-3xl md:text-4xl font-semibold text-gray-600 mb-6"
+            className="text-3xl md:text-5xl font-semibold text-apple-text mb-6 tracking-tight leading-snug"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -28,13 +28,33 @@ export default function Hero({ data }) {
           </motion.h2>
 
           <motion.p
-            className="text-xl text-gray-500 mb-12 max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-apple-subtext mb-10 max-w-4xl mx-auto leading-snug font-normal"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
             {data.tagline}
           </motion.p>
+
+          <motion.div
+            className="flex flex-wrap gap-3 justify-center mb-12 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+          >
+            <div className="bg-apple-lightgray px-5 py-2.5 rounded-full border border-gray-200">
+              <span className="text-apple-text font-medium text-sm">GenAI & LLMs</span>
+            </div>
+            <div className="bg-apple-lightgray px-5 py-2.5 rounded-full border border-gray-200">
+              <span className="text-apple-text font-medium text-sm">RAG Architectures</span>
+            </div>
+            <div className="bg-apple-lightgray px-5 py-2.5 rounded-full border border-gray-200">
+              <span className="text-apple-text font-medium text-sm">Enterprise AI</span>
+            </div>
+            <div className="bg-apple-lightgray px-5 py-2.5 rounded-full border border-gray-200">
+              <span className="text-apple-text font-medium text-sm">AI Strategy</span>
+            </div>
+          </motion.div>
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -44,18 +64,18 @@ export default function Hero({ data }) {
           >
             <motion.a
               href="#projects"
-              className="bg-apple-blue text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-600 transition-all duration-200 shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+              className="bg-apple-blue text-white px-8 py-3.5 rounded-full text-base font-medium hover:bg-apple-darkblue transition-all duration-200"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               View My Work
             </motion.a>
             
             <motion.a
               href="#contact"
-              className="bg-white text-apple-gray px-8 py-4 rounded-full text-lg font-semibold border-2 border-gray-200 hover:border-apple-blue hover:text-apple-blue transition-all duration-200"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+              className="bg-transparent text-apple-blue px-8 py-3.5 rounded-full text-base font-medium border border-apple-blue hover:bg-apple-blue hover:text-white transition-all duration-200"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               Contact Me
             </motion.a>
@@ -123,4 +143,5 @@ function SocialLink({ href, icon, label }) {
     </motion.a>
   )
 }
+
 
