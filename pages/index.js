@@ -19,7 +19,6 @@ import { MorphingBackground } from '../components/SectionTransitions'
 import { SpotlightEffect } from '../components/ScrollRevealText'
 import AmbientCursor from '../components/AmbientCursor'
 import InfiniteMarquee from '../components/InfiniteMarquee'
-import PageLoader from '../components/PageLoader'
 import PremiumFooter from '../components/PremiumFooter'
 
 export default function Home() {
@@ -27,8 +26,6 @@ export default function Home() {
 
   return (
     <>
-      <PageLoader />
-      
       <Head>
         <title>{resumeData.personal.name} - Portfolio</title>
         <meta name="description" content={resumeData.personal.tagline} />
