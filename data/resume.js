@@ -97,15 +97,15 @@ export const resumeData = {
   ],
 
   skills: {
-    "AI & GenAI": ["LLMs (GPT, Llama)", "RAG Architecture", "Prompt Engineering", "Embeddings", "Vector Databases (Pinecone, FAISS, ChromaDB)", "LangChain", "LangGraph", "CrewAI", "LangSmith", "TruLens", "Function Calling", "Multi-Agent Systems"],
-    "Machine Learning": ["Scikit-learn", "TensorFlow", "PyTorch", "Feature Engineering", "Model Optimization", "MLOps", "Drift Detection", "Model Monitoring"],
-    "Languages": ["Python", "SQL", "JavaScript", "Java", "R", "SAS"],
-    "Cloud Platforms": ["AWS (SageMaker, Lambda, Glue, S3, EC2)", "Azure (ADF, Synapse)", "GCP (BigQuery, Vertex AI)", "Multi-Cloud Architecture"],
-    "Data Engineering": ["Apache Airflow", "dbt", "Apache Kafka", "Apache Spark", "Databricks", "ETL/ELT", "Data Pipelines", "Streaming"],
-    "DevOps & Infrastructure": ["Docker", "Kubernetes", "Terraform", "CI/CD", "Microservices", "Serverless", "API Engineering", "Event-Driven Architecture"],
-    "Salesforce": ["Einstein AI", "Salesforce Platform", "Apex", "LWC", "Integration", "Custom Development"],
-    "Analytics & BI": ["Tableau", "Power BI", "CRM Analytics", "SQL Analytics", "KPI Modeling", "Dashboards", "Data Visualization"],
-    "API & Integration": ["FastAPI", "REST APIs", "GraphQL", "Webhooks", "Message Queues", "Event Streaming"]
+    "GenAI & LLMs": ["LLM Engineering", "RAG Systems", "Prompt Orchestration", "Vector Databases", "Multi-Agent Pipelines"],
+    "AI/ML": ["Machine Learning", "NLP & Semantic Search", "Feature Engineering", "Model Optimization", "MLOps"],
+    "Data Engineering": ["ETL / ELT", "Data Lakes / Lakehouses", "Streaming Pipelines", "Data Modeling", "Data Governance"],
+    "Cloud & Architecture": ["AWS / Azure / GCP", "Serverless Architecture", "Microservices", "API-First Design", "Event-Driven Systems"],
+    "Enterprise Architecture": ["Solution Architecture", "System Design", "Reference Architectures", "High Availability", "Integrations"],
+    "Salesforce Platform": ["Salesforce Integration", "REST / GraphQL", "Workflow Orchestration", "IAM / SSO"],
+    "Dashboards & BI": ["Tableau", "Power BI", "BI Modeling"],
+    "Security & Governance": ["Responsible AI", "Data Security", "Compliance Frameworks", "Access Control"],
+    "Leadership & Strategy": ["AI Strategy", "Product Thinking", "Requirements Analysis", "Stakeholder Leadership"]
   },
 
   projects: [
