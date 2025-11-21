@@ -2,7 +2,7 @@
 export const resumeData = {
   personal: {
     name: "Onkar Dubey",
-    title: "AI & LLM Solutions Architect",
+    title: "Enterprise and AI/LLM Solutions Architect",
     tagline: "Over a decade crafting AI products and delivering impactful enterprise solutions.",
     email: "Onkar032@gmail.com",
     phone: "+91 XXX XXX XXXX",
