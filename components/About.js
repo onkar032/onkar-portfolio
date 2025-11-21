@@ -4,8 +4,9 @@ import { AboutBackground } from './SectionBackgrounds'
 
 export default function About({ data }) {
   return (
-    <section id="about" className="py-24 px-4 bg-white relative">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="py-24 px-4 bg-white relative overflow-hidden">
+      <AboutBackground />
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
