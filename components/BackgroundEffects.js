@@ -142,12 +142,24 @@ export default function BackgroundEffects() {
         )
       })}
 
-      {/* Premium Dotted Pattern - More subtle */}
+      {/* Architect Grid Pattern - Premium notebook/blueprint aesthetic */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.025]"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(0, 113, 227, 0.15) 1px, transparent 1px)`,
-          backgroundSize: '40px 40px',
+          backgroundImage: `
+            linear-gradient(rgba(0, 113, 227, 0.12) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 113, 227, 0.12) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+        }}
+      />
+      
+      {/* Accent dots at grid intersections - hybrid approach */}
+      <div 
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: `radial-gradient(circle, rgba(0, 113, 227, 0.3) 1.5px, transparent 1.5px)`,
+          backgroundSize: '60px 60px',
         }}
       />
 
