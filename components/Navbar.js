@@ -74,9 +74,9 @@ export default function Navbar() {
                 </svg>
               </motion.div>
               
-              {/* Name/Brand */}
-              <span className="text-lg font-semibold text-apple-text hidden sm:block">
-                Onkar Dubey
+              {/* Home Text */}
+              <span className="text-base font-semibold text-apple-text hidden sm:block">
+                Home
               </span>
             </motion.a>
           </Link>
