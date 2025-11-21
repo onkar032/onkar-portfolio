@@ -9,16 +9,39 @@
   
   body {
     @apply bg-white text-apple-text antialiased;
+    overscroll-behavior: none;
+  }
+  
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/80 backdrop-blur-xl;
+    @apply bg-white/80 backdrop-blur-xl border-b border-gray-200/50;
   }
   
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-50;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-apple-blue/30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-apple-blue/50;
   }
 }
 

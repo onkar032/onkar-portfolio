@@ -10,6 +10,7 @@ import ExperienceAndServices from '../components/ExperienceAndServices'
 import Skills from '../components/Skills'
 import Projects from '../components/Projects'
 import Contact from '../components/Contact'
+import BackgroundEffects from '../components/BackgroundEffects'
 
 export default function Home() {
   const [chatOpen, setChatOpen] = useState(false)
@@ -23,19 +24,25 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-white">
-        <Navbar />
+      <div className="min-h-screen bg-white relative">
+        {/* Background Effects */}
+        <BackgroundEffects />
         
-        <main>
-          <Hero data={resumeData.personal} />
-          <About data={resumeData.about} />
-          <ExperienceAndServices experienceData={resumeData.experience} />
-          <Skills data={resumeData.skills} />
-          <Projects data={resumeData.projects} />
-          <Contact data={resumeData.personal} />
-        </main>
+        {/* Main Content */}
+        <div className="relative z-10">
+          <Navbar />
+          
+          <main>
+            <Hero data={resumeData.personal} />
+            <About data={resumeData.about} />
+            <ExperienceAndServices experienceData={resumeData.experience} />
+            <Skills data={resumeData.skills} />
+            <Projects data={resumeData.projects} />
+            <Contact data={resumeData.personal} />
+          </main>
+        </div>
 
-        <footer className="bg-apple-gray text-white py-12">
+        <footer className="bg-apple-gray text-white py-12 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-gray-400">
               © {new Date().getFullYear()} {resumeData.personal.name}. All rights reserved.

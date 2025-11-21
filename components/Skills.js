@@ -2,8 +2,8 @@ import { motion } from 'framer-motion'
 
 export default function Skills({ data }) {
   return (
-    <section id="skills" className="py-20 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="py-20 px-4 bg-white/50 backdrop-blur-sm relative">
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
