@@ -7,7 +7,6 @@ import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import About from '../components/About'
 import ExperienceAndServices from '../components/ExperienceAndServices'
-import Projects from '../components/Projects'
 import Contact from '../components/Contact'
 import BackgroundEffects from '../components/BackgroundEffects'
 import CustomCursor from '../components/CustomCursor'
@@ -85,7 +84,6 @@ export default function Home() {
             
             <About data={resumeData.about} />
             <ExperienceAndServices experienceData={resumeData.experience} />
-            <Projects data={resumeData.projects} />
             <Contact data={resumeData.personal} />
           </main>
         </div>

@@ -34,6 +34,7 @@ export default function Navbar() {
   }, [mobileMenuOpen])
 
   const navItems = ['About', 'Experience', 'Projects', 'Blog', 'Contact']
+  const pageLinks = ['Projects', 'Blog'] // Items that go to separate pages
 
   return (
     <motion.nav
@@ -57,11 +58,11 @@ export default function Navbar() {
           {/* Nav Links */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => {
-              const isBlog = item === 'Blog'
-              const href = isBlog ? '/blog' : `/#${item.toLowerCase()}`
-              const isActive = isBlog && router.pathname.startsWith('/blog')
+              const isPageLink = pageLinks.includes(item)
+              const href = isPageLink ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`
+              const isActive = isPageLink && router.pathname.startsWith(`/${item.toLowerCase()}`)
               
-              return isBlog ? (
+              return isPageLink ? (
                 <Link key={item} href={href}>
                   <motion.a
                     className={`text-sm hover:text-apple-blue transition-colors duration-200 cursor-pointer ${
@@ -155,9 +156,9 @@ export default function Navbar() {
           }}
         >
           {navItems.map((item, index) => {
-            const isBlog = item === 'Blog'
-            const href = isBlog ? '/blog' : `/#${item.toLowerCase()}`
-            const isActive = isBlog && router.pathname.startsWith('/blog')
+            const isPageLink = pageLinks.includes(item)
+            const href = isPageLink ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`
+            const isActive = isPageLink && router.pathname.startsWith(`/${item.toLowerCase()}`)
 
             return (
               <motion.div
@@ -179,7 +180,7 @@ export default function Navbar() {
                   }
                 }}
               >
-                {isBlog ? (
+                {isPageLink ? (
                   <Link href={href}>
                     <motion.a
                       className={`text-3xl font-semibold cursor-pointer ${
