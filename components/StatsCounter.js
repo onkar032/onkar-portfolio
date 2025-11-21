@@ -26,10 +26,11 @@ function AnimatedNumber({ value, suffix = '' }) {
 
 export default function StatsCounter() {
   const stats = [
-    { value: 10, suffix: '+', label: 'Years Experience' },
-    { value: 15, suffix: '+', label: 'Enterprise Projects' },
-    { value: 50, suffix: '+', label: 'AI/ML Solutions' },
-    { value: 5, suffix: '', label: 'Fortune 500 Clients' },
+    { value: 10, suffix: '+', label: 'Years Delivering AI, Data & Cloud Solutions' },
+    { value: 40, suffix: '+', label: 'Enterprise AI & Data Transformation Programs Delivered' },
+    { value: 15, suffix: '+', label: 'AI, ML & LLM Workflows Shipped Into Production' },
+    { value: 500, suffix: 'K+', label: 'Users Impacted Through AI-Driven Workflows' },
+    { value: 1, suffix: 'B+', label: 'Records Processed Across Data Platforms & Real-Time Pipelines' },
   ]
 
   return (
@@ -40,8 +41,8 @@ export default function StatsCounter() {
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-6">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -53,12 +54,12 @@ export default function StatsCounter() {
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
               <motion.div
-                className="text-4xl md:text-5xl font-bold text-apple-blue mb-2"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-apple-blue mb-2"
                 whileHover={{ scale: 1.1 }}
               >
                 <AnimatedNumber value={stat.value} suffix={stat.suffix} />
               </motion.div>
-              <div className="text-sm md:text-base text-apple-subtext font-medium group-hover:text-apple-blue transition-colors duration-200">
+              <div className="text-xs md:text-sm text-apple-subtext font-medium group-hover:text-apple-blue transition-colors duration-200 leading-snug">
                 {stat.label}
               </div>
             </motion.div>
