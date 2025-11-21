@@ -15,10 +15,16 @@ export default function Contact({ data }) {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    // Create mailto link with form data
+    const subject = `Portfolio Contact from ${formData.name}`
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    const mailtoUrl = `mailto:${data.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     
-    console.log('Form submitted:', formData)
+    // Open email client
+    window.location.href = mailtoUrl
+    
+    // Show success message
+    await new Promise(resolve => setTimeout(resolve, 1000))
     setIsSubmitting(false)
     setSubmitSuccess(true)
     setFormData({ name: '', email: '', message: '' })
@@ -162,8 +168,9 @@ export default function Contact({ data }) {
 function ContactItem({ icon, label, value, href }) {
   const content = (
     <motion.div 
-      className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/60 transition-all duration-200 cursor-pointer border border-transparent hover:border-apple-blue/20"
+      className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/60 transition-all duration-200 border border-transparent hover:border-apple-blue/20"
       whileHover={{ x: 5 }}
+      style={{ cursor: href ? 'pointer' : 'default' }}
     >
       <div className="w-10 h-10 bg-apple-blue/10 rounded-xl flex items-center justify-center text-apple-blue flex-shrink-0">
         {icon}
@@ -175,7 +182,16 @@ function ContactItem({ icon, label, value, href }) {
     </motion.div>
   )
 
-  return href ? <a href={href}>{content}</a> : content
+  return href ? (
+    <a href={href} className="block" onClick={(e) => {
+      if (href.startsWith('mailto:') || href.startsWith('tel:')) {
+        e.preventDefault()
+        window.location.href = href
+      }
+    }}>
+      {content}
+    </a>
+  ) : content
 }
 
 function SocialButton({ href, label }) {

@@ -30,7 +30,7 @@ export default function ContactWidget() {
 
   const handleEmailClick = () => {
     const mailtoUrl = `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(EMAIL_BODY)}`
-    window.location.href = mailtoUrl
+    window.open(mailtoUrl, '_self')
     setShowMenu(false)
   }
 
