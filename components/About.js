@@ -54,8 +54,8 @@ export default function About({ data }) {
                 <div className="w-full h-full rounded-3xl bg-white flex items-center justify-center">
                   <div className="text-center p-8">
                     <div className="text-7xl mb-4">🤖</div>
-                    <p className="text-apple-text text-xl font-medium leading-snug">
-                      Architecting Intelligence,<br/>Delivering Impact
+                    <p className="text-apple-text text-lg font-normal">
+                      Passionate about building the future
                     </p>
                   </div>
                 </div>
