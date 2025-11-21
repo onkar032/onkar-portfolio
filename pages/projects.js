@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 import Head from 'next/head'
 import { resumeData } from '../data/resume'
 import Navbar from '../components/Navbar'
@@ -10,6 +11,11 @@ import ScrollProgress from '../components/ScrollProgress'
 import AmbientCursor from '../components/AmbientCursor'
 
 export default function ProjectsPage() {
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
       <Head>

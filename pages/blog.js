@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 import Head from 'next/head'
 import { blogPosts, getFeaturedPosts } from '../data/blog'
 import Navbar from '../components/Navbar'
@@ -11,6 +12,11 @@ import Link from 'next/link'
 export default function Blog() {
   const featuredPosts = getFeaturedPosts()
   const regularPosts = blogPosts.filter(post => !post.featured)
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <>
