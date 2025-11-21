@@ -9,12 +9,12 @@ module.exports = {
     extend: {
       colors: {
         apple: {
-          blue: '#0071e3',
-          darkblue: '#0051a8',
-          gray: '#1d1d1f',
-          lightgray: '#f5f5f7',
-          text: '#1d1d1f',
-          subtext: '#86868b',
+          blue: '#52525b',      // Grey-600 (was blue) - Main accent
+          darkblue: '#3f3f46',  // Grey-700 (was dark blue) - Darker accent
+          gray: '#1d1d1f',      // Dark grey (unchanged)
+          lightgray: '#f5f5f7', // Light grey (unchanged)
+          text: '#1d1d1f',      // Text color (unchanged)
+          subtext: '#86868b',   // Subtext (unchanged)
         },
       },
       fontFamily: {
