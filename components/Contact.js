@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import GradientText from './GradientText'
 
 export default function Contact({ data }) {
   const [formData, setFormData] = useState({
@@ -7,17 +8,27 @@ export default function Contact({ data }) {
     email: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitSuccess, setSubmitSuccess] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // You can integrate with your email service here
+    setIsSubmitting(true)
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500))
+    
     console.log('Form submitted:', formData)
-    alert('Thank you! I will get back to you soon.')
+    setIsSubmitting(false)
+    setSubmitSuccess(true)
     setFormData({ name: '', email: '', message: '' })
+    
+    // Reset success message after 3 seconds
+    setTimeout(() => setSubmitSuccess(false), 3000)
   }
 
   return (
-    <section id="contact" className="py-20 px-4 bg-white/50 backdrop-blur-sm relative">
+    <section id="contact" className="py-24 px-4 bg-apple-lightgray/30 backdrop-blur-sm relative">
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,10 +36,12 @@ export default function Contact({ data }) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-5xl font-bold text-apple-gray mb-4 text-center">Get In Touch</h2>
-          <div className="w-20 h-1 bg-apple-blue mx-auto mb-6"></div>
-          <p className="text-gray-600 text-center mb-12 text-lg">
-            Have a project in mind? Let's work together!
+          <h2 className="text-4xl md:text-5xl font-semibold mb-3 text-center tracking-tight">
+            <GradientText>Get In Touch</GradientText>
+          </h2>
+          <div className="w-12 h-0.5 bg-apple-blue mx-auto mb-6"></div>
+          <p className="text-apple-subtext text-center mb-12 text-lg">
+            Have a project in mind? Let's build something amazing together.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -41,7 +54,7 @@ export default function Contact({ data }) {
               className="space-y-6"
             >
               <div>
-                <h3 className="text-2xl font-bold text-apple-gray mb-6">Contact Information</h3>
+                <h3 className="text-2xl font-semibold text-apple-text mb-6">Contact Information</h3>
                 
                 <div className="space-y-4">
                   <ContactItem
@@ -65,7 +78,7 @@ export default function Contact({ data }) {
               </div>
 
               <div className="pt-6">
-                <h4 className="font-semibold text-gray-700 mb-3">Connect with me</h4>
+                <h4 className="font-semibold text-apple-text mb-3">Connect with me</h4>
                 <div className="flex gap-4">
                   <SocialButton href={data.github} label="GitHub" />
                   <SocialButton href={data.linkedin} label="LinkedIn" />
@@ -80,7 +93,7 @@ export default function Contact({ data }) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="space-y-4"
+              className="space-y-5"
             >
               <div>
                 <input
@@ -114,11 +127,29 @@ export default function Contact({ data }) {
               </div>
               <motion.button
                 type="submit"
-                className="w-full bg-apple-blue text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-200"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                disabled={isSubmitting}
+                className="w-full bg-apple-blue text-white py-3.5 px-6 rounded-xl font-semibold hover:bg-blue-600 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden"
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
               >
-                Send Message
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                    Sending...
+                  </span>
+                ) : submitSuccess ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Message Sent!
+                  </span>
+                ) : (
+                  'Send Message'
+                )}
               </motion.button>
             </motion.form>
           </div>
@@ -130,15 +161,18 @@ export default function Contact({ data }) {
 
 function ContactItem({ icon, label, value, href }) {
   const content = (
-    <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-      <div className="w-10 h-10 bg-apple-blue/10 rounded-lg flex items-center justify-center text-apple-blue flex-shrink-0">
+    <motion.div 
+      className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/60 transition-all duration-200 cursor-pointer border border-transparent hover:border-apple-blue/20"
+      whileHover={{ x: 5 }}
+    >
+      <div className="w-10 h-10 bg-apple-blue/10 rounded-xl flex items-center justify-center text-apple-blue flex-shrink-0">
         {icon}
       </div>
       <div>
-        <p className="text-sm text-gray-500">{label}</p>
-        <p className="text-gray-800 font-medium">{value}</p>
+        <p className="text-sm text-apple-subtext">{label}</p>
+        <p className="text-apple-text font-medium">{value}</p>
       </div>
-    </div>
+    </motion.div>
   )
 
   return href ? <a href={href}>{content}</a> : content
@@ -150,8 +184,8 @@ function SocialButton({ href, label }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="px-4 py-2 bg-apple-gray text-white rounded-lg hover:bg-gray-800 transition-colors"
-      whileHover={{ scale: 1.05 }}
+      className="px-5 py-2.5 bg-apple-text text-white rounded-xl hover:bg-apple-blue transition-colors duration-200 font-medium text-sm"
+      whileHover={{ scale: 1.05, y: -2 }}
       whileTap={{ scale: 0.95 }}
     >
       {label}
