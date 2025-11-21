@@ -40,7 +40,7 @@ export default function About({ data }) {
               whileHover={{ y: -5, boxShadow: "0 25px 50px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="space-y-6">
-                <p className="text-lg md:text-xl text-apple-text leading-relaxed font-normal first-letter:text-5xl first-letter:font-bold first-letter:text-apple-blue first-letter:mr-3 first-letter:float-left">
+                <p className="text-lg md:text-xl text-apple-text leading-relaxed font-normal">
                   {data.summary}
                 </p>
                 

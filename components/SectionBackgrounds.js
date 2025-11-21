@@ -16,73 +16,73 @@ export function AboutBackground() {
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Dynamic grey mesh gradients with MORE movement */}
+      {/* Subtle grey mesh gradients - VERY minimal */}
       <motion.div
-        className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full blur-[120px]"
+        className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full blur-[140px]"
         style={{ 
           y: y1, 
           rotate, 
           scale,
-          opacity,
-          background: 'radial-gradient(circle, rgba(82, 82, 91, 0.18) 0%, rgba(107, 114, 128, 0.12) 50%, transparent 70%)'
+          opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0.5, 0.3]),
+          background: 'radial-gradient(circle, rgba(82, 82, 91, 0.06) 0%, rgba(107, 114, 128, 0.04) 50%, transparent 70%)'
         }}
         animate={{
-          x: [0, 50, 0],
-          rotate: [0, 180, 360]
+          x: [0, 30, 0],
+          rotate: [0, 90, 180]
         }}
         transition={{
-          duration: 25,
+          duration: 35,
           repeat: Infinity,
           ease: "easeInOut"
         }}
       />
       <motion.div
-        className="absolute bottom-0 -left-40 w-[800px] h-[800px] rounded-full blur-[130px]"
+        className="absolute bottom-0 -left-40 w-[800px] h-[800px] rounded-full blur-[150px]"
         style={{ 
           y: y2, 
-          rotate: useTransform(scrollYProgress, [0, 1], [0, -180]),
-          background: 'radial-gradient(circle, rgba(75, 85, 99, 0.15) 0%, rgba(107, 114, 128, 0.1) 50%, transparent 70%)'
+          rotate: useTransform(scrollYProgress, [0, 1], [0, -90]),
+          background: 'radial-gradient(circle, rgba(75, 85, 99, 0.05) 0%, rgba(107, 114, 128, 0.03) 50%, transparent 70%)'
         }}
         animate={{
-          x: [0, -60, 0],
-          scale: [1, 1.2, 1]
+          x: [0, -40, 0],
+          scale: [1, 1.1, 1]
         }}
         transition={{
-          duration: 30,
+          duration: 40,
           repeat: Infinity,
           ease: "easeInOut"
         }}
       />
       
-      {/* MORE animated floating elements */}
-      {[...Array(8)].map((_, i) => (
+      {/* Minimal floating elements */}
+      {[...Array(4)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute rounded-full border border-gray-400/20 backdrop-blur-sm"
+          className="absolute rounded-full border border-gray-400/10 backdrop-blur-sm"
           style={{
-            width: 40 + i * 25,
-            height: 40 + i * 25,
-            left: `${10 + i * 12}%`,
-            top: `${20 + (i % 3) * 30}%`,
-            y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 20}%`]),
-            rotate: useTransform(scrollYProgress, [0, 1], [0, i % 2 === 0 ? 360 : -360]),
+            width: 50 + i * 30,
+            height: 50 + i * 30,
+            left: `${15 + i * 25}%`,
+            top: `${25 + (i % 2) * 35}%`,
+            y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 15}%`]),
+            rotate: useTransform(scrollYProgress, [0, 1], [0, i % 2 === 0 ? 180 : -180]),
           }}
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.15, 0.4, 0.15],
-            x: [0, i % 2 === 0 ? 20 : -20, 0],
+            scale: [1, 1.1, 1],
+            opacity: [0.05, 0.15, 0.05],
+            x: [0, i % 2 === 0 ? 10 : -10, 0],
           }}
           transition={{
-            duration: 3 + i * 0.5,
+            duration: 5 + i * 0.8,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: i * 0.2
+            delay: i * 0.4
           }}
         />
       ))}
       
-      {/* Animated wave with grey tones */}
-      <svg className="absolute inset-0 w-full h-full opacity-8" preserveAspectRatio="none">
+      {/* Very subtle wave - barely visible */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.02]" preserveAspectRatio="none">
         <motion.path
           d="M0,100 Q250,50 500,100 T1000,100 L1000,0 L0,0 Z"
           fill="url(#aboutGradient)"
@@ -90,21 +90,21 @@ export function AboutBackground() {
           animate={{
             d: [
               "M0,100 Q250,50 500,100 T1000,100 L1000,0 L0,0 Z",
-              "M0,80 Q250,120 500,80 T1000,80 L1000,0 L0,0 Z",
+              "M0,85 Q250,115 500,85 T1000,85 L1000,0 L0,0 Z",
               "M0,100 Q250,50 500,100 T1000,100 L1000,0 L0,0 Z"
             ]
           }}
           transition={{
-            duration: 15,
+            duration: 20,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         <defs>
           <linearGradient id="aboutGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(82, 82, 91, 0.12)" />
-            <stop offset="50%" stopColor="rgba(107, 114, 128, 0.08)" />
-            <stop offset="100%" stopColor="rgba(82, 82, 91, 0.12)" />
+            <stop offset="0%" stopColor="rgba(82, 82, 91, 0.08)" />
+            <stop offset="50%" stopColor="rgba(107, 114, 128, 0.04)" />
+            <stop offset="100%" stopColor="rgba(82, 82, 91, 0.08)" />
           </linearGradient>
         </defs>
       </svg>
