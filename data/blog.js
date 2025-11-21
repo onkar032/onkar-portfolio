@@ -1,68 +1,138 @@
-// Blog posts data - Add your AI articles here
+// Blog posts data - Your AI articles from GenAI-Guide
 export const blogPosts = [
   {
-    id: 'enterprise-rag-systems',
-    title: 'Building Production-Ready RAG Systems for Enterprise',
-    excerpt: 'A comprehensive guide to architecting retrieval-augmented generation systems that scale across Fortune 500 organizations.',
+    id: 'agentic-systems',
+    title: 'Agentic Systems: Building Autonomous AI Agents',
+    excerpt: 'Deep dive into designing and implementing agentic AI systems that can plan, reason, and execute complex tasks autonomously in enterprise environments.',
     date: '2024-11-20',
-    readTime: '8 min read',
-    category: 'RAG Architecture',
-    tags: ['RAG', 'LLM', 'Enterprise AI', 'Vector Databases'],
-    image: '🏗️',
-    featured: true,
-    content: `
-# Building Production-Ready RAG Systems for Enterprise
-
-Enterprise RAG systems require careful architectural decisions...
-
-## Key Challenges
-
-1. **Scale**: Handling millions of documents
-2. **Performance**: Sub-second query latency
-3. **Accuracy**: High retrieval precision
-4. **Security**: Enterprise-grade compliance
-
-## Architecture Principles
-
-### Vector Database Selection
-- Pinecone for managed simplicity
-- Weaviate for hybrid search
-- ChromaDB for self-hosted
-
-### Chunking Strategies
-...
-    `
-  },
-  {
-    id: 'llm-evaluation-frameworks',
-    title: 'LLM Evaluation Frameworks: Beyond Simple Metrics',
-    excerpt: 'How to build comprehensive evaluation systems for production LLM applications using advanced metrics and human feedback.',
-    date: '2024-11-15',
-    readTime: '10 min read',
-    category: 'MLOps',
-    tags: ['LLM', 'Evaluation', 'MLOps', 'Quality'],
-    image: '📊',
-    featured: true,
-    content: `
-# LLM Evaluation Frameworks
-
-Evaluating LLM performance goes beyond accuracy scores...
-    `
-  },
-  {
-    id: 'multi-agent-systems',
-    title: 'Designing Multi-Agent LLM Systems',
-    excerpt: 'Practical patterns for orchestrating multiple AI agents to solve complex enterprise workflows.',
-    date: '2024-11-10',
     readTime: '12 min read',
     category: 'AI Architecture',
-    tags: ['Multi-Agent', 'LangGraph', 'CrewAI', 'Orchestration'],
+    tags: ['Agentic AI', 'Multi-Agent', 'Autonomous Systems', 'LLM'],
     image: '🤖',
-    featured: false,
+    featured: true,
     content: `
-# Multi-Agent LLM Systems
+# Agentic Systems: Building Autonomous AI Agents
 
-Complex tasks require agent collaboration...
+Explore the architecture and implementation patterns for building autonomous AI agents that can plan, reason, and execute tasks.
+
+## What are Agentic Systems?
+
+Agentic systems represent a new paradigm in AI where models don't just respond to prompts, but actively plan and execute multi-step workflows.
+
+## Key Components
+
+### Planning & Reasoning
+- Task decomposition
+- Goal-oriented decision making
+- Multi-step workflow execution
+
+### Tool Integration
+- External API calls
+- Database operations
+- Code execution capabilities
+
+### Memory Systems
+- Short-term working memory
+- Long-term knowledge retention
+- Context management
+
+## Enterprise Applications
+
+Agentic systems are transforming how enterprises automate complex workflows, from customer service to data analysis.
+
+[View full guide on GitHub](https://github.com/onkar032/GenAI-Guide/tree/main/Agentic%20Systems)
+    `
+  },
+  {
+    id: 'prompt-injection',
+    title: 'Prompt Injection: Security Vulnerabilities in LLM Applications',
+    excerpt: 'Understanding and mitigating prompt injection attacks in production LLM systems. Essential security considerations for enterprise AI deployments.',
+    date: '2024-11-15',
+    readTime: '10 min read',
+    category: 'AI Security',
+    tags: ['Security', 'Prompt Injection', 'LLM Safety', 'Enterprise AI'],
+    image: '🔒',
+    featured: true,
+    content: `
+# Prompt Injection: Security Vulnerabilities in LLM Applications
+
+A critical security concern for production LLM systems that every AI architect must understand.
+
+## What is Prompt Injection?
+
+Prompt injection is a security vulnerability where malicious users manipulate LLM inputs to bypass safety controls or extract sensitive information.
+
+## Types of Attacks
+
+### Direct Injection
+Direct manipulation of user prompts to override system instructions.
+
+### Indirect Injection
+Attacks embedded in retrieved documents or external data sources.
+
+## Mitigation Strategies
+
+1. **Input Validation**: Strict filtering and sanitization
+2. **Output Monitoring**: Real-time response analysis
+3. **Privilege Separation**: Isolated execution contexts
+4. **Content Filtering**: Multi-layer safety checks
+
+## Enterprise Security Framework
+
+Implementing defense-in-depth strategies for production LLM systems.
+
+[View full guide on GitHub](https://github.com/onkar032/GenAI-Guide/tree/main/Prompt%20Injection)
+    `
+  },
+  {
+    id: 'ai-cybersecurity',
+    title: 'AI in Cybersecurity: Threat Detection & Response',
+    excerpt: 'Leveraging AI and machine learning for advanced cybersecurity threat detection, automated response, and security operations at enterprise scale.',
+    date: '2024-11-10',
+    readTime: '15 min read',
+    category: 'AI & Security',
+    tags: ['Cybersecurity', 'AI/ML', 'Threat Detection', 'Security Operations'],
+    image: '🛡️',
+    featured: true,
+    content: `
+# AI in Cybersecurity: Threat Detection & Response
+
+How artificial intelligence is revolutionizing cybersecurity operations and threat detection at enterprise scale.
+
+## AI-Powered Security Operations
+
+### Threat Detection
+- Anomaly detection using ML models
+- Pattern recognition in network traffic
+- Behavioral analysis of users and systems
+
+### Automated Response
+- Intelligent incident response
+- Automated threat containment
+- Self-healing security systems
+
+## Use Cases
+
+1. **Network Security**: Real-time traffic analysis
+2. **Endpoint Protection**: Behavioral threat detection  
+3. **SIEM Enhancement**: Intelligent log analysis
+4. **Vulnerability Management**: Predictive security
+
+## Enterprise Implementation
+
+Best practices for deploying AI-powered security solutions in large organizations.
+
+### Challenges
+- False positive management
+- Model drift and retraining
+- Integration with existing security tools
+
+### Success Factors
+- Quality training data
+- Continuous monitoring
+- Human-in-the-loop validation
+
+[View full guide on GitHub](https://github.com/onkar032/GenAI-Guide/blob/main/AI%20in%20Cybersecurity.md)
     `
   },
 ]
