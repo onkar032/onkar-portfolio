@@ -1,6 +1,16 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 
 export default function WhatIDo() {
+  const [openSections, setOpenSections] = useState({})
+
+  const toggleSection = (serviceIndex, subsectionIndex) => {
+    const key = `${serviceIndex}-${subsectionIndex}`
+    setOpenSections(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }))
+  }
   const services = [
     {
       title: "Generative AI & LLM Engineering",
@@ -160,20 +170,52 @@ export default function WhatIDo() {
             >
               <h3 className="text-lg font-semibold text-apple-text mb-4">{service.title}</h3>
               
-              <div className="space-y-5">
-                {service.subsections.map((subsection, subIndex) => (
-                  <div key={subIndex}>
-                    <h4 className="text-sm font-medium text-apple-blue mb-2">{subsection.subtitle}</h4>
-                    <ul className="space-y-2">
-                      {subsection.items.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex items-start gap-2 text-sm text-apple-subtext">
-                          <span className="text-apple-blue mt-1">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+              <div className="space-y-3">
+                {service.subsections.map((subsection, subIndex) => {
+                  const sectionKey = `${index}-${subIndex}`
+                  const isOpen = openSections[sectionKey]
+                  
+                  return (
+                    <div key={subIndex} className="border border-gray-200 rounded-lg overflow-hidden">
+                      <button
+                        onClick={() => toggleSection(index, subIndex)}
+                        className="w-full flex items-center justify-between px-4 py-3 bg-white hover:bg-apple-lightgray transition-colors duration-200"
+                      >
+                        <h4 className="text-sm font-medium text-apple-blue text-left">{subsection.subtitle}</h4>
+                        <motion.svg
+                          className="w-5 h-5 text-apple-blue flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          animate={{ rotate: isOpen ? 180 : 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </motion.svg>
+                      </button>
+                      
+                      <AnimatePresence>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <ul className="space-y-2 px-4 py-3 bg-gray-50">
+                              {subsection.items.map((item, itemIndex) => (
+                                <li key={itemIndex} className="flex items-start gap-2 text-sm text-apple-subtext">
+                                  <span className="text-apple-blue mt-1">•</span>
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  )
+                })}
               </div>
             </motion.div>
           ))}
