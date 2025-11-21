@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion'
 import GradientText from './GradientText'
+import { AboutBackground } from './SectionBackgrounds'
 
 export default function About({ data }) {
   return (
-    <section id="about" className="py-24 px-4 bg-apple-lightgray/50 backdrop-blur-sm relative">
+    <section id="about" className="py-24 px-4 bg-apple-lightgray/50 backdrop-blur-sm relative overflow-hidden">
+      <AboutBackground />
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

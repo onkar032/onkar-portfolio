@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useTilt } from '../hooks/useTilt'
 import GradientText from './GradientText'
+import { SkillsBackground } from './SectionBackgrounds'
 
 function SkillCard({ category, skills, index }) {
   const { ref, style } = useTilt()
@@ -75,7 +76,8 @@ function SkillCard({ category, skills, index }) {
 
 export default function Skills({ data }) {
   return (
-    <section id="skills" className="py-20 px-4 bg-white/50 backdrop-blur-sm relative">
+    <section id="skills" className="py-20 px-4 bg-white/50 backdrop-blur-sm relative overflow-hidden">
+      <SkillsBackground />
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

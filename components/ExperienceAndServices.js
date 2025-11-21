@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion'
 import WhatIDo from './WhatIDo'
 import GradientText from './GradientText'
+import { ExperienceBackground } from './SectionBackgrounds'
 
 export default function ExperienceAndServices({ experienceData }) {
   return (
-    <section id="experience" className="py-24 px-4 bg-white/50 backdrop-blur-sm relative">
+    <section id="experience" className="py-24 px-4 bg-white/50 backdrop-blur-sm relative overflow-hidden">
+      <ExperienceBackground />
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Experience Section - Left Side (35% on desktop) */}
