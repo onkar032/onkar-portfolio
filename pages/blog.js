@@ -89,32 +89,49 @@ export default function Blog() {
               </div>
             </section>
 
-            {/* Coming Soon */}
-            <motion.section 
-              className="px-4 mt-20"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="max-w-4xl mx-auto text-center p-12 bg-gradient-to-br from-apple-blue/5 to-purple-500/5 rounded-3xl border border-gray-200">
-                <div className="text-6xl mb-4">✍️</div>
-                <h3 className="text-2xl font-semibold text-apple-text mb-3">
-                  More Articles Coming Soon
-                </h3>
-                <p className="text-apple-subtext mb-6">
-                  Subscribe to get notified when new AI insights and technical articles are published
-                </p>
-                <Link href="#contact">
-                  <motion.button
-                    className="bg-apple-blue text-white px-8 py-3 rounded-full font-medium"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+            {/* Coming Soon - Main Message */}
+            {blogPosts.length === 0 && (
+              <motion.section 
+                className="px-4 mt-8"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <div className="max-w-4xl mx-auto text-center p-16 bg-gradient-to-br from-apple-blue/5 to-purple-500/5 rounded-3xl border border-gray-200">
+                  <motion.div 
+                    className="text-8xl mb-6"
+                    animate={{ 
+                      y: [0, -10, 0],
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
                   >
-                    Get Notified
-                  </motion.button>
-                </Link>
-              </div>
-            </motion.section>
+                    ✍️
+                  </motion.div>
+                  <h3 className="text-3xl md:text-4xl font-semibold text-apple-text mb-4">
+                    <GradientText>Stay Tuned</GradientText>
+                  </h3>
+                  <p className="text-lg text-apple-subtext mb-2">
+                    Exciting AI insights and technical articles coming soon!
+                  </p>
+                  <p className="text-base text-apple-subtext mb-8">
+                    Deep dives into LLM architecture, RAG systems, enterprise AI, and production ML engineering
+                  </p>
+                  <Link href="/#contact">
+                    <motion.button
+                      className="bg-apple-blue text-white px-8 py-3.5 rounded-full font-medium text-base"
+                      whileHover={{ scale: 1.05, backgroundColor: "#0051a8" }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Get Notified When Published
+                    </motion.button>
+                  </Link>
+                </div>
+              </motion.section>
+            )}
           </main>
 
           <footer className="bg-apple-gray text-white py-12 relative z-10">
