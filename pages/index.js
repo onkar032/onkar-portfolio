@@ -11,6 +11,9 @@ import Skills from '../components/Skills'
 import Projects from '../components/Projects'
 import Contact from '../components/Contact'
 import BackgroundEffects from '../components/BackgroundEffects'
+import CustomCursor from '../components/CustomCursor'
+import ScrollProgress from '../components/ScrollProgress'
+import StatsCounter from '../components/StatsCounter'
 
 export default function Home() {
   const [chatOpen, setChatOpen] = useState(false)
@@ -24,7 +27,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-white relative">
+      <div className="min-h-screen bg-white relative cursor-none md:cursor-none">
+        {/* Custom Cursor */}
+        <CustomCursor />
+        
+        {/* Scroll Progress Bar */}
+        <ScrollProgress />
+        
         {/* Background Effects */}
         <BackgroundEffects />
         
@@ -34,6 +43,7 @@ export default function Home() {
           
           <main>
             <Hero data={resumeData.personal} />
+            <StatsCounter />
             <About data={resumeData.about} />
             <ExperienceAndServices experienceData={resumeData.experience} />
             <Skills data={resumeData.skills} />

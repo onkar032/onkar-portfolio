@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import TypewriterText from './TypewriterText'
 
 export default function Hero({ data }) {
   return (
@@ -27,14 +28,14 @@ export default function Hero({ data }) {
             {data.title}
           </motion.h2>
 
-          <motion.p
+          <motion.div
             className="text-xl md:text-2xl text-apple-subtext mb-10 max-w-4xl mx-auto leading-snug font-normal"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            {data.tagline}
-          </motion.p>
+            <TypewriterText text={data.tagline} delay={800} />
+          </motion.div>
 
           <motion.div
             className="flex flex-wrap gap-3 justify-center mb-12 max-w-4xl mx-auto"
