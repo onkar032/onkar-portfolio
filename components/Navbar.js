@@ -27,8 +27,8 @@ export default function Navbar() {
           {/* Logo */}
           <motion.a
             href="#home"
-            className="text-xl font-bold text-apple-gray"
-            whileHover={{ scale: 1.05 }}
+            className="text-xl font-semibold text-apple-text"
+            whileHover={{ scale: 1.02 }}
           >
             OD
           </motion.a>
@@ -39,9 +39,9 @@ export default function Navbar() {
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-apple-gray hover:text-apple-blue transition-colors duration-200"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="text-apple-text text-sm hover:text-apple-blue transition-colors duration-200"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 {item}
               </motion.a>
@@ -51,9 +51,9 @@ export default function Navbar() {
           {/* CTA Button */}
           <motion.a
             href="#contact"
-            className="bg-apple-blue text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors duration-200"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="bg-apple-blue text-white px-5 py-2 rounded-full text-sm hover:bg-apple-darkblue transition-colors duration-200"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             Get in Touch
           </motion.a>
