@@ -68,24 +68,28 @@ export default function Home() {
           
           <main>
             <Hero data={resumeData.personal} />
-            <StatsCounter />
             
-            {/* Infinite Marquee - Tech Stack */}
-            <InfiniteMarquee 
-              items={[
-                { name: 'LLMs & GenAI', icon: '🤖' },
-                { name: 'Python', icon: '🐍' },
-                { name: 'RAG Systems', icon: '📚' },
-                { name: 'AWS', icon: '☁️' },
-                { name: 'Vector DBs', icon: '🎯' },
-                { name: 'LangChain', icon: '🔗' },
-                { name: 'TensorFlow', icon: '🧠' },
-                { name: 'Docker', icon: '🐳' },
-                { name: 'Kubernetes', icon: '⚓' },
-                { name: 'Salesforce', icon: '☁️' },
-              ]}
-              speed={40}
-            />
+            {/* Stats & Tech Stack Section - Grey Background */}
+            <section className="bg-gray-50 py-8">
+              <StatsCounter />
+              
+              {/* Infinite Marquee - Tech Stack */}
+              <InfiniteMarquee 
+                items={[
+                  { name: 'LLMs & GenAI', icon: '🤖' },
+                  { name: 'Python', icon: '🐍' },
+                  { name: 'RAG Systems', icon: '📚' },
+                  { name: 'AWS', icon: '☁️' },
+                  { name: 'Vector DBs', icon: '🎯' },
+                  { name: 'LangChain', icon: '🔗' },
+                  { name: 'TensorFlow', icon: '🧠' },
+                  { name: 'Docker', icon: '🐳' },
+                  { name: 'Kubernetes', icon: '⚓' },
+                  { name: 'Salesforce', icon: '☁️' },
+                ]}
+                speed={40}
+              />
+            </section>
             
             <About data={resumeData.about} />
             <ExperienceAndServices experienceData={resumeData.experience} />

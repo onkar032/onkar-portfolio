@@ -28,7 +28,7 @@ export default function Contact({ data }) {
   }
 
   return (
-    <section id="contact" className="py-24 px-4 bg-apple-lightgray/30 backdrop-blur-sm relative">
+    <section id="contact" className="py-24 px-4 bg-white relative">
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
