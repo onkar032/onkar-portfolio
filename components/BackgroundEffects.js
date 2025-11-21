@@ -144,22 +144,22 @@ export default function BackgroundEffects() {
 
       {/* Architect Grid Pattern - Premium notebook/blueprint aesthetic */}
       <div 
-        className="absolute inset-0 opacity-[0.025]"
+        className="absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(0, 113, 227, 0.12) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 113, 227, 0.12) 1px, transparent 1px)
+            linear-gradient(rgba(0, 113, 227, 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 113, 227, 0.3) 1px, transparent 1px)
           `,
-          backgroundSize: '60px 60px',
+          backgroundSize: '50px 50px',
         }}
       />
       
       {/* Accent dots at grid intersections - hybrid approach */}
       <div 
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.08]"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(0, 113, 227, 0.3) 1.5px, transparent 1.5px)`,
-          backgroundSize: '60px 60px',
+          backgroundImage: `radial-gradient(circle, rgba(0, 113, 227, 0.5) 2px, transparent 2px)`,
+          backgroundSize: '50px 50px',
         }}
       />
 
