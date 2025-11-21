@@ -48,7 +48,7 @@ export default function PageLoader() {
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 style={{
-                  background: 'linear-gradient(90deg, #1e293b 0%, #0071e3 50%, #1e293b 100%)',
+                  background: 'linear-gradient(90deg, #1e293b 0%, #52525b 50%, #1e293b 100%)',
                   backgroundSize: '200% 100%',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
@@ -62,7 +62,7 @@ export default function PageLoader() {
             {/* Progress Bar */}
             <div className="w-64 h-1 bg-gray-200 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-gradient-to-r from-apple-blue to-blue-600 rounded-full"
+                className="h-full bg-gradient-to-r from-gray-600 to-gray-700 rounded-full"
                 initial={{ width: '0%' }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
@@ -82,7 +82,7 @@ export default function PageLoader() {
 
           {/* Background Effects */}
           <motion.div
-            className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-apple-blue/5 blur-3xl"
+            className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-gray-600/5 blur-3xl"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.3, 0.5, 0.3],
@@ -94,7 +94,7 @@ export default function PageLoader() {
             }}
           />
           <motion.div
-            className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-purple-400/5 blur-3xl"
+            className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-gray-500/5 blur-3xl"
             animate={{
               scale: [1, 1.3, 1],
               opacity: [0.3, 0.5, 0.3],
