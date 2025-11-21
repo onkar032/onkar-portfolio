@@ -102,7 +102,7 @@ export const resumeData = {
     "Data Engineering": ["ETL / ELT", "Data Lakes / Lakehouses", "Streaming Pipelines", "Data Modeling", "Data Governance"],
     "Cloud & Architecture": ["AWS / Azure / GCP", "Serverless Architecture", "Microservices", "API-First Design", "Event-Driven Systems"],
     "Enterprise Architecture": ["Solution Architecture", "System Design", "Reference Architectures", "High Availability", "Integrations"],
-    "Salesforce Platform": ["Salesforce Integration", "REST / GraphQL", "Workflow Orchestration", "IAM / SSO"],
+    "Salesforce Platform": ["Service Cloud", "Sales Cloud", "Data Cloud", "Agentforce", "LLM Integration", "Apex Architecture", "Lightning Web Components", "Platform Events", "Flow Orchestration", "Omni-Channel", "Case Management", "API Integrations", "Event-Driven Architecture", "Salesforce Security", "Role & Sharing Models", "Named Credentials", "External Services", "MuleSoft Integration"],
     "Dashboards & BI": ["Tableau", "Power BI", "BI Modeling"],
     "Security & Governance": ["Responsible AI", "Data Security", "Compliance Frameworks", "Access Control"],
     "Leadership & Strategy": ["AI Strategy", "Product Thinking", "Requirements Analysis", "Stakeholder Leadership"]
