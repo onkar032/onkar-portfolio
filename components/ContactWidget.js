@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
 
 // Change this to your WhatsApp number (with country code, no + or spaces)
-const WHATSAPP_NUMBER = '919876543210' // Replace with your actual number
+const WHATSAPP_NUMBER = '919198122218' // Onkar's WhatsApp number
 const WHATSAPP_MESSAGE = 'Hi Onkar, I came across your portfolio and would like to connect!'
 
 // Change this to your deployed RAG API URL
