@@ -25,103 +25,123 @@ export default function ParallaxScroll() {
 
   return (
     <div ref={ref} className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {/* Layer 1 - Slowest moving large shapes */}
+      {/* Layer 1 - Ultra slow, large organic shapes */}
       <motion.div
         style={{ y: y1, opacity }}
         className="absolute inset-0"
       >
         <motion.div
-          className="absolute top-20 left-10 w-96 h-96 rounded-full bg-gradient-to-br from-blue-400/10 to-purple-400/10 blur-3xl"
-          style={{ rotate: rotate1 }}
+          className="absolute top-20 left-10 w-[550px] h-[550px] rounded-full blur-[140px]"
+          style={{ 
+            rotate: rotate1,
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%)'
+          }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-indigo-400/10 to-blue-400/10 blur-3xl"
-          style={{ rotate: rotate2 }}
+          className="absolute bottom-20 right-10 w-[650px] h-[650px] rounded-full blur-[150px]"
+          style={{ 
+            rotate: rotate2,
+            background: 'radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, rgba(6, 182, 212, 0.06) 50%, transparent 70%)'
+          }}
         />
       </motion.div>
 
-      {/* Layer 2 - Medium speed geometric shapes */}
+      {/* Layer 2 - Medium speed elegant shapes */}
       <motion.div
         style={{ y: y2 }}
         className="absolute inset-0"
       >
         <motion.div
-          className="absolute top-1/4 right-1/4 w-32 h-32 border-2 border-apple-blue/20 rounded-lg"
+          className="absolute top-1/4 right-1/4 w-40 h-40 border border-apple-blue/12 rounded-2xl backdrop-blur-sm"
           style={{ rotate: rotate1, scale }}
         />
         <motion.div
-          className="absolute bottom-1/3 left-1/4 w-40 h-40 border border-blue-400/20"
-          style={{ rotate: rotate2 }}
+          className="absolute bottom-1/3 left-1/4 w-48 h-48 border border-purple-400/10 rounded-full"
+          style={{ rotate: rotate2, scale: useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.15, 1]) }}
         />
         <motion.div
-          className="absolute top-1/2 right-1/3 w-24 h-24 rounded-full border-2 border-purple-400/20"
-          style={{ scale }}
+          className="absolute top-1/2 right-1/3 w-32 h-32 rounded-lg border border-cyan-400/12 backdrop-blur-sm"
+          style={{ scale, rotate: useTransform(scrollYProgress, [0, 1], [0, -90]) }}
         />
       </motion.div>
 
-      {/* Layer 3 - Faster moving small elements */}
+      {/* Layer 3 - Faster, refined particles */}
       <motion.div
         style={{ y: y3 }}
         className="absolute inset-0"
       >
-        {[...Array(15)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-apple-blue/30 rounded-full"
+            className="absolute rounded-full"
             style={{
-              left: `${(i * 7 + 10) % 90}%`,
-              top: `${(i * 11 + 5) % 90}%`,
-              scale: useTransform(scrollYProgress, [0, 1], [1, 0.5])
+              width: 4 + (i % 3) * 2,
+              height: 4 + (i % 3) * 2,
+              left: `${(i * 9 + 12) % 88}%`,
+              top: `${(i * 13 + 8) % 88}%`,
+              background: 'radial-gradient(circle, rgba(0, 113, 227, 0.4) 0%, rgba(59, 130, 246, 0.2) 50%, transparent 100%)',
+              scale: useTransform(scrollYProgress, [0, 1], [1, 0.6])
             }}
             animate={{
-              y: [0, -20, 0],
-              opacity: [0.3, 0.7, 0.3],
+              y: [0, -25, 0],
+              opacity: [0.4, 0.8, 0.4],
             }}
             transition={{
-              duration: 3 + i * 0.2,
+              duration: 4 + i * 0.3,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
+              delay: i * 0.15
             }}
           />
         ))}
       </motion.div>
 
-      {/* Layer 4 - Reverse parallax (moves opposite direction) */}
+      {/* Layer 4 - Reverse parallax with premium glow */}
       <motion.div
         style={{ y: y4 }}
         className="absolute inset-0"
       >
         <motion.div
-          className="absolute top-1/3 left-1/2 w-64 h-64 bg-gradient-to-br from-cyan-400/5 to-blue-400/5 rounded-full blur-2xl"
-          style={{ rotate: rotate2 }}
+          className="absolute top-1/3 left-1/2 w-80 h-80 rounded-full blur-[100px]"
+          style={{ 
+            rotate: rotate2,
+            background: 'radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 70%)'
+          }}
         />
       </motion.div>
 
-      {/* Floating lines that move with scroll */}
-      <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.1 }}>
-        <motion.line
-          x1="10%"
-          y1="20%"
-          x2="90%"
-          y2="30%"
-          stroke="url(#gradient1)"
+      {/* Refined animated lines with smooth reveal */}
+      <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.08 }} preserveAspectRatio="none">
+        <motion.path
+          d="M0,150 Q400,100 800,150 T1600,150"
+          stroke="url(#lineGradient1)"
           strokeWidth="2"
-          style={{ pathLength: scrollYProgress }}
+          fill="none"
+          style={{ 
+            pathLength: scrollYProgress,
+            opacity: useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+          }}
         />
-        <motion.line
-          x1="20%"
-          y1="60%"
-          x2="80%"
-          y2="70%"
-          stroke="url(#gradient1)"
+        <motion.path
+          d="M0,400 Q500,350 1000,400 T2000,400"
+          stroke="url(#lineGradient2)"
           strokeWidth="2"
-          style={{ pathLength: scrollYProgress }}
+          fill="none"
+          style={{ 
+            pathLength: useTransform(scrollYProgress, [0, 1], [0, 1]),
+            opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0])
+          }}
         />
         <defs>
-          <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#0071e3" stopOpacity="0" />
-            <stop offset="50%" stopColor="#0071e3" stopOpacity="1" />
+            <stop offset="50%" stopColor="#0071e3" stopOpacity="0.6" />
             <stop offset="100%" stopColor="#0071e3" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="lineGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#6366f1" stopOpacity="0" />
+            <stop offset="50%" stopColor="#6366f1" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
           </linearGradient>
         </defs>
       </svg>
