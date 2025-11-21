@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export default function Navbar() {
+  const router = useRouter()
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -12,7 +15,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = ['About', 'Experience', 'Skills', 'Projects', 'Contact']
+  const navItems = ['About', 'Experience', 'Skills', 'Projects', 'Blog', 'Contact']
 
   return (
     <motion.nav
@@ -35,17 +38,35 @@ export default function Navbar() {
 
           {/* Nav Links */}
           <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-apple-text text-sm hover:text-apple-blue transition-colors duration-200"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {item}
-              </motion.a>
-            ))}
+            {navItems.map((item) => {
+              const isBlog = item === 'Blog'
+              const href = isBlog ? '/blog' : `/#${item.toLowerCase()}`
+              const isActive = isBlog && router.pathname.startsWith('/blog')
+              
+              return isBlog ? (
+                <Link key={item} href={href}>
+                  <motion.a
+                    className={`text-sm hover:text-apple-blue transition-colors duration-200 cursor-pointer ${
+                      isActive ? 'text-apple-blue font-medium' : 'text-apple-text'
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {item}
+                  </motion.a>
+                </Link>
+              ) : (
+                <motion.a
+                  key={item}
+                  href={href}
+                  className="text-apple-text text-sm hover:text-apple-blue transition-colors duration-200"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {item}
+                </motion.a>
+              )
+            })}
           </div>
 
           {/* CTA Button */}
