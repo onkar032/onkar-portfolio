@@ -14,6 +14,10 @@ import BackgroundEffects from '../components/BackgroundEffects'
 import CustomCursor from '../components/CustomCursor'
 import ScrollProgress from '../components/ScrollProgress'
 import StatsCounter from '../components/StatsCounter'
+import ParallaxScroll from '../components/ParallaxScroll'
+import ScrollVelocity from '../components/ScrollVelocity'
+import { MorphingBackground } from '../components/SectionTransitions'
+import { SpotlightEffect } from '../components/ScrollRevealText'
 
 export default function Home() {
   const [chatOpen, setChatOpen] = useState(false)
@@ -36,6 +40,18 @@ export default function Home() {
         
         {/* Background Effects */}
         <BackgroundEffects />
+        
+        {/* Parallax Scroll Effects */}
+        <ParallaxScroll />
+        
+        {/* Scroll Velocity Effects */}
+        <ScrollVelocity />
+        
+        {/* Morphing Wave Background */}
+        <MorphingBackground />
+        
+        {/* Spotlight Effect */}
+        <SpotlightEffect />
         
         {/* Main Content */}
         <div className="relative z-10">
