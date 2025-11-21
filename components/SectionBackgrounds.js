@@ -16,64 +16,95 @@ export function AboutBackground() {
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Premium mesh gradients - more organic */}
+      {/* Dynamic grey mesh gradients with MORE movement */}
       <motion.div
-        className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full blur-[120px]"
+        className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full blur-[120px]"
         style={{ 
           y: y1, 
           rotate, 
           scale,
           opacity,
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(99, 102, 241, 0.15) 50%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(82, 82, 91, 0.18) 0%, rgba(107, 114, 128, 0.12) 50%, transparent 70%)'
+        }}
+        animate={{
+          x: [0, 50, 0],
+          rotate: [0, 180, 360]
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "easeInOut"
         }}
       />
       <motion.div
-        className="absolute bottom-0 -left-40 w-[700px] h-[700px] rounded-full blur-[130px]"
+        className="absolute bottom-0 -left-40 w-[800px] h-[800px] rounded-full blur-[130px]"
         style={{ 
           y: y2, 
           rotate: useTransform(scrollYProgress, [0, 1], [0, -180]),
-          background: 'radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, rgba(6, 182, 212, 0.12) 50%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(75, 85, 99, 0.15) 0%, rgba(107, 114, 128, 0.1) 50%, transparent 70%)'
+        }}
+        animate={{
+          x: [0, -60, 0],
+          scale: [1, 1.2, 1]
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "easeInOut"
         }}
       />
       
-      {/* Elegant floating circles - fewer, more refined */}
-      {[...Array(5)].map((_, i) => (
+      {/* MORE animated floating elements */}
+      {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute rounded-full border-2 border-apple-blue/15 backdrop-blur-sm"
+          className="absolute rounded-full border border-gray-400/20 backdrop-blur-sm"
           style={{
-            width: 60 + i * 30,
-            height: 60 + i * 30,
-            left: `${15 + i * 18}%`,
-            top: `${25 + (i % 2) * 40}%`,
-            y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 15}%`]),
-            rotate: useTransform(scrollYProgress, [0, 1], [0, i % 2 === 0 ? 180 : -180]),
+            width: 40 + i * 25,
+            height: 40 + i * 25,
+            left: `${10 + i * 12}%`,
+            top: `${20 + (i % 3) * 30}%`,
+            y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 20}%`]),
+            rotate: useTransform(scrollYProgress, [0, 1], [0, i % 2 === 0 ? 360 : -360]),
           }}
           animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.2, 0.5, 0.2],
+            scale: [1, 1.2, 1],
+            opacity: [0.15, 0.4, 0.15],
+            x: [0, i % 2 === 0 ? 20 : -20, 0],
           }}
           transition={{
-            duration: 4 + i * 0.8,
+            duration: 3 + i * 0.5,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: i * 0.3
+            delay: i * 0.2
           }}
         />
       ))}
       
-      {/* Flowing wave effect */}
-      <svg className="absolute inset-0 w-full h-full opacity-10" preserveAspectRatio="none">
+      {/* Animated wave with grey tones */}
+      <svg className="absolute inset-0 w-full h-full opacity-8" preserveAspectRatio="none">
         <motion.path
           d="M0,100 Q250,50 500,100 T1000,100 L1000,0 L0,0 Z"
           fill="url(#aboutGradient)"
           style={{ y: y1 }}
+          animate={{
+            d: [
+              "M0,100 Q250,50 500,100 T1000,100 L1000,0 L0,0 Z",
+              "M0,80 Q250,120 500,80 T1000,80 L1000,0 L0,0 Z",
+              "M0,100 Q250,50 500,100 T1000,100 L1000,0 L0,0 Z"
+            ]
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         />
         <defs>
           <linearGradient id="aboutGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(0, 113, 227, 0.2)" />
-            <stop offset="50%" stopColor="rgba(99, 102, 241, 0.15)" />
-            <stop offset="100%" stopColor="rgba(0, 113, 227, 0.2)" />
+            <stop offset="0%" stopColor="rgba(82, 82, 91, 0.12)" />
+            <stop offset="50%" stopColor="rgba(107, 114, 128, 0.08)" />
+            <stop offset="100%" stopColor="rgba(82, 82, 91, 0.12)" />
           </linearGradient>
         </defs>
       </svg>
@@ -94,60 +125,86 @@ export function ExperienceBackground() {
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Premium dot matrix - more refined */}
+      {/* Animated dot matrix - grey tones */}
       <motion.div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.05]"
         style={{ 
-          backgroundImage: `radial-gradient(circle, rgba(0, 113, 227, 0.4) 1.5px, transparent 1.5px)`,
-          backgroundSize: '35px 35px',
-          y: useTransform(scrollYProgress, [0, 1], ['0%', '10%']),
+          backgroundImage: `radial-gradient(circle, rgba(82, 82, 91, 0.4) 2px, transparent 2px)`,
+          backgroundSize: '40px 40px',
+          y: useTransform(scrollYProgress, [0, 1], ['0%', '15%']),
+        }}
+        animate={{
+          backgroundPosition: ['0px 0px', '40px 40px'],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear"
         }}
       />
 
-      {/* Elegant floating orbs */}
-      {[...Array(8)].map((_, i) => (
+      {/* MORE dynamic floating orbs with movement */}
+      {[...Array(12)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute rounded-full"
           style={{
-            width: 3 + i * 1.5,
-            height: 3 + i * 1.5,
-            left: `${8 + i * 11}%`,
-            top: `${15 + (i % 3) * 30}%`,
-            background: 'radial-gradient(circle, rgba(0, 113, 227, 0.5) 0%, rgba(59, 130, 246, 0.2) 70%, transparent 100%)',
-            y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 20}%`]),
-            scale: useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.5, 1]),
+            width: 4 + i * 2,
+            height: 4 + i * 2,
+            left: `${5 + i * 8}%`,
+            top: `${10 + (i % 4) * 25}%`,
+            background: 'radial-gradient(circle, rgba(82, 82, 91, 0.4) 0%, rgba(107, 114, 128, 0.2) 70%, transparent 100%)',
+            y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 25}%`]),
+            scale: useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.8, 1]),
           }}
           animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.4, 0.8, 0.4],
+            scale: [1, 1.5, 1],
+            opacity: [0.3, 0.7, 0.3],
+            x: [0, i % 2 === 0 ? 30 : -30, 0],
           }}
           transition={{
-            duration: 3 + i * 0.4,
+            duration: 2.5 + i * 0.3,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: i * 0.15,
+            delay: i * 0.1,
           }}
         />
       ))}
 
-      {/* Sophisticated gradient mesh */}
+      {/* Large rotating grey mesh */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[140px]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full blur-[140px]"
         style={{ 
           y,
           rotate,
-          background: 'conic-gradient(from 0deg, rgba(6, 182, 212, 0.15) 0%, rgba(59, 130, 246, 0.2) 50%, rgba(99, 102, 241, 0.15) 100%)'
+          background: 'conic-gradient(from 0deg, rgba(75, 85, 99, 0.12) 0%, rgba(82, 82, 91, 0.15) 50%, rgba(107, 114, 128, 0.1) 100%)'
+        }}
+        animate={{
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "easeInOut"
         }}
       />
       
-      {/* Accent orb */}
+      {/* Moving accent orb */}
       <motion.div
-        className="absolute top-20 right-20 w-[400px] h-[400px] rounded-full blur-[100px]"
+        className="absolute top-20 right-20 w-[500px] h-[500px] rounded-full blur-[110px]"
         style={{ 
-          y: useTransform(scrollYProgress, [0, 1], ['0%', '-30%']),
+          y: useTransform(scrollYProgress, [0, 1], ['0%', '-40%']),
           opacity,
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(107, 114, 128, 0.15) 0%, transparent 70%)'
+        }}
+        animate={{
+          x: [0, 50, 0],
+          y: [0, -30, 0],
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "easeInOut"
         }}
       />
     </div>
