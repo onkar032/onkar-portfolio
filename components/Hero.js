@@ -42,18 +42,28 @@ export default function Hero({ data }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
           >
-            <div className="bg-apple-lightgray px-5 py-2.5 rounded-full border border-gray-200">
-              <span className="text-apple-text font-medium text-sm">GenAI & LLMs</span>
-            </div>
-            <div className="bg-apple-lightgray px-5 py-2.5 rounded-full border border-gray-200">
-              <span className="text-apple-text font-medium text-sm">RAG Architectures</span>
-            </div>
-            <div className="bg-apple-lightgray px-5 py-2.5 rounded-full border border-gray-200">
-              <span className="text-apple-text font-medium text-sm">Enterprise AI</span>
-            </div>
-            <div className="bg-apple-lightgray px-5 py-2.5 rounded-full border border-gray-200">
-              <span className="text-apple-text font-medium text-sm">AI Strategy</span>
-            </div>
+            {['GenAI & LLMs', 'RAG Architectures', 'Enterprise AI', 'AI Strategy'].map((tag, index) => (
+              <motion.div
+                key={tag}
+                className="bg-apple-lightgray px-5 py-2.5 rounded-full border border-gray-200 cursor-default"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.7 + index * 0.1, type: "spring", stiffness: 200 }}
+                whileHover={{ 
+                  scale: 1.08, 
+                  backgroundColor: "#0071e3",
+                  borderColor: "#0071e3",
+                  transition: { duration: 0.2 }
+                }}
+              >
+                <motion.span 
+                  className="text-apple-text font-medium text-sm"
+                  whileHover={{ color: "#ffffff" }}
+                >
+                  {tag}
+                </motion.span>
+              </motion.div>
+            ))}
           </motion.div>
 
           <motion.div
@@ -88,9 +98,20 @@ export default function Hero({ data }) {
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
           >
-            <SocialLink href={data.github} icon="github" label="GitHub" />
-            <SocialLink href={data.linkedin} icon="linkedin" label="LinkedIn" />
-            <SocialLink href={`mailto:${data.email}`} icon="email" label="Email" />
+            {[
+              { href: data.github, icon: 'github', label: 'GitHub' },
+              { href: data.linkedin, icon: 'linkedin', label: 'LinkedIn' },
+              { href: `mailto:${data.email}`, icon: 'email', label: 'Email' }
+            ].map((social, index) => (
+              <motion.div
+                key={social.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 + index * 0.1 }}
+              >
+                <SocialLink {...social} />
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div>
 
@@ -134,12 +155,25 @@ function SocialLink({ href, icon, label }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-gray-600 hover:text-apple-blue transition-colors duration-200"
-      whileHover={{ scale: 1.2, y: -2 }}
+      className="text-gray-600 hover:text-apple-blue transition-colors duration-200 relative"
+      whileHover={{ 
+        scale: 1.15, 
+        y: -4,
+        rotate: [0, -5, 5, 0],
+        transition: { duration: 0.3 }
+      }}
       whileTap={{ scale: 0.9 }}
       aria-label={label}
     >
-      {icons[icon]}
+      <motion.div
+        whileHover={{ 
+          boxShadow: "0 0 20px rgba(0, 113, 227, 0.3)",
+          borderRadius: "50%",
+          padding: "8px"
+        }}
+      >
+        {icons[icon]}
+      </motion.div>
     </motion.a>
   )
 }

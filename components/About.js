@@ -28,16 +28,30 @@ export default function About({ data }) {
                 {data.highlights.map((highlight, index) => (
                   <motion.div
                     key={index}
-                    className="flex items-start gap-3"
+                    className="flex items-start gap-3 group"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.3 + index * 0.1 }}
+                    transition={{ 
+                      delay: 0.3 + index * 0.1,
+                      type: "spring",
+                      stiffness: 100
+                    }}
+                    whileHover={{ x: 5, transition: { duration: 0.2 } }}
                   >
-                    <svg className="w-5 h-5 text-apple-blue flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <motion.svg 
+                      className="w-5 h-5 text-apple-blue flex-shrink-0 mt-0.5" 
+                      fill="currentColor" 
+                      viewBox="0 0 20 20"
+                      whileHover={{ 
+                        scale: 1.2, 
+                        rotate: 360,
+                        transition: { duration: 0.5 }
+                      }}
+                    >
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-apple-text text-base">{highlight}</span>
+                    </motion.svg>
+                    <span className="text-apple-text text-base group-hover:text-apple-blue transition-colors duration-200">{highlight}</span>
                   </motion.div>
                 ))}
               </div>
@@ -49,17 +63,45 @@ export default function About({ data }) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
+              whileHover={{ 
+                scale: 1.02,
+                rotate: [0, 1, -1, 0],
+                transition: { duration: 0.5 }
+              }}
             >
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-apple-blue to-blue-600 p-1">
+              <motion.div 
+                className="aspect-square rounded-3xl bg-gradient-to-br from-apple-blue to-blue-600 p-1"
+                animate={{ 
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{ 
+                  duration: 5, 
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{ backgroundSize: '200% 200%' }}
+              >
                 <div className="w-full h-full rounded-3xl bg-white flex items-center justify-center">
                   <div className="text-center p-8">
-                    <div className="text-7xl mb-4">🤖</div>
+                    <motion.div 
+                      className="text-7xl mb-4"
+                      animate={{ 
+                        y: [0, -10, 0],
+                      }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      🤖
+                    </motion.div>
                     <p className="text-apple-text text-lg font-normal">
                       Passionate about building the future
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </motion.div>

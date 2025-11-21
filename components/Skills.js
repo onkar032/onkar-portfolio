@@ -10,38 +10,72 @@ export default function Skills({ data }) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-5xl font-bold text-apple-gray mb-4 text-center">Skills & Technologies</h2>
-          <div className="w-20 h-1 bg-apple-blue mx-auto mb-12"></div>
+          <h2 className="text-4xl md:text-5xl font-semibold text-apple-text mb-3 text-center tracking-tight">Skills & Technologies</h2>
+          <div className="w-12 h-0.5 bg-apple-blue mx-auto mb-16"></div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {Object.entries(data).map(([category, skills], index) => (
               <motion.div
                 key={category}
-                className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="bg-white rounded-2xl p-6 border border-gray-200 overflow-hidden relative group"
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
+                transition={{ 
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                whileHover={{ 
+                  y: -8, 
+                  boxShadow: "0 20px 40px rgba(0, 113, 227, 0.15)",
+                  borderColor: "#0071e3",
+                  transition: { duration: 0.3 }
+                }}
               >
-                <h3 className="text-xl font-bold text-apple-gray mb-4 flex items-center gap-2">
-                  <span className="w-8 h-8 bg-apple-blue rounded-lg flex items-center justify-center text-white text-sm">
-                    {category[0]}
-                  </span>
-                  {category}
-                </h3>
+                {/* Animated background gradient on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-apple-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
                 
-                <div className="flex flex-wrap gap-2">
-                  {skills.map((skill, i) => (
-                    <motion.span
-                      key={i}
-                      className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-700 hover:border-apple-blue hover:text-apple-blue transition-all duration-200"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                <div className="relative z-10">
+                  <h3 className="text-lg font-semibold text-apple-text mb-4 flex items-center gap-3">
+                    <motion.span 
+                      className="w-10 h-10 bg-apple-blue rounded-xl flex items-center justify-center text-white text-base font-bold shadow-lg"
+                      whileHover={{ 
+                        rotate: 360,
+                        scale: 1.1,
+                        transition: { duration: 0.5 }
+                      }}
                     >
-                      {skill}
+                      {category[0]}
                     </motion.span>
-                  ))}
+                    {category}
+                  </h3>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {skills.map((skill, i) => (
+                      <motion.span
+                        key={i}
+                        className="px-3 py-1.5 bg-apple-lightgray border border-gray-200 rounded-full text-xs text-apple-text font-medium cursor-default"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + i * 0.05 }}
+                        whileHover={{ 
+                          scale: 1.1,
+                          backgroundColor: "#0071e3",
+                          color: "#ffffff",
+                          borderColor: "#0071e3",
+                          y: -2,
+                          transition: { duration: 0.2 }
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {skill}
+                      </motion.span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}
