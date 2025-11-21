@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import TypewriterText from './TypewriterText'
 import GradientText from './GradientText'
 import MagneticButton from './MagneticButton'
 
@@ -30,14 +29,14 @@ export default function Hero({ data }) {
             <GradientText>{data.title}</GradientText>
           </motion.h2>
 
-          <motion.div
+          <motion.p
             className="text-xl md:text-2xl text-apple-subtext mb-10 max-w-4xl mx-auto leading-snug font-normal"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <TypewriterText text={data.tagline} delay={800} />
-          </motion.div>
+            {data.tagline}
+          </motion.p>
 
           <motion.div
             className="flex flex-wrap gap-3 justify-center mb-12 max-w-4xl mx-auto"
