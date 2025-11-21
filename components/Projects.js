@@ -6,11 +6,23 @@ import { ProjectsBackground } from './SectionBackgrounds'
 function ProjectCard({ project, index }) {
   const { ref, style } = useTilt()
   
+  // Beautiful gradient combinations for each project
+  const gradients = [
+    "from-indigo-500 via-purple-500 to-pink-500", // Purple-Pink
+    "from-cyan-500 via-blue-500 to-indigo-600", // Cyan-Blue
+    "from-emerald-500 via-teal-500 to-cyan-600", // Green-Teal
+    "from-orange-500 via-red-500 to-pink-600", // Orange-Red
+    "from-violet-500 via-purple-600 to-indigo-700", // Deep Purple
+    "from-amber-500 via-orange-500 to-red-600", // Warm Sunset
+  ]
+  
+  const gradient = gradients[index % gradients.length]
+  
   return (
     <motion.div
       ref={ref}
       style={style}
-      className="bg-white rounded-3xl overflow-hidden group relative"
+      className="bg-white rounded-3xl overflow-hidden group relative border border-gray-100"
       initial={{ opacity: 0, scale: 0.95, y: 30 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
@@ -21,13 +33,13 @@ function ProjectCard({ project, index }) {
       }}
       whileHover={{ 
         y: -12,
-        boxShadow: "0 25px 50px rgba(0, 113, 227, 0.2)",
+        boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15)",
         transition: { duration: 0.3 }
       }}
     >
       {/* Project Header */}
       <motion.div 
-        className="h-48 bg-gradient-to-br from-apple-blue via-blue-500 to-blue-600 p-8 flex items-center justify-center relative overflow-hidden"
+        className={`h-48 bg-gradient-to-br ${gradient} p-8 flex items-center justify-center relative overflow-hidden`}
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.3 }}
       >
