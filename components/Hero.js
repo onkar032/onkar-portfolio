@@ -75,7 +75,7 @@ export default function Hero({ data }) {
             transition={{ delay: 0.8 }}
           >
             <MagneticButton
-              href="#projects"
+              href="/projects"
               className="bg-apple-blue text-white px-8 py-3.5 rounded-full text-base font-medium"
             >
               View My Work
