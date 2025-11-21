@@ -56,12 +56,16 @@ export default function PremiumFooter({ data }) {
           <div>
             <h4 className="text-sm font-semibold mb-4 text-gray-300 uppercase tracking-wider">Navigate</h4>
             <ul className="space-y-3">
-              {['About', 'Experience', 'Projects', 'Blog', 'Contact'].map((item) => (
-                <motion.li key={item}>
-                  <a
-                    href={item === 'Blog' ? '/blog' : `/#${item.toLowerCase()}`}
-                    className="text-gray-400 hover:text-apple-blue transition-colors text-sm flex items-center gap-2 group"
-                  >
+              {['About', 'Experience', 'Projects', 'Blog', 'Contact'].map((item) => {
+                const isPageLink = item === 'Blog' || item === 'Projects'
+                const href = isPageLink ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`
+                
+                return (
+                  <motion.li key={item}>
+                    <a
+                      href={href}
+                      className="text-gray-400 hover:text-apple-blue transition-colors text-sm flex items-center gap-2 group"
+                    >
                     <motion.span
                       className="opacity-0 group-hover:opacity-100 transition-opacity"
                       initial={{ x: -5 }}
@@ -72,7 +76,8 @@ export default function PremiumFooter({ data }) {
                     {item}
                   </a>
                 </motion.li>
-              ))}
+              )
+            })}
             </ul>
           </div>
 
