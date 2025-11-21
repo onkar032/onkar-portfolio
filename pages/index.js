@@ -6,7 +6,7 @@ import ChatWidget from '../components/ChatWidget'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import About from '../components/About'
-import Experience from '../components/Experience'
+import ExperienceAndServices from '../components/ExperienceAndServices'
 import Skills from '../components/Skills'
 import Projects from '../components/Projects'
 import Contact from '../components/Contact'
@@ -29,7 +29,7 @@ export default function Home() {
         <main>
           <Hero data={resumeData.personal} />
           <About data={resumeData.about} />
-          <Experience data={resumeData.experience} />
+          <ExperienceAndServices experienceData={resumeData.experience} />
           <Skills data={resumeData.skills} />
           <Projects data={resumeData.projects} />
           <Contact data={resumeData.personal} />
