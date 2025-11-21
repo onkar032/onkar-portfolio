@@ -9,48 +9,39 @@ export default function SkillsModern({ data }) {
   const featuredCategories = {
     "GenAI & LLMs": { 
       icon: "🤖", 
-      gradient: "from-blue-500 to-purple-600",
-      size: "large"
+      gradient: "from-apple-blue/20 to-apple-blue/10"
     },
     "AI/ML": { 
       icon: "🧠", 
-      gradient: "from-purple-500 to-pink-600",
-      size: "large"
+      gradient: "from-apple-blue/20 to-apple-blue/10"
     },
     "Data Engineering": { 
       icon: "🔄", 
-      gradient: "from-cyan-500 to-blue-600",
-      size: "medium"
+      gradient: "from-apple-blue/20 to-apple-blue/10"
     },
     "Cloud & Architecture": { 
       icon: "☁️", 
-      gradient: "from-indigo-500 to-blue-600",
-      size: "medium"
+      gradient: "from-apple-blue/20 to-apple-blue/10"
     },
     "Enterprise Architecture": { 
       icon: "🏗️", 
-      gradient: "from-blue-600 to-indigo-700",
-      size: "medium"
+      gradient: "from-apple-blue/20 to-apple-blue/10"
     },
     "Salesforce Platform": { 
       icon: "⚡", 
-      gradient: "from-blue-400 to-cyan-500",
-      size: "small"
+      gradient: "from-apple-blue/20 to-apple-blue/10"
     },
     "Dashboards & BI": { 
       icon: "📊", 
-      gradient: "from-green-500 to-emerald-600",
-      size: "small"
+      gradient: "from-apple-blue/20 to-apple-blue/10"
     },
     "Security & Governance": { 
       icon: "🔒", 
-      gradient: "from-red-500 to-pink-600",
-      size: "small"
+      gradient: "from-apple-blue/20 to-apple-blue/10"
     },
     "Leadership & Strategy": { 
       icon: "🎯", 
-      gradient: "from-orange-500 to-red-600",
-      size: "medium"
+      gradient: "from-apple-blue/20 to-apple-blue/10"
     }
   }
 
@@ -90,8 +81,8 @@ export default function SkillsModern({ data }) {
                   {/* Category Header */}
                   <div className="flex items-center gap-4 mb-6">
                     <motion.div 
-                      className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${config.gradient} flex items-center justify-center shadow-lg`}
-                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${config.gradient} border border-gray-200 flex items-center justify-center`}
+                      whileHover={{ scale: 1.05, rotate: 5, borderColor: "#0071e3" }}
                     >
                       <span className="text-3xl">{config.icon}</span>
                     </motion.div>
