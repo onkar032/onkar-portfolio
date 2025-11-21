@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import GradientText from './GradientText'
 
 export default function WhatIDo() {
   const [openSections, setOpenSections] = useState({})
@@ -152,7 +153,9 @@ export default function WhatIDo() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-4xl md:text-5xl font-semibold text-apple-text mb-3 tracking-tight">What I Do</h2>
+        <h2 className="text-4xl md:text-5xl font-semibold mb-3 tracking-tight">
+          <GradientText>What I Do</GradientText>
+        </h2>
         <div className="w-12 h-0.5 bg-apple-blue mb-8"></div>
 
         <p className="text-base text-apple-subtext leading-relaxed mb-10">

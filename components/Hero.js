@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import TypewriterText from './TypewriterText'
+import GradientText from './GradientText'
+import MagneticButton from './MagneticButton'
 
 export default function Hero({ data }) {
   return (
@@ -20,12 +22,12 @@ export default function Hero({ data }) {
           </motion.h1>
 
           <motion.h2
-            className="text-3xl md:text-5xl font-semibold text-apple-text mb-6 tracking-tight leading-snug"
+            className="text-3xl md:text-5xl font-semibold mb-6 tracking-tight leading-snug"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            {data.title}
+            <GradientText>{data.title}</GradientText>
           </motion.h2>
 
           <motion.div
@@ -73,23 +75,19 @@ export default function Hero({ data }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
           >
-            <motion.a
+            <MagneticButton
               href="#projects"
-              className="bg-apple-blue text-white px-8 py-3.5 rounded-full text-base font-medium hover:bg-apple-darkblue transition-all duration-200"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="bg-apple-blue text-white px-8 py-3.5 rounded-full text-base font-medium"
             >
               View My Work
-            </motion.a>
+            </MagneticButton>
             
-            <motion.a
+            <MagneticButton
               href="#contact"
-              className="bg-transparent text-apple-blue px-8 py-3.5 rounded-full text-base font-medium border border-apple-blue hover:bg-apple-blue hover:text-white transition-all duration-200"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="bg-transparent text-apple-blue px-8 py-3.5 rounded-full text-base font-medium border-2 border-apple-blue"
             >
-              Contact Me
-            </motion.a>
+              Let's Connect
+            </MagneticButton>
           </motion.div>
 
           {/* Social Links */}

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import GradientText from './GradientText'
 
 export default function About({ data }) {
   return (
@@ -10,7 +11,9 @@ export default function About({ data }) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-apple-text mb-3 text-center tracking-tight">About Me</h2>
+          <h2 className="text-4xl md:text-5xl font-semibold mb-3 text-center tracking-tight">
+            <GradientText>About Me</GradientText>
+          </h2>
           <div className="w-12 h-0.5 bg-apple-blue mx-auto mb-16"></div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">

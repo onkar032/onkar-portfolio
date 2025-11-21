@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useTilt } from '../hooks/useTilt'
+import GradientText from './GradientText'
 
 function SkillCard({ category, skills, index }) {
   const { ref, style } = useTilt()
@@ -82,7 +83,9 @@ export default function Skills({ data }) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-apple-text mb-3 text-center tracking-tight">Skills & Technologies</h2>
+          <h2 className="text-4xl md:text-5xl font-semibold mb-3 text-center tracking-tight">
+            <GradientText>Skills & Technologies</GradientText>
+          </h2>
           <div className="w-12 h-0.5 bg-apple-blue mx-auto mb-16"></div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

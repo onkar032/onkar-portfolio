@@ -18,6 +18,8 @@ import ParallaxScroll from '../components/ParallaxScroll'
 import ScrollVelocity from '../components/ScrollVelocity'
 import { MorphingBackground } from '../components/SectionTransitions'
 import { SpotlightEffect } from '../components/ScrollRevealText'
+import AmbientCursor from '../components/AmbientCursor'
+import InfiniteMarquee from '../components/InfiniteMarquee'
 
 export default function Home() {
   const [chatOpen, setChatOpen] = useState(false)
@@ -34,6 +36,9 @@ export default function Home() {
       <div className="min-h-screen bg-white relative cursor-none md:cursor-none">
         {/* Custom Cursor */}
         <CustomCursor />
+        
+        {/* Ambient Cursor Glow */}
+        <AmbientCursor />
         
         {/* Scroll Progress Bar */}
         <ScrollProgress />
@@ -60,6 +65,24 @@ export default function Home() {
           <main>
             <Hero data={resumeData.personal} />
             <StatsCounter />
+            
+            {/* Infinite Marquee - Tech Stack */}
+            <InfiniteMarquee 
+              items={[
+                { name: 'LLMs & GenAI', icon: '🤖' },
+                { name: 'Python', icon: '🐍' },
+                { name: 'RAG Systems', icon: '📚' },
+                { name: 'AWS', icon: '☁️' },
+                { name: 'Vector DBs', icon: '🎯' },
+                { name: 'LangChain', icon: '🔗' },
+                { name: 'TensorFlow', icon: '🧠' },
+                { name: 'Docker', icon: '🐳' },
+                { name: 'Kubernetes', icon: '⚓' },
+                { name: 'Salesforce', icon: '☁️' },
+              ]}
+              speed={40}
+            />
+            
             <About data={resumeData.about} />
             <ExperienceAndServices experienceData={resumeData.experience} />
             <Skills data={resumeData.skills} />

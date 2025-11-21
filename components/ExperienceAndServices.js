@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import WhatIDo from './WhatIDo'
+import GradientText from './GradientText'
 
 export default function ExperienceAndServices({ experienceData }) {
   return (
@@ -14,7 +15,9 @@ export default function ExperienceAndServices({ experienceData }) {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-semibold text-apple-text mb-3 tracking-tight">Experience</h2>
+              <h2 className="text-4xl md:text-5xl font-semibold mb-3 tracking-tight">
+                <GradientText>Experience</GradientText>
+              </h2>
               <div className="w-12 h-0.5 bg-apple-blue mb-12"></div>
 
               <div className="relative">
