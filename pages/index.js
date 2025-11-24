@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{resumeData.personal.name} - Portfolio</title>
+        <title>{`${resumeData.personal.name} - Portfolio`}</title>
         <meta name="description" content={resumeData.personal.tagline} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

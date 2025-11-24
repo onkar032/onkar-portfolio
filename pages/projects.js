@@ -21,7 +21,7 @@ export default function ProjectsPage() {
   return (
     <>
       <Head>
-        <title>Projects - {resumeData.personal.name}</title>
+        <title>{`Projects - ${resumeData.personal.name}`}</title>
         <meta name="description" content="Featured AI and enterprise projects" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
