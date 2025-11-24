@@ -15,17 +15,6 @@ export default function BackgroundEffects() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  // Drastically reduce elements on mobile
-  const orbCount = isMobile ? 4 : 8
-  const orbs = Array.from({ length: orbCount }, (_, i) => ({
-    id: i,
-    size: 8 + i * 4,
-    initialX: 10 + i * 25,
-    initialY: 15 + (i % 3) * 30,
-    duration: 4 + i * 0.5,
-    delay: i * 0.2,
-  }))
-
   // Wait for client-side hydration, then check if mobile
   if (!isClient) {
     // Server-side: render minimal static version
@@ -44,6 +33,13 @@ export default function BackgroundEffects() {
 
   // Mobile: Minimal static background
   if (isMobile) {
+    const mobileOrbs = Array.from({ length: 4 }, (_, i) => ({
+      id: i,
+      size: 8 + i * 4,
+      initialX: 10 + i * 25,
+      initialY: 15 + (i % 3) * 30,
+    }))
+    
     return (
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         {/* Static dot pattern - no animation on mobile */}
@@ -56,7 +52,7 @@ export default function BackgroundEffects() {
         />
 
         {/* Minimal orbs - very subtle */}
-        {orbs.map((orb) => (
+        {mobileOrbs.map((orb) => (
           <div
             key={orb.id}
             className="absolute rounded-full"
@@ -83,6 +79,15 @@ export default function BackgroundEffects() {
   }
 
   // Desktop: Full animations
+  const desktopOrbs = Array.from({ length: 8 }, (_, i) => ({
+    id: i,
+    size: 8 + i * 4,
+    initialX: 10 + i * 25,
+    initialY: 15 + (i % 3) * 30,
+    duration: 4 + i * 0.5,
+    delay: i * 0.2,
+  }))
+  
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
       {/* Animated dot matrix pattern */}
@@ -104,7 +109,7 @@ export default function BackgroundEffects() {
       />
 
       {/* Floating orbs - reduced count */}
-      {orbs.map((orb) => (
+      {desktopOrbs.map((orb) => (
         <motion.div
           key={orb.id}
           className="absolute rounded-full"
