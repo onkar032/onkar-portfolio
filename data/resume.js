@@ -112,17 +112,69 @@ export const resumeData = {
     {
       title: "Enterprise RAG System",
       description: "Production-grade Retrieval Augmented Generation system with document ingestion, semantic search, LLM integration, and embedded chat widget for intelligent Q&A.",
-      tech: ["Python", "FastAPI", "ChromaDB", "Streamlit", "Next.js", "LangChain", "OpenAI", "Docker"],
+      tech: ["Python", "FastAPI", "ChromaDB", "Streamlit", "Next.js", "LangChain", "OpenAI", "Docker", "SentenceTransformers", "Ollama"],
       github: "https://github.com/onkar032/enterprise-rag-system",
       demo: "",
       highlights: [
-        "Website crawling with intelligent chunking and metadata extraction",
-        "Semantic search with query rewriting and MMR diversity",
-        "Cross-encoder reranking for improved retrieval accuracy",
-        "Evaluation framework using RAGAS metrics",
-        "Docker deployment with FastAPI backend and Streamlit UI",
-        "Embedded AI chat widget with conversational interface"
-      ]
+        "Multi-source ingestion (PDFs, HTML, websites) with intelligent chunking and metadata extraction",
+        "Advanced chunking strategies (recursive, semantic, fixed size) for improved retrieval quality",
+        "Hybrid retrieval combining semantic search, MMR diversity, and cross-encoder reranking",
+        "LLM generation via local (Ollama) or cloud (OpenAI) models with automatic citations",
+        "Guardrails for PII detection, content filtering, and safety compliance",
+        "Comprehensive evaluation framework using RAGAS metrics with observability and monitoring"
+      ],
+      businessContext: `Many organisations struggle with knowledge-access, unstructured data, slow manual workflows, and inability to surface relevant insights from large document repositories. The business objective was to enable a truly enterprise-grade GenAI solution that transforms document and knowledge workflows into scalable, automated, intelligent systems.
+
+The goal was to deliver a product that could be adopted by large clients (for example in enterprise service, customer-support, sales knowledge, or internal knowledge-bases) and that could be integrated into CRM / service / product systems to drive value (e.g., faster response times, more accurate answers, reduced manual lookup efforts).
+
+Key business outcomes targeted:
+
+• Accelerated knowledge retrieval & summarisation from large document sets
+• More accurate, context-rich answers (with citations) for decision support
+• Reduced manual overhead (e.g., manual document search, client support, internal knowledge lookup)
+• A foundation for future AI / GenAI / multi-agent enhancements within enterprise systems`,
+      solutionOverview: `The Enterprise RAG System is a production-grade platform that bridges the gap between raw document/knowledge repositories and LLM-powered answer/insight systems. It combines ingestion, chunking, embeddings, vector search, hybrid retrieval, LLM generation, safety/guardrails, monitoring and API/UX infrastructure.
+
+Key capabilities include:
+
+Multi-source ingestion (PDFs, HTML, websites) → enabling enterprise content from many formats.
+
+Advanced chunking strategies (recursive, semantic, fixed size) with metadata extraction → improves retrieval quality.
+
+Embedding generation (with SentenceTransformers / OpenAI) + vector store (ChromaDB) → enables semantic similarity search.
+
+Query rewriting & hybrid retrieval (semantic + MMR + reranking) → ensures high relevance of retrieved contexts.
+
+LLM generation via local (Ollama) or cloud (OpenAI) models, with automatic citations → gives enterprise-ready answer generation with traceability.
+
+Guardrails (PII detection, content filtering), observability (metrics, logging), evaluation frameworks (RAGAS metrics + custom) → supports governance, monitoring and safety.
+
+API and UI layers (FastAPI backend + Streamlit UI), containerisation (Docker/Docker-Compose) → supports easy deployment and integration.`,
+      technicalArchitecture: `Ingestion & Chunking: Document loaders (PDFLoader, HTMLLoader, WebsiteLoader) select correct loader automatically. Chunkers (FixedSizeChunker, SemanticChunker, RecursiveChunker) break documents into meaningful units; metadata extractor pulls keywords/entities.
+
+Embedding & Vector Storage: Embeddings generated using locally-run SentenceTransformers (or optionally OpenAI) then stored in ChromaDB. Vector store supports similarity search and MMR-based retrieval.
+
+Retrieval Pipeline: QueryRewriter first improves the user query (rephrase/decompose). HybridRetriever then performs both semantic and traditional retrieval. Reranker (cross-encoder or BM25) reorders results for relevance.
+
+LLM Integration & Generation: RAGPromptBuilder prepares prompts. System supports both Ollama (local) and OpenAI (cloud) generators. Generations include automatic extraction of citations from the retrieved context.
+
+Safety, Observability & Evaluation: Guardrails module handles content filtering, PII detection. Metrics and logging modules enable structured logging, performance tracking, latency measurement (~3-5s end-to-end on benchmark).
+
+Deployment & API / UI: REST API built on FastAPI with endpoints for ingestion, query, chat, evaluation. UI built on Streamlit for user-friendly interaction. Containerised with Docker and Docker-Compose for ease of deployment.`,
+      impact: `Delivered a production-ready platform that enterprises can adopt for knowledge retrieval + GenAI workflows — significantly reducing time to insight and increasing answer accuracy.
+
+Provided clients the ability to ingest varied content formats, apply semantic search + generative responses with citations, enabling more trustworthy answers and reducing risk of "hallucinations".
+
+Allowed organisations to build GenAI functionality into customer-service, sales-enablement, internal knowledge-bases — creating improved service levels, faster response times, and reduced manual burden.
+
+From a technical architecture viewpoint, established a blueprint for enterprise-grade GenAI systems — combining ingestion/ETL, semantic search, LLM orchestration, governance, monitoring, and deployment — which can be reused and scaled across domains (BFSI, retail, real-estate, aviation).`,
+      whyItMatters: `It shows end-to-end thinking: Designed the system from document ingestion, through data-/knowledge preparation, embedding & vector architecture, retrieval, LLM orchestration, UI/API delivery and deployment.
+
+It demonstrates the ability to build production-grade systems with enterprise features (safety/guardrails, observability, evaluation metrics).
+
+It aligns perfectly with core skillset (AI & LLM architecture, data platforms, cloud engineering) — reinforcing expertise in GenAI solutions architecture.
+
+It offers a strong story: not just building prototypes — delivering systems with measurable business value, technical rigour, and enterprise-scale readiness.`
     },
     {
       title: "GenAI Workflow Automation (BFSI)",
