@@ -22,8 +22,13 @@ export function AboutBackground() {
   const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
   const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '-30%'])
 
-  // Mobile: Minimal static background (only after mount)
-  if (isMounted && isMobile) {
+  // Don't render anything until mounted to avoid hydration errors
+  if (!isMounted) {
+    return <div ref={ref} className="absolute inset-0" />
+  }
+
+  // Mobile: Minimal static background
+  if (isMobile) {
     return (
       <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Static gradient - no animations */}
@@ -90,6 +95,13 @@ export function ExperienceBackground() {
   const [isMounted, setIsMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
+
   useEffect(() => {
     setIsMounted(true)
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
@@ -98,15 +110,13 @@ export function ExperienceBackground() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  })
+  // Don't render anything until mounted to avoid hydration errors
+  if (!isMounted) {
+    return <div ref={ref} className="absolute inset-0" />
+  }
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
-
-  // Mobile: Static dot pattern only (only after mount)
-  if (isMounted && isMobile) {
+  // Mobile: Static dot pattern only
+  if (isMobile) {
     return (
       <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Static dot pattern */}
@@ -233,6 +243,13 @@ export function ProjectsBackground() {
   const [isMounted, setIsMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+
   useEffect(() => {
     setIsMounted(true)
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
@@ -241,15 +258,13 @@ export function ProjectsBackground() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  })
+  // Don't render anything until mounted to avoid hydration errors
+  if (!isMounted) {
+    return <div ref={ref} className="absolute inset-0" />
+  }
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-
-  // Mobile: Minimal static background (only after mount)
-  if (isMounted && isMobile) {
+  // Mobile: Minimal static background
+  if (isMobile) {
     return (
       <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Static gradient */}

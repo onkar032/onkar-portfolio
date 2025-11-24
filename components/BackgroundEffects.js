@@ -15,8 +15,13 @@ export default function BackgroundEffects() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  // Mobile: Minimal static background (only after mount)
-  if (isMounted && isMobile) {
+  // Don't render anything until mounted to avoid hydration errors
+  if (!isMounted) {
+    return null
+  }
+
+  // Mobile: Minimal static background
+  if (isMobile) {
     const mobileOrbs = Array.from({ length: 4 }, (_, i) => ({
       id: i,
       size: 8 + i * 4,
