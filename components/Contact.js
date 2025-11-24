@@ -90,7 +90,7 @@ export default function Contact({ data }) {
                   <ContactItem
                     icon={<EmailIcon />}
                     label="Email"
-                    value={data.email}
+                    value={data.emailDisplay || data.email}
                     href={`mailto:${data.email}`}
                   />
                   <ContactItem

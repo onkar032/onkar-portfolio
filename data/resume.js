@@ -4,7 +4,8 @@ export const resumeData = {
     name: "Onkar Dubey",
     title: "Enterprise and AI/LLM Solutions Architect",
     tagline: "Over a decade crafting AI products and delivering impactful enterprise solutions.",
-    email: "onkar***@gmail.com",
+    email: "Onkar032@gmail.com", // Real email for mailto functionality
+    emailDisplay: "onkar***@gmail.com", // Masked email for display
     phone: "+91 XXX XXX XXXX",
     location: "India",
     linkedin: "https://www.linkedin.com/in/onkar-dubey-10768275/",
