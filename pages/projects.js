@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import Head from 'next/head'
 import { resumeData } from '../data/resume'
 import Navbar from '../components/Navbar'
-import ProjectDetail from '../components/ProjectDetail'
+import ProjectDetailExpanded from '../components/ProjectDetailExpanded'
 import PremiumFooter from '../components/PremiumFooter'
 import BackgroundEffects from '../components/BackgroundEffects'
 import CustomCursor from '../components/CustomCursor'
@@ -137,11 +137,9 @@ export default function ProjectsPage() {
               </div>
             </motion.section>
 
-            {/* Projects Detail Section */}
+            {/* Projects Section */}
             <section className="py-12 px-4 max-w-7xl mx-auto">
-              {resumeData.projects.map((project, index) => (
-                <ProjectDetail key={index} project={project} index={index} />
-              ))}
+              <ProjectDetailExpanded projects={resumeData.projects} />
             </section>
           </main>
         </div>
