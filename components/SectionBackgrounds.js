@@ -10,8 +10,13 @@ export function AboutBackground() {
     offset: ["start end", "end start"]
   })
 
+  // Create all transforms at the top level (before any conditional returns)
   const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
   const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '-30%'])
+  const circleY1 = useTransform(scrollYProgress, [0, 1], ['0%', '12%'])
+  const circleY2 = useTransform(scrollYProgress, [0, 1], ['0%', '24%'])
+  const circleY3 = useTransform(scrollYProgress, [0, 1], ['0%', '36%'])
+  const circleYValues = [circleY1, circleY2, circleY3]
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768
@@ -79,7 +84,7 @@ export function AboutBackground() {
             height: 100 + i * 60,
             left: `${15 + i * 20}%`,
             top: `${20 + i * 25}%`,
-            y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 12}%`]),
+            y: circleYValues[i],
             willChange: 'transform',
           }}
         />
@@ -243,7 +248,12 @@ export function ProjectsBackground() {
     offset: ["start end", "end start"]
   })
 
+  // Create all transforms at the top level (before any conditional returns)
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+  const circleY1 = useTransform(scrollYProgress, [0, 1], ['0%', '10%'])
+  const circleY2 = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+  const circleY3 = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+  const circleYValues = [circleY1, circleY2, circleY3]
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768
@@ -296,7 +306,7 @@ export function ProjectsBackground() {
             height: 100 + i * 70,
             left: `${15 + i * 15}%`,
             top: `${15 + i * 20}%`,
-            y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 10}%`]),
+            y: circleYValues[i],
             willChange: 'transform',
           }}
         />
