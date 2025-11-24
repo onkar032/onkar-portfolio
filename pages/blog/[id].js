@@ -27,7 +27,7 @@ export default function BlogPost({ post }) {
   return (
     <>
       <Head>
-        <title>{post.title} - Onkar Dubey</title>
+        <title>{`${post.title} - Onkar Dubey`}</title>
         <meta name="description" content={post.excerpt} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
