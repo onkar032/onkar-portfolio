@@ -71,7 +71,7 @@ export default function Contact({ data }) {
           </h2>
           <div className="w-12 h-0.5 bg-apple-blue mx-auto mb-6"></div>
           <p className="text-apple-subtext text-center mb-12 text-lg">
-            Have a project in mind? Let's build something amazing together.
+            Excited about tech and AI? Feel free to connect or drop a query.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
