@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import GradientText from './GradientText'
 
 const education = [
   {
@@ -16,14 +17,17 @@ const education = [
 export default function Education() {
   return (
     <div className="w-full">
-      <motion.h3
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-2xl font-bold mb-8 text-gray-900"
+        transition={{ duration: 0.6 }}
       >
-        Education
-      </motion.h3>
+        <h2 className="text-4xl md:text-5xl font-semibold mb-3 tracking-tight">
+          <GradientText>Education</GradientText>
+        </h2>
+        <div className="w-12 h-0.5 bg-apple-blue mb-12"></div>
+      </motion.div>
       
       <div className="relative">
         {/* Timeline Line */}
