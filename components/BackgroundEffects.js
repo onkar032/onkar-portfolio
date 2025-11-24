@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react'
 
 export default function BackgroundEffects() {
   const [isMobile, setIsMobile] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768)
     }
@@ -23,6 +25,22 @@ export default function BackgroundEffects() {
     duration: 4 + i * 0.5,
     delay: i * 0.2,
   }))
+
+  // Wait for client-side hydration, then check if mobile
+  if (!isClient) {
+    // Server-side: render minimal static version
+    return (
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div 
+          className="absolute inset-0 opacity-[0.05]"
+          style={{ 
+            backgroundImage: `radial-gradient(circle, rgba(107, 114, 128, 0.4) 1.5px, transparent 1.5px)`,
+            backgroundSize: '40px 40px',
+          }}
+        />
+      </div>
+    )
+  }
 
   // Mobile: Minimal static background
   if (isMobile) {
