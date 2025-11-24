@@ -35,7 +35,7 @@ export default function BackgroundEffects() {
         <motion.div
           className="absolute w-[1000px] h-[1000px] rounded-full opacity-15 blur-[100px]"
           style={{
-            background: 'radial-gradient(circle at center, rgba(255, 192, 203, 0.4) 0%, rgba(252, 231, 243, 0.25) 40%, transparent 70%)',
+            background: 'radial-gradient(circle at center, rgba(82, 82, 91, 0.4) 0%, rgba(115, 115, 115, 0.25) 40%, transparent 70%)',
             left: `${mousePosition.x * 100 - 500}px`,
             top: `${mousePosition.y * 100 - 500}px`,
           }}
@@ -53,7 +53,7 @@ export default function BackgroundEffects() {
         <motion.div
           className="absolute top-1/4 right-0 w-[800px] h-[800px] rounded-full opacity-12 blur-[120px]"
           style={{
-            background: 'radial-gradient(circle, rgba(255, 192, 203, 0.35) 0%, rgba(254, 202, 202, 0.18) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(82, 82, 91, 0.35) 0%, rgba(107, 114, 128, 0.18) 50%, transparent 70%)',
           }}
           animate={{
             x: [0, -150, 0],
@@ -72,7 +72,7 @@ export default function BackgroundEffects() {
         <motion.div
           className="absolute bottom-10 left-1/4 w-[900px] h-[900px] rounded-full opacity-10 blur-[100px]"
           style={{
-            background: 'radial-gradient(circle, rgba(252, 231, 243, 0.3) 0%, rgba(254, 202, 202, 0.18) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(75, 85, 99, 0.3) 0%, rgba(107, 114, 128, 0.18) 50%, transparent 70%)',
           }}
           animate={{
             x: [0, 100, 0],
@@ -91,7 +91,7 @@ export default function BackgroundEffects() {
         <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full opacity-8 blur-[90px]"
           style={{
-            background: 'radial-gradient(circle, rgba(251, 207, 232, 0.25) 0%, rgba(254, 242, 242, 0.12) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(107, 114, 128, 0.25) 0%, rgba(156, 163, 175, 0.12) 50%, transparent 70%)',
           }}
           animate={{
             scale: [1, 1.3, 1],
@@ -113,7 +113,7 @@ export default function BackgroundEffects() {
         return (
           <motion.div
             key={particle.id}
-            className={`absolute backdrop-blur-sm border border-pink-300/8 ${
+            className={`absolute backdrop-blur-sm border border-apple-blue/8 ${
               isCircle ? 'rounded-full' : isSquare ? 'rounded-2xl' : 'rounded-lg'
             }`}
             style={{
@@ -122,8 +122,8 @@ export default function BackgroundEffects() {
               left: `${particle.initialX}%`,
               top: `${particle.initialY}%`,
             background: isCircle 
-              ? 'radial-gradient(circle, rgba(255, 192, 203, 0.06) 0%, rgba(252, 231, 243, 0.03) 50%, transparent 100%)'
-              : 'linear-gradient(135deg, rgba(255, 192, 203, 0.05) 0%, rgba(254, 202, 202, 0.025) 100%)',
+              ? 'radial-gradient(circle, rgba(82, 82, 91, 0.06) 0%, rgba(115, 115, 115, 0.03) 50%, transparent 100%)'
+              : 'linear-gradient(135deg, rgba(82, 82, 91, 0.05) 0%, rgba(107, 114, 128, 0.025) 100%)',
             }}
             animate={{
               y: [0, -40, 0],
@@ -147,8 +147,8 @@ export default function BackgroundEffects() {
         className="absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255, 192, 203, 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 192, 203, 0.3) 1px, transparent 1px)
+            linear-gradient(rgba(82, 82, 91, 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(82, 82, 91, 0.3) 1px, transparent 1px)
           `,
           backgroundSize: '50px 50px',
         }}
@@ -158,7 +158,7 @@ export default function BackgroundEffects() {
       <div 
         className="absolute inset-0 opacity-[0.08]"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(255, 192, 203, 0.5) 2px, transparent 2px)`,
+          backgroundImage: `radial-gradient(circle, rgba(82, 82, 91, 0.5) 2px, transparent 2px)`,
           backgroundSize: '50px 50px',
         }}
       />
@@ -175,9 +175,9 @@ export default function BackgroundEffects() {
       <svg className="absolute inset-0 w-full h-full opacity-[0.08]" preserveAspectRatio="none">
         <defs>
           <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(255, 192, 203, 0)" />
-            <stop offset="50%" stopColor="rgba(255, 192, 203, 0.3)" />
-            <stop offset="100%" stopColor="rgba(255, 192, 203, 0)" />
+            <stop offset="0%" stopColor="rgba(82, 82, 91, 0)" />
+            <stop offset="50%" stopColor="rgba(82, 82, 91, 0.3)" />
+            <stop offset="100%" stopColor="rgba(82, 82, 91, 0)" />
           </linearGradient>
         </defs>
         <motion.line

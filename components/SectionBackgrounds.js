@@ -16,7 +16,7 @@ export function AboutBackground() {
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Light pink mesh gradients - elegant and visible */}
+      {/* Blue mesh gradients - elegant and visible */}
       <motion.div
         className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full blur-[120px]"
         style={{ 
@@ -24,7 +24,7 @@ export function AboutBackground() {
           rotate, 
           scale,
           opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0.4, 0.6, 0.4]),
-          background: 'radial-gradient(circle, rgba(255, 192, 203, 0.08) 0%, rgba(251, 207, 232, 0.06) 50%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(0, 113, 227, 0.08) 0%, rgba(99, 102, 241, 0.06) 50%, transparent 70%)'
         }}
         animate={{
           x: [0, 40, 0],
@@ -41,7 +41,7 @@ export function AboutBackground() {
         style={{ 
           y: y2, 
           rotate: useTransform(scrollYProgress, [0, 1], [0, -120]),
-          background: 'radial-gradient(circle, rgba(252, 231, 243, 0.07) 0%, rgba(254, 202, 202, 0.05) 50%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.07) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%)'
         }}
         animate={{
           x: [0, -50, 0],
@@ -58,7 +58,7 @@ export function AboutBackground() {
       {[...Array(6)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute rounded-full border border-pink-300/20 backdrop-blur-sm"
+          className="absolute rounded-full border border-apple-blue/20 backdrop-blur-sm"
           style={{
             width: 60 + i * 25,
             height: 60 + i * 25,
@@ -102,9 +102,9 @@ export function AboutBackground() {
         />
         <defs>
           <linearGradient id="aboutGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(255, 192, 203, 0.15)" />
-            <stop offset="50%" stopColor="rgba(252, 231, 243, 0.10)" />
-            <stop offset="100%" stopColor="rgba(255, 192, 203, 0.15)" />
+            <stop offset="0%" stopColor="rgba(0, 113, 227, 0.15)" />
+            <stop offset="50%" stopColor="rgba(139, 92, 246, 0.10)" />
+            <stop offset="100%" stopColor="rgba(0, 113, 227, 0.15)" />
           </linearGradient>
         </defs>
       </svg>
@@ -125,11 +125,11 @@ export function ExperienceBackground() {
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Animated dot matrix - light pink tones */}
+      {/* Animated dot matrix - grey tones */}
       <motion.div
         className="absolute inset-0 opacity-[0.05]"
         style={{ 
-          backgroundImage: `radial-gradient(circle, rgba(255, 192, 203, 0.4) 2px, transparent 2px)`,
+          backgroundImage: `radial-gradient(circle, rgba(82, 82, 91, 0.4) 2px, transparent 2px)`,
           backgroundSize: '40px 40px',
           y: useTransform(scrollYProgress, [0, 1], ['0%', '15%']),
         }}
@@ -153,7 +153,7 @@ export function ExperienceBackground() {
             height: 4 + i * 2,
             left: `${5 + i * 8}%`,
             top: `${10 + (i % 4) * 25}%`,
-            background: 'radial-gradient(circle, rgba(255, 192, 203, 0.4) 0%, rgba(252, 231, 243, 0.2) 70%, transparent 100%)',
+            background: 'radial-gradient(circle, rgba(82, 82, 91, 0.4) 0%, rgba(107, 114, 128, 0.2) 70%, transparent 100%)',
             y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 25}%`]),
             scale: useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.8, 1]),
           }}
@@ -171,13 +171,13 @@ export function ExperienceBackground() {
         />
       ))}
 
-      {/* Large rotating pink mesh */}
+      {/* Large rotating grey mesh */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full blur-[140px]"
         style={{ 
           y,
           rotate,
-          background: 'conic-gradient(from 0deg, rgba(252, 231, 243, 0.12) 0%, rgba(255, 192, 203, 0.15) 50%, rgba(254, 202, 202, 0.1) 100%)'
+          background: 'conic-gradient(from 0deg, rgba(75, 85, 99, 0.12) 0%, rgba(82, 82, 91, 0.15) 50%, rgba(107, 114, 128, 0.1) 100%)'
         }}
         animate={{
           scale: [1, 1.2, 1],
@@ -195,7 +195,7 @@ export function ExperienceBackground() {
         style={{ 
           y: useTransform(scrollYProgress, [0, 1], ['0%', '-40%']),
           opacity,
-          background: 'radial-gradient(circle, rgba(254, 202, 202, 0.15) 0%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(107, 114, 128, 0.15) 0%, transparent 70%)'
         }}
         animate={{
           x: [0, 50, 0],
@@ -238,7 +238,7 @@ export function SkillsBackground() {
             <motion.polygon
               points="50 1 95 25 95 75 50 99 5 75 5 25"
               fill="none"
-              stroke="rgba(255, 192, 203, 0.2)"
+              stroke="rgba(0, 113, 227, 0.2)"
               strokeWidth="2"
               animate={{
                 rotate: [0, 360],
@@ -256,7 +256,7 @@ export function SkillsBackground() {
 
       {/* Gradient orbs */}
       <motion.div
-        className="absolute top-20 right-20 w-80 h-80 rounded-full bg-gradient-to-br from-pink-200/15 to-rose-300/15 blur-3xl"
+        className="absolute top-20 right-20 w-80 h-80 rounded-full bg-gradient-to-br from-purple-400/15 to-pink-400/15 blur-3xl"
         style={{ y: y1 }}
         animate={{
           scale: [1, 1.3, 1],
@@ -268,7 +268,7 @@ export function SkillsBackground() {
         }}
       />
       <motion.div
-        className="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-gradient-to-br from-pink-300/15 to-pink-200/15 blur-3xl"
+        className="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-gradient-to-br from-blue-400/15 to-cyan-400/15 blur-3xl"
         style={{ y: y2 }}
         animate={{
           scale: [1, 1.2, 1],
@@ -300,7 +300,7 @@ export function ProjectsBackground() {
       {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute rounded-full border border-pink-300/12 backdrop-blur-sm"
+          className="absolute rounded-full border border-apple-blue/12 backdrop-blur-sm"
           style={{
             width: 80 + i * 50,
             height: 80 + i * 50,
@@ -322,14 +322,14 @@ export function ProjectsBackground() {
         />
       ))}
 
-      {/* Vibrant gradient mesh - soft pink */}
+      {/* Vibrant gradient mesh - multi-color */}
       <motion.div
         className="absolute top-1/4 right-1/4 w-[700px] h-[700px] rounded-full blur-[140px]"
         style={{ 
           y,
           rotate,
           scale,
-          background: 'radial-gradient(circle, rgba(255, 192, 203, 0.15) 0%, rgba(252, 231, 243, 0.12) 35%, rgba(254, 202, 202, 0.1) 70%, transparent 100%)'
+          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(168, 85, 247, 0.12) 35%, rgba(99, 102, 241, 0.1) 70%, transparent 100%)'
         }}
       />
 
@@ -339,7 +339,7 @@ export function ProjectsBackground() {
         style={{
           y: useTransform(scrollYProgress, [0, 1], ['0%', '-40%']),
           rotate: useTransform(scrollYProgress, [0, 1], [0, -180]),
-          background: 'radial-gradient(circle, rgba(251, 207, 232, 0.18) 0%, rgba(252, 231, 243, 0.12) 50%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, rgba(6, 182, 212, 0.12) 50%, transparent 70%)'
         }}
         animate={{
           scale: [1, 1.3, 1],
@@ -356,7 +356,7 @@ export function ProjectsBackground() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[110px]"
         style={{ 
           rotate,
-          background: 'radial-gradient(circle, rgba(255, 192, 203, 0.15) 0%, rgba(252, 231, 243, 0.1) 50%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(99, 102, 241, 0.1) 50%, transparent 70%)'
         }}
       />
     </div>
