@@ -47,7 +47,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
-          <Link href="/">
+          <Link href="/" passHref legacyBehavior>
             <motion.a
               className="flex items-center gap-2.5 cursor-pointer group"
               whileHover={{ scale: 1.02 }}
@@ -89,7 +89,7 @@ export default function Navbar() {
               const isActive = isPageLink && router.pathname.startsWith(`/${item.toLowerCase()}`)
               
               return isPageLink ? (
-                <Link key={item} href={href}>
+                <Link key={item} href={href} passHref legacyBehavior>
                   <motion.a
                     className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
                       isActive 
@@ -200,7 +200,7 @@ export default function Navbar() {
                 }}
               >
                 {isPageLink ? (
-                  <Link href={href}>
+                  <Link href={href} passHref legacyBehavior>
                     <motion.a
                       className={`text-3xl font-semibold cursor-pointer ${
                         isActive ? 'text-apple-blue' : 'text-apple-text'
