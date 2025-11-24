@@ -15,8 +15,8 @@ export function AboutBackground() {
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* VERY VISIBLE large circles with vibrant borders */}
-      {[...Array(8)].map((_, i) => {
+      {/* Subtle large circles with vibrant borders */}
+      {[...Array(5)].map((_, i) => {
         const borderColors = [
           'border-pink-400/30',
           'border-purple-400/30',
@@ -36,22 +36,22 @@ export function AboutBackground() {
             rotate: useTransform(scrollYProgress, [0, 1], [0, i % 2 === 0 ? 360 : -360]),
           }}
           animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.6, 0.3],
-            x: [0, i % 2 === 0 ? 30 : -30, 0],
+            scale: [1, 1.15, 1],
+            opacity: [0.15, 0.3, 0.15],
+            x: [0, i % 2 === 0 ? 20 : -20, 0],
           }}
           transition={{
-            duration: 4 + i * 0.5,
+            duration: 8 + i * 1,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: i * 0.3
+            delay: i * 0.5
           }}
         />
         )
       })}
       
-      {/* Solid colored circles - vibrant multi-colors like projects */}
-      {[...Array(15)].map((_, i) => (
+      {/* Solid colored circles - subtle multi-colors */}
+      {[...Array(10)].map((_, i) => (
         <motion.div
           key={`solid-circle-${i}`}
           className="absolute rounded-full shadow-lg"
@@ -70,15 +70,15 @@ export function AboutBackground() {
             y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 30}%`]),
           }}
           animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.4, 0.8, 0.4],
-            y: [0, -40, 0],
+            scale: [1, 1.25, 1],
+            opacity: [0.2, 0.4, 0.2],
+            y: [0, -25, 0],
           }}
           transition={{
-            duration: 3 + i * 0.3,
+            duration: 6 + i * 0.5,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: i * 0.2
+            delay: i * 0.3
           }}
         />
       ))}
@@ -173,8 +173,8 @@ export function AboutBackground() {
         }}
       />
       
-      {/* Animated particles - vibrant multi-colors */}
-      {[...Array(40)].map((_, i) => {
+      {/* Animated particles - subtle multi-colors */}
+      {[...Array(20)].map((_, i) => {
         const colors = [
           'bg-pink-500/50',
           'bg-purple-500/50',
@@ -190,14 +190,14 @@ export function AboutBackground() {
             top: `${Math.random() * 100}%`,
           }}
           animate={{
-            y: [0, -120, 0],
-            opacity: [0, 0.9, 0],
-            scale: [0, 2, 0],
+            y: [0, -80, 0],
+            opacity: [0, 0.5, 0],
+            scale: [0, 1.5, 0],
           }}
           transition={{
-            duration: 4 + Math.random() * 3,
+            duration: 6 + Math.random() * 4,
             repeat: Infinity,
-            delay: Math.random() * 3,
+            delay: Math.random() * 5,
             ease: "easeInOut"
           }}
         />
