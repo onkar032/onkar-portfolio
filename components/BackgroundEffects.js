@@ -29,13 +29,13 @@ export default function BackgroundEffects() {
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {/* Enhanced Premium Mesh Gradient Background - More visible and dynamic */}
+      {/* Vibrant Multi-Color Mesh Gradient Background */}
       <div className="absolute inset-0">
-        {/* Main gradient orb - Interactive with mouse - MORE VISIBLE */}
+        {/* Main gradient orb - Pink/Purple - Interactive with mouse */}
         <motion.div
           className="absolute w-[1200px] h-[1200px] rounded-full opacity-22 blur-[90px]"
           style={{
-            background: 'radial-gradient(circle at center, rgba(82, 82, 91, 0.5) 0%, rgba(115, 115, 115, 0.35) 40%, transparent 70%)',
+            background: 'radial-gradient(circle at center, rgba(236, 72, 153, 0.15) 0%, rgba(168, 85, 247, 0.10) 40%, transparent 70%)',
             left: `${mousePosition.x * 120 - 600}px`,
             top: `${mousePosition.y * 120 - 600}px`,
           }}
@@ -49,11 +49,11 @@ export default function BackgroundEffects() {
           }}
         />
         
-        {/* Secondary gradient - flowing movement - MORE VISIBLE */}
+        {/* Secondary gradient - Cyan/Teal - flowing movement */}
         <motion.div
           className="absolute top-1/4 right-0 w-[1000px] h-[1000px] rounded-full opacity-18 blur-[110px]"
           style={{
-            background: 'radial-gradient(circle, rgba(82, 82, 91, 0.45) 0%, rgba(107, 114, 128, 0.25) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(6, 182, 212, 0.10) 50%, transparent 70%)',
           }}
           animate={{
             x: [0, -180, 0],
@@ -68,11 +68,11 @@ export default function BackgroundEffects() {
           }}
         />
         
-        {/* Tertiary gradient - creates depth - MORE VISIBLE */}
+        {/* Tertiary gradient - Indigo/Purple - creates depth */}
         <motion.div
           className="absolute bottom-10 left-1/4 w-[1100px] h-[1100px] rounded-full opacity-16 blur-[95px]"
           style={{
-            background: 'radial-gradient(circle, rgba(75, 85, 99, 0.4) 0%, rgba(107, 114, 128, 0.25) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.14) 0%, rgba(139, 92, 246, 0.10) 50%, transparent 70%)',
           }}
           animate={{
             x: [0, 120, 0],
@@ -87,11 +87,11 @@ export default function BackgroundEffects() {
           }}
         />
         
-        {/* Accent gradient - adds sophistication - MORE VISIBLE */}
+        {/* Accent gradient - Pink - adds sophistication */}
         <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] rounded-full opacity-14 blur-[85px]"
           style={{
-            background: 'radial-gradient(circle, rgba(107, 114, 128, 0.35) 0%, rgba(156, 163, 175, 0.18) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, rgba(219, 39, 119, 0.08) 50%, transparent 70%)',
           }}
           animate={{
             scale: [1, 1.4, 1],
@@ -104,11 +104,11 @@ export default function BackgroundEffects() {
           }}
         />
         
-        {/* Additional dynamic gradient orb */}
+        {/* Additional dynamic gradient orb - Purple/Blue */}
         <motion.div
           className="absolute top-1/3 left-1/4 w-[700px] h-[700px] rounded-full opacity-12 blur-[100px]"
           style={{
-            background: 'radial-gradient(circle, rgba(156, 163, 175, 0.3) 0%, rgba(107, 114, 128, 0.15) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%)',
           }}
           animate={{
             x: [0, -80, 0],
@@ -132,7 +132,11 @@ export default function BackgroundEffects() {
         return (
           <motion.div
             key={particle.id}
-            className={`absolute backdrop-blur-sm border-2 border-apple-blue/15 ${
+            className={`absolute backdrop-blur-sm border-2 ${
+              particle.id % 4 === 0 ? 'border-pink-400/20' :
+              particle.id % 4 === 1 ? 'border-purple-400/20' :
+              particle.id % 4 === 2 ? 'border-cyan-400/20' : 'border-indigo-400/20'
+            } ${
               isCircle ? 'rounded-full' : isSquare ? 'rounded-2xl' : 'rounded-lg'
             }`}
             style={{
@@ -141,8 +145,14 @@ export default function BackgroundEffects() {
               left: `${particle.initialX}%`,
               top: `${particle.initialY}%`,
             background: isCircle 
-              ? 'radial-gradient(circle, rgba(82, 82, 91, 0.12) 0%, rgba(115, 115, 115, 0.06) 50%, transparent 100%)'
-              : 'linear-gradient(135deg, rgba(82, 82, 91, 0.10) 0%, rgba(107, 114, 128, 0.05) 100%)',
+              ? (particle.id % 4 === 0 ? 'radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, rgba(236, 72, 153, 0.06) 50%, transparent 100%)' :
+                 particle.id % 4 === 1 ? 'radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(168, 85, 247, 0.06) 50%, transparent 100%)' :
+                 particle.id % 4 === 2 ? 'radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(14, 165, 233, 0.06) 50%, transparent 100%)' :
+                 'radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0.06) 50%, transparent 100%)')
+              : (particle.id % 4 === 0 ? 'linear-gradient(135deg, rgba(236, 72, 153, 0.10) 0%, rgba(168, 85, 247, 0.05) 100%)' :
+                 particle.id % 4 === 1 ? 'linear-gradient(135deg, rgba(168, 85, 247, 0.10) 0%, rgba(99, 102, 241, 0.05) 100%)' :
+                 particle.id % 4 === 2 ? 'linear-gradient(135deg, rgba(14, 165, 233, 0.10) 0%, rgba(6, 182, 212, 0.05) 100%)' :
+                 'linear-gradient(135deg, rgba(99, 102, 241, 0.10) 0%, rgba(168, 85, 247, 0.05) 100%)'),
             }}
             animate={{
               y: [0, -60, 0],
@@ -161,23 +171,23 @@ export default function BackgroundEffects() {
         )
       })}
 
-      {/* Enhanced Architect Grid Pattern - More visible */}
+      {/* Vibrant Architect Grid Pattern */}
       <div 
-        className="absolute inset-0 opacity-[0.12]"
+        className="absolute inset-0 opacity-[0.08]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(82, 82, 91, 0.5) 1.5px, transparent 1.5px),
-            linear-gradient(90deg, rgba(82, 82, 91, 0.5) 1.5px, transparent 1.5px)
+            linear-gradient(rgba(168, 85, 247, 0.3) 1.5px, transparent 1.5px),
+            linear-gradient(90deg, rgba(14, 165, 233, 0.3) 1.5px, transparent 1.5px)
           `,
           backgroundSize: '45px 45px',
         }}
       />
       
-      {/* Enhanced accent dots at grid intersections */}
+      {/* Colorful accent dots at grid intersections */}
       <div 
-        className="absolute inset-0 opacity-[0.15]"
+        className="absolute inset-0 opacity-[0.10]"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(82, 82, 91, 0.7) 2.5px, transparent 2.5px)`,
+          backgroundImage: `radial-gradient(circle, rgba(236, 72, 153, 0.5) 2.5px, transparent 2.5px)`,
           backgroundSize: '45px 45px',
         }}
       />
@@ -190,13 +200,23 @@ export default function BackgroundEffects() {
         }}
       />
       
-      {/* Enhanced Ambient Light Lines - More visible */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.15]" preserveAspectRatio="none">
+      {/* Vibrant Ambient Light Lines */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.12]" preserveAspectRatio="none">
         <defs>
-          <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(82, 82, 91, 0)" />
-            <stop offset="50%" stopColor="rgba(82, 82, 91, 0.5)" />
-            <stop offset="100%" stopColor="rgba(82, 82, 91, 0)" />
+          <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="rgba(236, 72, 153, 0)" />
+            <stop offset="50%" stopColor="rgba(236, 72, 153, 0.4)" />
+            <stop offset="100%" stopColor="rgba(236, 72, 153, 0)" />
+          </linearGradient>
+          <linearGradient id="lineGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="rgba(14, 165, 233, 0)" />
+            <stop offset="50%" stopColor="rgba(14, 165, 233, 0.4)" />
+            <stop offset="100%" stopColor="rgba(14, 165, 233, 0)" />
+          </linearGradient>
+          <linearGradient id="lineGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="rgba(168, 85, 247, 0)" />
+            <stop offset="50%" stopColor="rgba(168, 85, 247, 0.4)" />
+            <stop offset="100%" stopColor="rgba(168, 85, 247, 0)" />
           </linearGradient>
         </defs>
         <motion.line
@@ -204,7 +224,7 @@ export default function BackgroundEffects() {
           y1="20%"
           x2="100%"
           y2="25%"
-          stroke="url(#lineGradient)"
+          stroke="url(#lineGradient1)"
           strokeWidth="3"
           animate={{
             y1: ["20%", "25%", "20%"],
@@ -221,7 +241,7 @@ export default function BackgroundEffects() {
           y1="70%"
           x2="100%"
           y2="75%"
-          stroke="url(#lineGradient)"
+          stroke="url(#lineGradient2)"
           strokeWidth="3"
           animate={{
             y1: ["70%", "75%", "70%"],
@@ -239,7 +259,7 @@ export default function BackgroundEffects() {
           y1="45%"
           x2="100%"
           y2="50%"
-          stroke="url(#lineGradient)"
+          stroke="url(#lineGradient3)"
           strokeWidth="2.5"
           animate={{
             y1: ["45%", "50%", "45%"],
