@@ -2,8 +2,10 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
 
-// Email configuration (masked for privacy)
-const EMAIL_ADDRESS = 'onkar***@gmail.com'
+// Email configuration
+// Real email for mailto functionality (hidden in code, masked in UI)
+const EMAIL_ADDRESS = 'Onkar032@gmail.com' 
+const EMAIL_ADDRESS_DISPLAY = 'onkar***@gmail.com' // Display version for UI
 const EMAIL_SUBJECT = 'Portfolio Inquiry - Let\'s Connect'
 const EMAIL_BODY = 'Hi Onkar,\n\nI came across your portfolio and would like to discuss potential opportunities.\n\nBest regards,'
 
