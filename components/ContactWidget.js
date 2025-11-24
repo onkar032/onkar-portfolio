@@ -2,12 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
 
-// Email configuration
-// Real email for mailto functionality (hidden in code, masked in UI)
-const EMAIL_ADDRESS = 'Onkar032@gmail.com' 
-const EMAIL_ADDRESS_DISPLAY = 'onkar***@gmail.com' // Display version for UI
-const EMAIL_SUBJECT = 'Portfolio Inquiry - Let\'s Connect'
-const EMAIL_BODY = 'Hi Onkar,\n\nI came across your portfolio and would like to discuss potential opportunities.\n\nBest regards,'
+// Email configuration (for display purposes)
+const EMAIL_ADDRESS_DISPLAY = 'OXXXXXXX@gmail.com'
 
 // Change this to your deployed RAG API URL
 const API_URL = process.env.NEXT_PUBLIC_RAG_API_URL || 'http://localhost:8000'
@@ -16,7 +12,7 @@ export default function ContactWidget() {
   const [showMenu, setShowMenu] = useState(false)
   const [showChat, setShowChat] = useState(false)
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: '🚀 Exciting stuff coming soon! AI-powered chat is under development. Meanwhile, feel free to reach out via email!' }
+    { role: 'assistant', content: '🚀 Exciting stuff coming soon! AI-powered chat is under development. Meanwhile, feel free to reach out via the contact form below!' }
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
@@ -29,12 +25,6 @@ export default function ContactWidget() {
   useEffect(() => {
     scrollToBottom()
   }, [messages])
-
-  const handleEmailClick = () => {
-    const mailtoUrl = `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(EMAIL_BODY)}`
-    window.open(mailtoUrl, '_self')
-    setShowMenu(false)
-  }
 
   const handleChatClick = () => {
     setShowChat(true)
@@ -123,7 +113,7 @@ export default function ContactWidget() {
             {/* Header */}
             <div className="bg-gradient-to-r from-apple-blue to-blue-600 text-white px-5 py-3">
               <h3 className="font-semibold text-sm">Let's Connect</h3>
-              <p className="text-xs text-white/80">Choose your preferred option</p>
+              <p className="text-xs text-white/80">AI Chat Coming Soon</p>
             </div>
 
             {/* Options */}
@@ -145,30 +135,6 @@ export default function ContactWidget() {
                   <p className="text-xs text-apple-subtext">Ask about my work & projects</p>
                 </div>
                 <svg className="w-5 h-5 text-apple-blue ml-auto group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </motion.button>
-
-              {/* Divider */}
-              <div className="h-px bg-gray-200 my-2" />
-
-              {/* Email Option */}
-              <motion.button
-                onClick={handleEmailClick}
-                className="w-full flex items-center gap-4 p-4 rounded-xl hover:bg-blue-50 transition-colors group"
-                whileHover={{ x: 5 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-apple-text text-sm">Email Me</h4>
-                  <p className="text-xs text-apple-subtext">Send a detailed message</p>
-                </div>
-                <svg className="w-5 h-5 text-blue-600 ml-auto group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </motion.button>
@@ -269,7 +235,7 @@ export default function ContactWidget() {
                   </svg>
                 </motion.button>
               </div>
-              <p className="text-xs text-center text-gray-500 mt-2">🎉 AI Assistant launching soon! Use email for now.</p>
+              <p className="text-xs text-center text-gray-500 mt-2">🎉 AI Assistant launching soon! Use the contact form below.</p>
             </form>
           </motion.div>
         )}
