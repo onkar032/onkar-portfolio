@@ -2,36 +2,26 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
 export default function BackgroundEffects() {
-  const [isMounted, setIsMounted] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [renderMode, setRenderMode] = useState('default') // 'default', 'mobile', 'desktop'
 
   useEffect(() => {
-    setIsMounted(true)
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+    // After mount, detect device and set appropriate render mode
+    const isMobile = window.innerWidth < 768
+    setRenderMode(isMobile ? 'mobile' : 'desktop')
+    
+    const handleResize = () => {
+      setRenderMode(window.innerWidth < 768 ? 'mobile' : 'desktop')
     }
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // Don't render anything until mounted to avoid hydration errors
-  if (!isMounted) {
-    return null
-  }
-
-  // Mobile: Minimal static background
-  if (isMobile) {
-    const mobileOrbs = Array.from({ length: 4 }, (_, i) => ({
-      id: i,
-      size: 8 + i * 4,
-      initialX: 10 + i * 25,
-      initialY: 15 + (i % 3) * 30,
-    }))
-    
+  // Default/Mobile: Minimal static background (SSR-safe)
+  if (renderMode === 'default' || renderMode === 'mobile') {
     return (
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Static dot pattern - no animation on mobile */}
+        {/* Static dot pattern */}
         <div 
           className="absolute inset-0 opacity-[0.05]"
           style={{ 
@@ -40,23 +30,7 @@ export default function BackgroundEffects() {
           }}
         />
 
-        {/* Minimal orbs - very subtle */}
-        {mobileOrbs.map((orb) => (
-          <div
-            key={orb.id}
-            className="absolute rounded-full"
-            style={{
-              width: orb.size,
-              height: orb.size,
-              left: `${orb.initialX}%`,
-              top: `${orb.initialY}%`,
-              background: 'radial-gradient(circle, rgba(107, 114, 128, 0.15) 0%, transparent 100%)',
-              opacity: 0.3,
-            }}
-          />
-        ))}
-
-        {/* Single static gradient - no blur on mobile */}
+        {/* Single static gradient */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.03]"
           style={{ 
@@ -67,7 +41,7 @@ export default function BackgroundEffects() {
     )
   }
 
-  // Desktop: Full animations
+  // Desktop: Full animations (only after client-side mount)
   const desktopOrbs = Array.from({ length: 8 }, (_, i) => ({
     id: i,
     size: 8 + i * 4,

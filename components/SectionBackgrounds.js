@@ -3,16 +3,7 @@ import { useRef, useState, useEffect } from 'react'
 
 export function AboutBackground() {
   const ref = useRef(null)
-  const [isMounted, setIsMounted] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    setIsMounted(true)
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
+  const [renderMode, setRenderMode] = useState('default')
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -22,13 +13,20 @@ export function AboutBackground() {
   const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
   const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '-30%'])
 
-  // Don't render anything until mounted to avoid hydration errors
-  if (!isMounted) {
-    return <div ref={ref} className="absolute inset-0" />
-  }
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768
+    setRenderMode(isMobile ? 'mobile' : 'desktop')
+    
+    const handleResize = () => {
+      setRenderMode(window.innerWidth < 768 ? 'mobile' : 'desktop')
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
-  // Mobile: Minimal static background
-  if (isMobile) {
+  // Default/Mobile: Minimal static background
+  if (renderMode === 'default' || renderMode === 'mobile') {
     return (
       <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Static gradient - no animations */}
@@ -92,8 +90,7 @@ export function AboutBackground() {
 
 export function ExperienceBackground() {
   const ref = useRef(null)
-  const [isMounted, setIsMounted] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [renderMode, setRenderMode] = useState('default')
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -103,20 +100,19 @@ export function ExperienceBackground() {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
 
   useEffect(() => {
-    setIsMounted(true)
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+    const isMobile = window.innerWidth < 768
+    setRenderMode(isMobile ? 'mobile' : 'desktop')
+    
+    const handleResize = () => {
+      setRenderMode(window.innerWidth < 768 ? 'mobile' : 'desktop')
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // Don't render anything until mounted to avoid hydration errors
-  if (!isMounted) {
-    return <div ref={ref} className="absolute inset-0" />
-  }
-
-  // Mobile: Static dot pattern only
-  if (isMobile) {
+  // Default/Mobile: Static dot pattern only
+  if (renderMode === 'default' || renderMode === 'mobile') {
     return (
       <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Static dot pattern */}
@@ -240,8 +236,7 @@ export function SkillsBackground() {
 
 export function ProjectsBackground() {
   const ref = useRef(null)
-  const [isMounted, setIsMounted] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [renderMode, setRenderMode] = useState('default')
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -251,20 +246,19 @@ export function ProjectsBackground() {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
 
   useEffect(() => {
-    setIsMounted(true)
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+    const isMobile = window.innerWidth < 768
+    setRenderMode(isMobile ? 'mobile' : 'desktop')
+    
+    const handleResize = () => {
+      setRenderMode(window.innerWidth < 768 ? 'mobile' : 'desktop')
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // Don't render anything until mounted to avoid hydration errors
-  if (!isMounted) {
-    return <div ref={ref} className="absolute inset-0" />
-  }
-
-  // Mobile: Minimal static background
-  if (isMobile) {
+  // Default/Mobile: Minimal static background
+  if (renderMode === 'default' || renderMode === 'mobile') {
     return (
       <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Static gradient */}
