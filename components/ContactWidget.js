@@ -2,8 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
 
-// Email configuration
-const EMAIL_ADDRESS = 'Onkar032@gmail.com'
+// Email configuration (masked for privacy)
+const EMAIL_ADDRESS = 'onkar***@gmail.com'
 const EMAIL_SUBJECT = 'Portfolio Inquiry - Let\'s Connect'
 const EMAIL_BODY = 'Hi Onkar,\n\nI came across your portfolio and would like to discuss potential opportunities.\n\nBest regards,'
 
@@ -14,7 +14,7 @@ export default function ContactWidget() {
   const [showMenu, setShowMenu] = useState(false)
   const [showChat, setShowChat] = useState(false)
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Hi! I can answer questions about my projects and experience. Ask me anything!' }
+    { role: 'assistant', content: '🚀 Exciting stuff coming soon! AI-powered chat is under development. Meanwhile, feel free to reach out via email!' }
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
@@ -41,36 +41,8 @@ export default function ContactWidget() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!input.trim() || loading) return
-
-    const userMessage = input.trim()
-    setInput('')
-    setMessages(prev => [...prev, { role: 'user', content: userMessage }])
-    setLoading(true)
-
-    try {
-      // Call your RAG API
-      const response = await axios.post(`${API_URL}/query`, {
-        question: userMessage,
-        top_k: 5,
-        temperature: 0.7,
-        use_reranking: true,
-        return_context: false
-      }, {
-        timeout: 60000 // 60 seconds timeout
-      })
-
-      const answer = response.data.answer || 'Sorry, I could not find an answer.'
-      setMessages(prev => [...prev, { role: 'assistant', content: answer }])
-    } catch (error) {
-      console.error('Chat error:', error)
-      setMessages(prev => [...prev, { 
-        role: 'assistant', 
-        content: 'Sorry, I encountered an error. Please try again or contact me directly via WhatsApp or email.' 
-      }])
-    } finally {
-      setLoading(false)
-    }
+    // Chat is disabled - showing coming soon message
+    return
   }
 
   return (
@@ -216,11 +188,11 @@ export default function ContactWidget() {
             {/* Header */}
             <div className="bg-gradient-to-r from-apple-blue to-blue-600 text-white p-4 flex items-center gap-3">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <span className="text-2xl">🤖</span>
+                <span className="text-2xl">🚀</span>
               </div>
               <div className="flex-1">
                 <h3 className="font-bold">AI Assistant</h3>
-                <p className="text-xs text-white/80">Powered by RAG • Ask me anything</p>
+                <p className="text-xs text-white/80">🎉 Coming Soon • Exciting features ahead!</p>
               </div>
               <motion.button
                 onClick={() => setShowChat(false)}
@@ -274,29 +246,28 @@ export default function ContactWidget() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input */}
+            {/* Input - Coming Soon */}
             <form onSubmit={handleSubmit} className="p-4 bg-white border-t border-gray-200">
               <div className="flex gap-2">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask me anything..."
-                  disabled={loading}
-                  className="flex-1 px-4 py-2.5 rounded-full border border-gray-300 focus:border-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue/20 disabled:bg-gray-100 disabled:cursor-not-allowed text-sm"
+                  placeholder="🚀 Coming soon - AI chat in development..."
+                  disabled={true}
+                  className="flex-1 px-4 py-2.5 rounded-full border border-gray-300 bg-gray-50 cursor-not-allowed text-sm text-gray-500"
                 />
                 <motion.button
                   type="submit"
-                  disabled={loading || !input.trim()}
-                  className="bg-gradient-to-r from-apple-blue to-blue-600 text-white rounded-full p-2.5 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transition-all"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  disabled={true}
+                  className="bg-gradient-to-r from-gray-400 to-gray-500 text-white rounded-full p-2.5 opacity-50 cursor-not-allowed"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
                 </motion.button>
               </div>
+              <p className="text-xs text-center text-gray-500 mt-2">🎉 AI Assistant launching soon! Use email for now.</p>
             </form>
           </motion.div>
         )}
