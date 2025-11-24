@@ -15,15 +15,106 @@ export function AboutBackground() {
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Enhanced Blue mesh gradients - More visible and dynamic */}
+      {/* VERY VISIBLE large circles with solid borders */}
+      {[...Array(8)].map((_, i) => (
+        <motion.div
+          key={`big-circle-${i}`}
+          className="absolute rounded-full border-4 border-apple-blue/25"
+          style={{
+            width: 120 + i * 50,
+            height: 120 + i * 50,
+            left: `${10 + i * 12}%`,
+            top: `${10 + (i % 3) * 30}%`,
+            y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 25}%`]),
+            rotate: useTransform(scrollYProgress, [0, 1], [0, i % 2 === 0 ? 360 : -360]),
+          }}
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0.6, 0.3],
+            x: [0, i % 2 === 0 ? 30 : -30, 0],
+          }}
+          transition={{
+            duration: 4 + i * 0.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.3
+          }}
+        />
+      ))}
+      
+      {/* Solid colored circles - very visible */}
+      {[...Array(15)].map((_, i) => (
+        <motion.div
+          key={`solid-circle-${i}`}
+          className="absolute rounded-full shadow-lg"
+          style={{
+            width: 20 + i * 8,
+            height: 20 + i * 8,
+            left: `${5 + i * 6.5}%`,
+            top: `${12 + (i % 4) * 25}%`,
+            background: i % 3 === 0 
+              ? 'radial-gradient(circle, rgba(0, 113, 227, 0.35) 0%, rgba(0, 113, 227, 0.15) 100%)'
+              : i % 3 === 1
+              ? 'radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, rgba(139, 92, 246, 0.15) 100%)'
+              : 'radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, rgba(59, 130, 246, 0.15) 100%)',
+            y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 30}%`]),
+          }}
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.4, 0.8, 0.4],
+            y: [0, -40, 0],
+          }}
+          transition={{
+            duration: 3 + i * 0.3,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.2
+          }}
+        />
+      ))}
+      
+      {/* Geometric shapes - squares and triangles */}
+      {[...Array(10)].map((_, i) => {
+        const isSquare = i % 2 === 0
+        return (
+          <motion.div
+            key={`shape-${i}`}
+            className={`absolute border-3 border-indigo-400/40 shadow-md ${isSquare ? 'rounded-lg' : ''}`}
+            style={{
+              width: 40 + i * 10,
+              height: 40 + i * 10,
+              left: `${15 + i * 9}%`,
+              top: `${20 + (i % 3) * 28}%`,
+              background: isSquare 
+                ? 'linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(139, 92, 246, 0.15) 100%)'
+                : 'linear-gradient(135deg, rgba(6, 182, 212, 0.25) 0%, rgba(59, 130, 246, 0.15) 100%)',
+              rotate: isSquare ? 45 : 0,
+              y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 20}%`]),
+            }}
+            animate={{
+              rotate: isSquare ? [45, 135, 45] : [0, 180, 0],
+              scale: [1, 1.2, 1],
+              opacity: [0.35, 0.65, 0.35],
+            }}
+            transition={{
+              duration: 5 + i * 0.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.25
+            }}
+          />
+        )
+      })}
+      
+      {/* Large background gradient blobs */}
       <motion.div
         className="absolute -top-40 -right-40 w-[800px] h-[800px] rounded-full blur-[100px]"
         style={{ 
           y: y1, 
           rotate, 
           scale,
-          opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 0.9, 0.6]),
-          background: 'radial-gradient(circle, rgba(0, 113, 227, 0.15) 0%, rgba(99, 102, 241, 0.12) 50%, transparent 70%)'
+          opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0.4, 0.6, 0.4]),
+          background: 'radial-gradient(circle, rgba(0, 113, 227, 0.20) 0%, rgba(99, 102, 241, 0.15) 50%, transparent 70%)'
         }}
         animate={{
           x: [0, 60, 0],
@@ -40,7 +131,7 @@ export function AboutBackground() {
         style={{ 
           y: y2, 
           rotate: useTransform(scrollYProgress, [0, 1], [0, -180]),
-          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.14) 0%, rgba(59, 130, 246, 0.10) 50%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, rgba(59, 130, 246, 0.12) 50%, transparent 70%)'
         }}
         animate={{
           x: [0, -70, 0],
@@ -53,12 +144,11 @@ export function AboutBackground() {
         }}
       />
       
-      {/* Additional animated gradient orb */}
       <motion.div
         className="absolute top-1/2 right-1/3 w-[600px] h-[600px] rounded-full blur-[120px]"
         style={{ 
           y: useTransform(scrollYProgress, [0, 1], ['0%', '30%']),
-          background: 'radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(59, 130, 246, 0.08) 50%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(6, 182, 212, 0.16) 0%, rgba(59, 130, 246, 0.10) 50%, transparent 70%)'
         }}
         animate={{
           x: [0, 40, 0],
@@ -72,46 +162,19 @@ export function AboutBackground() {
         }}
       />
       
-      {/* More floating geometric elements with higher opacity */}
-      {[...Array(12)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full border-2 border-apple-blue/30 backdrop-blur-sm"
-          style={{
-            width: 40 + i * 20,
-            height: 40 + i * 20,
-            left: `${8 + i * 8}%`,
-            top: `${15 + (i % 4) * 22}%`,
-            y: useTransform(scrollYProgress, [0, 1], ['0%', `${(i + 1) * 20}%`]),
-            rotate: useTransform(scrollYProgress, [0, 1], [0, i % 2 === 0 ? 360 : -360]),
-          }}
-          animate={{
-            scale: [1, 1.25, 1],
-            opacity: [0.25, 0.5, 0.25],
-            x: [0, i % 2 === 0 ? 25 : -25, 0],
-          }}
-          transition={{
-            duration: 3 + i * 0.4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.2
-          }}
-        />
-      ))}
-      
-      {/* Animated particles */}
-      {[...Array(30)].map((_, i) => (
+      {/* Animated particles - more visible */}
+      {[...Array(40)].map((_, i) => (
         <motion.div
           key={`particle-${i}`}
-          className="absolute w-1 h-1 bg-apple-blue/40 rounded-full"
+          className="absolute w-2 h-2 bg-apple-blue/50 rounded-full shadow-sm"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
           }}
           animate={{
-            y: [0, -100, 0],
-            opacity: [0, 0.8, 0],
-            scale: [0, 1.5, 0],
+            y: [0, -120, 0],
+            opacity: [0, 0.9, 0],
+            scale: [0, 2, 0],
           }}
           transition={{
             duration: 4 + Math.random() * 3,
@@ -122,8 +185,8 @@ export function AboutBackground() {
         />
       ))}
       
-      {/* Enhanced animated wave - more visible */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.12]" preserveAspectRatio="none">
+      {/* Enhanced animated wave */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.15]" preserveAspectRatio="none">
         <motion.path
           d="M0,100 Q250,50 500,100 T1000,100 L1000,0 L0,0 Z"
           fill="url(#aboutGradient)"
@@ -143,9 +206,9 @@ export function AboutBackground() {
         />
         <defs>
           <linearGradient id="aboutGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(0, 113, 227, 0.25)" />
-            <stop offset="50%" stopColor="rgba(139, 92, 246, 0.18)" />
-            <stop offset="100%" stopColor="rgba(0, 113, 227, 0.25)" />
+            <stop offset="0%" stopColor="rgba(0, 113, 227, 0.30)" />
+            <stop offset="50%" stopColor="rgba(139, 92, 246, 0.22)" />
+            <stop offset="100%" stopColor="rgba(0, 113, 227, 0.30)" />
           </linearGradient>
         </defs>
       </svg>
