@@ -3,11 +3,11 @@ import { useRef, useState, useEffect } from 'react'
 
 export function AboutBackground() {
   const ref = useRef(null)
+  const [isMounted, setIsMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
-  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    setIsClient(true)
+    setIsMounted(true)
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
     window.addEventListener('resize', checkMobile)
@@ -22,22 +22,8 @@ export function AboutBackground() {
   const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
   const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '-30%'])
 
-  // Wait for client hydration
-  if (!isClient) {
-    return (
-      <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full opacity-[0.04]"
-          style={{ 
-            background: 'radial-gradient(circle, rgba(107, 114, 128, 1) 0%, transparent 70%)'
-          }}
-        />
-      </div>
-    )
-  }
-
-  // Mobile: Minimal static background
-  if (isMobile) {
+  // Mobile: Minimal static background (only after mount)
+  if (isMounted && isMobile) {
     return (
       <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Static gradient - no animations */}
@@ -101,11 +87,11 @@ export function AboutBackground() {
 
 export function ExperienceBackground() {
   const ref = useRef(null)
+  const [isMounted, setIsMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
-  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    setIsClient(true)
+    setIsMounted(true)
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
     window.addEventListener('resize', checkMobile)
@@ -119,23 +105,8 @@ export function ExperienceBackground() {
 
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
 
-  // Wait for client hydration
-  if (!isClient) {
-    return (
-      <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div 
-          className="absolute inset-0 opacity-[0.05]"
-          style={{ 
-            backgroundImage: `radial-gradient(circle, rgba(107, 114, 128, 0.5) 2px, transparent 2px)`,
-            backgroundSize: '35px 35px',
-          }}
-        />
-      </div>
-    )
-  }
-
-  // Mobile: Static dot pattern only
-  if (isMobile) {
+  // Mobile: Static dot pattern only (only after mount)
+  if (isMounted && isMobile) {
     return (
       <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Static dot pattern */}
@@ -259,11 +230,11 @@ export function SkillsBackground() {
 
 export function ProjectsBackground() {
   const ref = useRef(null)
+  const [isMounted, setIsMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
-  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    setIsClient(true)
+    setIsMounted(true)
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
     window.addEventListener('resize', checkMobile)
@@ -277,22 +248,8 @@ export function ProjectsBackground() {
 
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
 
-  // Wait for client hydration
-  if (!isClient) {
-    return (
-      <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full opacity-[0.04]"
-          style={{ 
-            background: 'radial-gradient(circle, rgba(107, 114, 128, 1) 0%, transparent 70%)'
-          }}
-        />
-      </div>
-    )
-  }
-
-  // Mobile: Minimal static background
-  if (isMobile) {
+  // Mobile: Minimal static background (only after mount)
+  if (isMounted && isMobile) {
     return (
       <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Static gradient */}

@@ -2,11 +2,11 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
 export default function BackgroundEffects() {
+  const [isMounted, setIsMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
-  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    setIsClient(true)
+    setIsMounted(true)
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768)
     }
@@ -15,24 +15,8 @@ export default function BackgroundEffects() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  // Wait for client-side hydration, then check if mobile
-  if (!isClient) {
-    // Server-side: render minimal static version
-    return (
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div 
-          className="absolute inset-0 opacity-[0.05]"
-          style={{ 
-            backgroundImage: `radial-gradient(circle, rgba(107, 114, 128, 0.4) 1.5px, transparent 1.5px)`,
-            backgroundSize: '40px 40px',
-          }}
-        />
-      </div>
-    )
-  }
-
-  // Mobile: Minimal static background
-  if (isMobile) {
+  // Mobile: Minimal static background (only after mount)
+  if (isMounted && isMobile) {
     const mobileOrbs = Array.from({ length: 4 }, (_, i) => ({
       id: i,
       size: 8 + i * 4,
