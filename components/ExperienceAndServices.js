@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import WhatIDo from './WhatIDo'
+import Education from './Education'
 import GradientText from './GradientText'
 import { ExperienceBackground } from './SectionBackgrounds'
 
@@ -50,6 +51,17 @@ export default function ExperienceAndServices({ experienceData }) {
                   ))}
                 </div>
               </div>
+            </motion.div>
+
+            {/* Education Section - Below Experience */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-16"
+            >
+              <Education />
             </motion.div>
           </div>
 
