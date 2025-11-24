@@ -16,91 +16,110 @@ export default function BackgroundEffects() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
-  // Generate fewer, more elegant floating particles
-  const particles = Array.from({ length: 12 }, (_, i) => ({
+  // Generate more visible floating particles
+  const particles = Array.from({ length: 25 }, (_, i) => ({
     id: i,
-    size: Math.random() * 80 + 40,
+    size: Math.random() * 100 + 50,
     initialX: Math.random() * 100,
     initialY: Math.random() * 100,
-    duration: Math.random() * 25 + 20,
-    delay: Math.random() * 8,
+    duration: Math.random() * 20 + 15,
+    delay: Math.random() * 5,
     shape: ['circle', 'square', 'triangle'][Math.floor(Math.random() * 3)],
   }))
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {/* Premium Mesh Gradient Background - More organic movement */}
+      {/* Enhanced Premium Mesh Gradient Background - More visible and dynamic */}
       <div className="absolute inset-0">
-        {/* Main gradient orb - Interactive with mouse */}
+        {/* Main gradient orb - Interactive with mouse - MORE VISIBLE */}
         <motion.div
-          className="absolute w-[1000px] h-[1000px] rounded-full opacity-15 blur-[100px]"
+          className="absolute w-[1200px] h-[1200px] rounded-full opacity-22 blur-[90px]"
           style={{
-            background: 'radial-gradient(circle at center, rgba(82, 82, 91, 0.4) 0%, rgba(115, 115, 115, 0.25) 40%, transparent 70%)',
-            left: `${mousePosition.x * 100 - 500}px`,
-            top: `${mousePosition.y * 100 - 500}px`,
+            background: 'radial-gradient(circle at center, rgba(82, 82, 91, 0.5) 0%, rgba(115, 115, 115, 0.35) 40%, transparent 70%)',
+            left: `${mousePosition.x * 120 - 600}px`,
+            top: `${mousePosition.y * 120 - 600}px`,
           }}
           animate={{
-            scale: [1, 1.15, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
-        {/* Secondary gradient - flowing movement */}
-        <motion.div
-          className="absolute top-1/4 right-0 w-[800px] h-[800px] rounded-full opacity-12 blur-[120px]"
-          style={{
-            background: 'radial-gradient(circle, rgba(82, 82, 91, 0.35) 0%, rgba(107, 114, 128, 0.18) 50%, transparent 70%)',
-          }}
-          animate={{
-            x: [0, -150, 0],
-            y: [0, 100, 0],
             scale: [1, 1.25, 1],
-            rotate: [0, 90, 0],
           }}
           transition={{
-            duration: 30,
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         
-        {/* Tertiary gradient - creates depth */}
+        {/* Secondary gradient - flowing movement - MORE VISIBLE */}
         <motion.div
-          className="absolute bottom-10 left-1/4 w-[900px] h-[900px] rounded-full opacity-10 blur-[100px]"
+          className="absolute top-1/4 right-0 w-[1000px] h-[1000px] rounded-full opacity-18 blur-[110px]"
           style={{
-            background: 'radial-gradient(circle, rgba(75, 85, 99, 0.3) 0%, rgba(107, 114, 128, 0.18) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(82, 82, 91, 0.45) 0%, rgba(107, 114, 128, 0.25) 50%, transparent 70%)',
           }}
           animate={{
-            x: [0, 100, 0],
-            y: [0, -80, 0],
-            scale: [1, 1.2, 1],
-            rotate: [0, -45, 0],
+            x: [0, -180, 0],
+            y: [0, 120, 0],
+            scale: [1, 1.35, 1],
+            rotate: [0, 120, 0],
+          }}
+          transition={{
+            duration: 24,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        {/* Tertiary gradient - creates depth - MORE VISIBLE */}
+        <motion.div
+          className="absolute bottom-10 left-1/4 w-[1100px] h-[1100px] rounded-full opacity-16 blur-[95px]"
+          style={{
+            background: 'radial-gradient(circle, rgba(75, 85, 99, 0.4) 0%, rgba(107, 114, 128, 0.25) 50%, transparent 70%)',
+          }}
+          animate={{
+            x: [0, 120, 0],
+            y: [0, -100, 0],
+            scale: [1, 1.4, 1],
+            rotate: [0, -60, 0],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        {/* Accent gradient - adds sophistication - MORE VISIBLE */}
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] rounded-full opacity-14 blur-[85px]"
+          style={{
+            background: 'radial-gradient(circle, rgba(107, 114, 128, 0.35) 0%, rgba(156, 163, 175, 0.18) 50%, transparent 70%)',
+          }}
+          animate={{
+            scale: [1, 1.4, 1],
+            rotate: [0, 180, 360],
           }}
           transition={{
             duration: 28,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "linear"
           }}
         />
         
-        {/* Accent gradient - adds sophistication */}
+        {/* Additional dynamic gradient orb */}
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full opacity-8 blur-[90px]"
+          className="absolute top-1/3 left-1/4 w-[700px] h-[700px] rounded-full opacity-12 blur-[100px]"
           style={{
-            background: 'radial-gradient(circle, rgba(107, 114, 128, 0.25) 0%, rgba(156, 163, 175, 0.12) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(156, 163, 175, 0.3) 0%, rgba(107, 114, 128, 0.15) 50%, transparent 70%)',
           }}
           animate={{
+            x: [0, -80, 0],
+            y: [0, 90, 0],
             scale: [1, 1.3, 1],
-            rotate: [0, 180, 360],
+            rotate: [0, -90, 0],
           }}
           transition={{
-            duration: 35,
+            duration: 26,
             repeat: Infinity,
-            ease: "linear"
+            ease: "easeInOut"
           }}
         />
       </div>
@@ -113,7 +132,7 @@ export default function BackgroundEffects() {
         return (
           <motion.div
             key={particle.id}
-            className={`absolute backdrop-blur-sm border border-apple-blue/8 ${
+            className={`absolute backdrop-blur-sm border-2 border-apple-blue/15 ${
               isCircle ? 'rounded-full' : isSquare ? 'rounded-2xl' : 'rounded-lg'
             }`}
             style={{
@@ -122,15 +141,15 @@ export default function BackgroundEffects() {
               left: `${particle.initialX}%`,
               top: `${particle.initialY}%`,
             background: isCircle 
-              ? 'radial-gradient(circle, rgba(82, 82, 91, 0.06) 0%, rgba(115, 115, 115, 0.03) 50%, transparent 100%)'
-              : 'linear-gradient(135deg, rgba(82, 82, 91, 0.05) 0%, rgba(107, 114, 128, 0.025) 100%)',
+              ? 'radial-gradient(circle, rgba(82, 82, 91, 0.12) 0%, rgba(115, 115, 115, 0.06) 50%, transparent 100%)'
+              : 'linear-gradient(135deg, rgba(82, 82, 91, 0.10) 0%, rgba(107, 114, 128, 0.05) 100%)',
             }}
             animate={{
-              y: [0, -40, 0],
-              x: [0, particle.id % 2 === 0 ? 20 : -20, 0],
+              y: [0, -60, 0],
+              x: [0, particle.id % 2 === 0 ? 30 : -30, 0],
               rotate: [0, particle.id % 2 === 0 ? 360 : -360],
-              opacity: [0.15, 0.35, 0.15],
-              scale: [1, 1.1, 1],
+              opacity: [0.25, 0.50, 0.25],
+              scale: [1, 1.2, 1],
             }}
             transition={{
               duration: particle.duration,
@@ -142,24 +161,24 @@ export default function BackgroundEffects() {
         )
       })}
 
-      {/* Architect Grid Pattern - Premium notebook/blueprint aesthetic */}
+      {/* Enhanced Architect Grid Pattern - More visible */}
       <div 
-        className="absolute inset-0 opacity-[0.06]"
+        className="absolute inset-0 opacity-[0.12]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(82, 82, 91, 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(82, 82, 91, 0.3) 1px, transparent 1px)
+            linear-gradient(rgba(82, 82, 91, 0.5) 1.5px, transparent 1.5px),
+            linear-gradient(90deg, rgba(82, 82, 91, 0.5) 1.5px, transparent 1.5px)
           `,
-          backgroundSize: '50px 50px',
+          backgroundSize: '45px 45px',
         }}
       />
       
-      {/* Accent dots at grid intersections - hybrid approach */}
+      {/* Enhanced accent dots at grid intersections */}
       <div 
-        className="absolute inset-0 opacity-[0.08]"
+        className="absolute inset-0 opacity-[0.15]"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(82, 82, 91, 0.5) 2px, transparent 2px)`,
-          backgroundSize: '50px 50px',
+          backgroundImage: `radial-gradient(circle, rgba(82, 82, 91, 0.7) 2.5px, transparent 2.5px)`,
+          backgroundSize: '45px 45px',
         }}
       />
 
@@ -171,12 +190,12 @@ export default function BackgroundEffects() {
         }}
       />
       
-      {/* Ambient Light Lines - Apple-style */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.08]" preserveAspectRatio="none">
+      {/* Enhanced Ambient Light Lines - More visible */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.15]" preserveAspectRatio="none">
         <defs>
           <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="rgba(82, 82, 91, 0)" />
-            <stop offset="50%" stopColor="rgba(82, 82, 91, 0.3)" />
+            <stop offset="50%" stopColor="rgba(82, 82, 91, 0.5)" />
             <stop offset="100%" stopColor="rgba(82, 82, 91, 0)" />
           </linearGradient>
         </defs>
@@ -186,13 +205,13 @@ export default function BackgroundEffects() {
           x2="100%"
           y2="25%"
           stroke="url(#lineGradient)"
-          strokeWidth="2"
+          strokeWidth="3"
           animate={{
             y1: ["20%", "25%", "20%"],
             y2: ["25%", "30%", "25%"],
           }}
           transition={{
-            duration: 15,
+            duration: 12,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -203,16 +222,34 @@ export default function BackgroundEffects() {
           x2="100%"
           y2="75%"
           stroke="url(#lineGradient)"
-          strokeWidth="2"
+          strokeWidth="3"
           animate={{
             y1: ["70%", "75%", "70%"],
             y2: ["75%", "80%", "75%"],
           }}
           transition={{
-            duration: 20,
+            duration: 16,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 5
+            delay: 4
+          }}
+        />
+        <motion.line
+          x1="0%"
+          y1="45%"
+          x2="100%"
+          y2="50%"
+          stroke="url(#lineGradient)"
+          strokeWidth="2.5"
+          animate={{
+            y1: ["45%", "50%", "45%"],
+            y2: ["50%", "55%", "50%"],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
           }}
         />
       </svg>
