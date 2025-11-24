@@ -1,52 +1,108 @@
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 export default function BackgroundEffects() {
-  // Generate subtle floating orbs
-  const orbs = Array.from({ length: 15 }, (_, i) => ({
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Drastically reduce elements on mobile
+  const orbCount = isMobile ? 4 : 8
+  const orbs = Array.from({ length: orbCount }, (_, i) => ({
     id: i,
-    size: 6 + i * 3,
-    initialX: 3 + i * 6.5,
-    initialY: 8 + (i % 5) * 18,
-    duration: 2.5 + i * 0.25,
-    delay: i * 0.1,
+    size: 8 + i * 4,
+    initialX: 10 + i * 25,
+    initialY: 15 + (i % 3) * 30,
+    duration: 4 + i * 0.5,
+    delay: i * 0.2,
   }))
 
+  // Mobile: Minimal static background
+  if (isMobile) {
+    return (
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        {/* Static dot pattern - no animation on mobile */}
+        <div 
+          className="absolute inset-0 opacity-[0.05]"
+          style={{ 
+            backgroundImage: `radial-gradient(circle, rgba(107, 114, 128, 0.4) 1.5px, transparent 1.5px)`,
+            backgroundSize: '40px 40px',
+          }}
+        />
+
+        {/* Minimal orbs - very subtle */}
+        {orbs.map((orb) => (
+          <div
+            key={orb.id}
+            className="absolute rounded-full"
+            style={{
+              width: orb.size,
+              height: orb.size,
+              left: `${orb.initialX}%`,
+              top: `${orb.initialY}%`,
+              background: 'radial-gradient(circle, rgba(107, 114, 128, 0.15) 0%, transparent 100%)',
+              opacity: 0.3,
+            }}
+          />
+        ))}
+
+        {/* Single static gradient - no blur on mobile */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.03]"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(107, 114, 128, 1) 0%, transparent 70%)'
+          }}
+        />
+      </div>
+    )
+  }
+
+  // Desktop: Full animations
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {/* Animated dot matrix pattern - similar to Experience */}
+      {/* Animated dot matrix pattern */}
       <motion.div
-        className="absolute inset-0 opacity-[0.08]"
+        className="absolute inset-0 opacity-[0.06]"
         style={{ 
-          backgroundImage: `radial-gradient(circle, rgba(107, 114, 128, 0.6) 2px, transparent 2px)`,
+          backgroundImage: `radial-gradient(circle, rgba(107, 114, 128, 0.5) 2px, transparent 2px)`,
           backgroundSize: '40px 40px',
+          willChange: 'background-position',
         }}
         animate={{
           backgroundPosition: ['0px 0px', '40px 40px'],
         }}
         transition={{
-          duration: 20,
+          duration: 25,
           repeat: Infinity,
           ease: "linear"
         }}
       />
 
-      {/* Dynamic floating orbs - technical style */}
+      {/* Floating orbs - reduced count */}
       {orbs.map((orb) => (
         <motion.div
           key={orb.id}
-          className="absolute rounded-full shadow-md"
+          className="absolute rounded-full"
           style={{
             width: orb.size,
             height: orb.size,
             left: `${orb.initialX}%`,
             top: `${orb.initialY}%`,
-            background: 'radial-gradient(circle, rgba(107, 114, 128, 0.5) 0%, rgba(156, 163, 175, 0.25) 70%, transparent 100%)',
+            background: 'radial-gradient(circle, rgba(107, 114, 128, 0.4) 0%, rgba(156, 163, 175, 0.2) 70%, transparent 100%)',
+            willChange: 'transform, opacity',
           }}
           animate={{
-            scale: [1, 1.6, 1],
-            opacity: [0.3, 0.7, 0.3],
-            x: [0, orb.id % 2 === 0 ? 30 : -30, 0],
-            y: [0, orb.id % 3 === 0 ? -25 : 25, 0],
+            scale: [1, 1.3, 1],
+            opacity: [0.25, 0.5, 0.25],
+            x: [0, orb.id % 2 === 0 ? 20 : -20, 0],
+            y: [0, orb.id % 3 === 0 ? -15 : 15, 0],
           }}
           transition={{
             duration: orb.duration,
@@ -57,104 +113,26 @@ export default function BackgroundEffects() {
         />
       ))}
 
-      {/* Large rotating technical mesh */}
+      {/* Single gradient orb - reduced blur */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full blur-[130px]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full blur-[80px]"
         style={{ 
-          background: 'conic-gradient(from 0deg, rgba(75, 85, 99, 0.12) 0%, rgba(107, 114, 128, 0.15) 50%, rgba(156, 163, 175, 0.10) 100%)'
+          background: 'radial-gradient(circle, rgba(107, 114, 128, 0.08) 0%, transparent 70%)',
+          willChange: 'transform',
         }}
         animate={{
-          rotate: [0, 360],
-          scale: [1, 1.2, 1],
+          scale: [1, 1.15, 1],
         }}
         transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-      />
-      
-      {/* Moving accent orb - top right */}
-      <motion.div
-        className="absolute top-20 right-20 w-[500px] h-[500px] rounded-full blur-[100px]"
-        style={{ 
-          background: 'radial-gradient(circle, rgba(156, 163, 175, 0.15) 0%, transparent 70%)'
-        }}
-        animate={{
-          x: [0, 40, 0],
-          y: [0, -30, 0],
-          scale: [1, 1.3, 1],
-        }}
-        transition={{
-          duration: 28,
+          duration: 30,
           repeat: Infinity,
           ease: "easeInOut"
         }}
       />
-      
-      {/* Moving accent orb - bottom left */}
-      <motion.div
-        className="absolute bottom-20 left-20 w-[450px] h-[450px] rounded-full blur-[100px]"
-        style={{ 
-          background: 'radial-gradient(circle, rgba(107, 114, 128, 0.14) 0%, transparent 70%)'
-        }}
-        animate={{
-          x: [0, -35, 0],
-          y: [0, 25, 0],
-          scale: [1, 1.35, 1],
-        }}
-        transition={{
-          duration: 32,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
-      {/* Animated grid lines - horizontal and vertical */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.06]" preserveAspectRatio="none">
-        {[...Array(6)].map((_, i) => (
-          <motion.line
-            key={`h-${i}`}
-            x1="0%"
-            y1={`${i * 16.6}%`}
-            x2="100%"
-            y2={`${i * 16.6}%`}
-            stroke="rgba(107, 114, 128, 0.5)"
-            strokeWidth="1"
-            animate={{
-              opacity: [0.2, 0.6, 0.2],
-            }}
-            transition={{
-              duration: 4 + i * 0.4,
-              repeat: Infinity,
-              delay: i * 0.3,
-            }}
-          />
-        ))}
-        {[...Array(6)].map((_, i) => (
-          <motion.line
-            key={`v-${i}`}
-            x1={`${i * 16.6}%`}
-            y1="0%"
-            x2={`${i * 16.6}%`}
-            y2="100%"
-            stroke="rgba(156, 163, 175, 0.4)"
-            strokeWidth="1"
-            animate={{
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 5 + i * 0.3,
-              repeat: Infinity,
-              delay: i * 0.2,
-            }}
-          />
-        ))}
-      </svg>
 
-      {/* Organic Noise Texture - Adds premium feel */}
+      {/* Subtle noise texture */}
       <div 
-        className="absolute inset-0 opacity-[0.02] mix-blend-overlay"
+        className="absolute inset-0 opacity-[0.015] mix-blend-overlay"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
         }}
