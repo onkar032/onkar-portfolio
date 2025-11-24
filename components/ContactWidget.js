@@ -1,12 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import axios from 'axios'
-
-// Email configuration (for display purposes)
-const EMAIL_ADDRESS_DISPLAY = 'OXXXXXXX@gmail.com'
-
-// Change this to your deployed RAG API URL
-const API_URL = process.env.NEXT_PUBLIC_RAG_API_URL || 'http://localhost:8000'
 
 export default function ContactWidget() {
   const [showMenu, setShowMenu] = useState(false)
