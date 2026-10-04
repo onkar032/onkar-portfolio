@@ -47,17 +47,17 @@ export default function MagneticButton({ children, className = '', href, ...prop
     >
       {/* Animated gradient background */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-apple-blue via-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="absolute inset-0 bg-gradient-to-r from-brand-indigo via-brand-violet to-brand-indigo opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         animate={isHovered ? {
           backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
         } : {}}
         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
         style={{ backgroundSize: '200% 200%' }}
       />
-      
+
       {/* Glow effect */}
       <motion.div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 blur-xl bg-apple-blue/50"
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 blur-xl bg-brand-indigo/50"
         animate={isHovered ? { scale: [1, 1.2, 1] } : {}}
         transition={{ duration: 2, repeat: Infinity }}
       />

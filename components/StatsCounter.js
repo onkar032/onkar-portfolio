@@ -1,25 +1,25 @@
-import { motion, useInView, useMotionValue, useSpring } from 'framer-motion'
+import { motion, animate, useInView } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 
 function AnimatedNumber({ value, suffix = '' }) {
   const ref = useRef(null)
-  const motionValue = useMotionValue(0)
-  const springValue = useSpring(motionValue, { duration: 3000 })
-  const isInView = useInView(ref, { once: true })
+  const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   useEffect(() => {
-    if (isInView) {
-      motionValue.set(value)
-    }
-  }, [motionValue, isInView, value])
+    if (!isInView) return
 
-  useEffect(() => {
-    springValue.on('change', (latest) => {
-      if (ref.current) {
-        ref.current.textContent = Math.floor(latest) + suffix
-      }
+    const controls = animate(0, value, {
+      duration: 2,
+      ease: [0.25, 0.1, 0.25, 1],
+      onUpdate(latest) {
+        if (ref.current) {
+          ref.current.textContent = Math.round(latest).toLocaleString() + suffix
+        }
+      },
     })
-  }, [springValue, suffix])
+
+    return () => controls.stop()
+  }, [isInView, value, suffix])
 
   return <span ref={ref}>0{suffix}</span>
 }
@@ -36,30 +36,26 @@ export default function StatsCounter() {
   return (
     <motion.div
       className="py-16 px-4"
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-6">
+      <div className="max-w-content mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-12">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
               className="text-center group"
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, type: "spring" }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ delay: index * 0.08, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <motion.div
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-apple-blue mb-2"
-                whileHover={{ scale: 1.1 }}
-              >
+              <div className="text-4xl md:text-5xl font-semibold text-apple-black mb-2 tracking-tight tabular-nums">
                 <AnimatedNumber value={stat.value} suffix={stat.suffix} />
-              </motion.div>
-              <div className="text-xs md:text-sm text-apple-subtext font-medium group-hover:text-apple-blue transition-colors duration-200 leading-snug">
+              </div>
+              <div className="text-xs md:text-sm text-apple-subtext font-medium leading-snug max-w-[16ch] mx-auto">
                 {stat.label}
               </div>
             </motion.div>
@@ -69,4 +65,3 @@ export default function StatsCounter() {
     </motion.div>
   )
 }
-

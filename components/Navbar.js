@@ -9,257 +9,163 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [router.pathname])
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'unset'
     return () => {
       document.body.style.overflow = 'unset'
     }
   }, [mobileMenuOpen])
 
   const navItems = ['About', 'Experience', 'Projects', 'Blog', 'Contact']
-  const pageLinks = ['Projects', 'Blog'] // Items that go to separate pages
+  const pageLinks = ['Projects', 'Blog']
+
+  const hrefFor = (item) => (pageLinks.includes(item) ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`)
+  const isActive = (item) => pageLinks.includes(item) && router.pathname.startsWith(`/${item.toLowerCase()}`)
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass shadow-lg' : 'bg-transparent'
+        scrolled ? 'glass' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-10">
         <div className="flex justify-between items-center h-16">
-          {/* Logo/Brand */}
+          {/* Brand */}
           <Link href="/" passHref legacyBehavior>
-            <motion.a
-              className="flex items-center gap-2.5 cursor-pointer group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {/* Minimal Icon */}
-              <motion.div 
-                className="w-9 h-9 bg-apple-blue rounded-lg flex items-center justify-center"
-                whileHover={{ backgroundColor: "#0051a8" }}
-                transition={{ duration: 0.2 }}
+            <motion.a className="flex items-center gap-2.5 cursor-pointer group" whileTap={{ scale: 0.98 }}>
+              <motion.div
+                className="w-8 h-8 bg-brand-indigo rounded-lg flex items-center justify-center"
+                whileHover={{ rotate: 90 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                <svg 
-                  className="w-5 h-5 text-white" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                  strokeWidth={2.5}
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" 
-                  />
-                </svg>
+                <span className="w-2.5 h-2.5 bg-white rotate-45 rounded-[2px]" />
               </motion.div>
-              
-              {/* Home Text */}
-              <span className="text-base font-semibold text-apple-text hidden sm:block">
-                Home
-              </span>
+              <span className="font-display text-lg font-bold tracking-tight text-brand-ink">Onkar</span>
             </motion.a>
           </Link>
 
-          {/* Nav Links */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => {
-              const isPageLink = pageLinks.includes(item)
-              const href = isPageLink ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`
-              const isActive = isPageLink && router.pathname.startsWith(`/${item.toLowerCase()}`)
-              
-              return isPageLink ? (
-                <Link key={item} href={href} passHref legacyBehavior>
-                  <motion.a
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
-                      isActive 
-                        ? 'text-apple-blue bg-apple-blue/10' 
-                        : 'text-apple-text hover:text-apple-blue hover:bg-gray-50'
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-1">
+            {navItems.map((item) =>
+              pageLinks.includes(item) ? (
+                <Link key={item} href={hrefFor(item)} passHref legacyBehavior>
+                  <a
+                    className={`mono-label text-[11px] px-3.5 py-2 rounded-md transition-colors duration-200 ${
+                      isActive(item) ? 'text-brand-indigo' : 'text-brand-subtext hover:text-brand-ink'
                     }`}
-                    whileTap={{ scale: 0.95 }}
                   >
                     {item}
-                  </motion.a>
+                  </a>
                 </Link>
               ) : (
-                <motion.a
+                <a
                   key={item}
-                  href={href}
-                  className="px-3 py-2 rounded-lg text-sm font-medium text-apple-text hover:text-apple-blue hover:bg-gray-50 transition-all duration-200"
-                  whileTap={{ scale: 0.95 }}
+                  href={hrefFor(item)}
+                  className="mono-label text-[11px] px-3.5 py-2 rounded-md text-brand-subtext hover:text-brand-ink transition-colors duration-200"
                 >
                   {item}
-                </motion.a>
+                </a>
               )
-            })}
+            )}
           </div>
 
-          {/* Empty space for balance - Contact is in nav menu */}
-          <div className="w-10 md:w-0"></div>
+          {/* CTA */}
+          <motion.a
+            href="/#contact"
+            className="hidden md:inline-flex mono-label text-[11px] bg-brand-ink text-white px-5 py-2.5 rounded-lg hover:bg-brand-indigo transition-colors duration-300"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Let&apos;s Talk
+          </motion.a>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile menu button */}
           <motion.button
             className="md:hidden relative z-50 w-10 h-10 flex flex-col items-center justify-center space-y-1.5"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             whileTap={{ scale: 0.95 }}
             aria-label="Toggle menu"
           >
-            <motion.span
-              className="w-6 h-0.5 bg-apple-text rounded-full"
-              animate={{
-                rotate: mobileMenuOpen ? 45 : 0,
-                y: mobileMenuOpen ? 8 : 0,
-              }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.span
-              className="w-6 h-0.5 bg-apple-text rounded-full"
-              animate={{
-                opacity: mobileMenuOpen ? 0 : 1,
-              }}
-              transition={{ duration: 0.2 }}
-            />
-            <motion.span
-              className="w-6 h-0.5 bg-apple-text rounded-full"
-              animate={{
-                rotate: mobileMenuOpen ? -45 : 0,
-                y: mobileMenuOpen ? -8 : 0,
-              }}
-              transition={{ duration: 0.3 }}
-            />
+            <motion.span className="w-6 h-0.5 bg-brand-ink rounded-full" animate={{ rotate: mobileMenuOpen ? 45 : 0, y: mobileMenuOpen ? 8 : 0 }} transition={{ duration: 0.3 }} />
+            <motion.span className="w-6 h-0.5 bg-brand-ink rounded-full" animate={{ opacity: mobileMenuOpen ? 0 : 1 }} transition={{ duration: 0.2 }} />
+            <motion.span className="w-6 h-0.5 bg-brand-ink rounded-full" animate={{ rotate: mobileMenuOpen ? -45 : 0, y: mobileMenuOpen ? -8 : 0 }} transition={{ duration: 0.3 }} />
           </motion.button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile overlay */}
       <motion.div
         initial={false}
-        animate={{
-          opacity: mobileMenuOpen ? 1 : 0,
-          pointerEvents: mobileMenuOpen ? 'auto' : 'none',
-        }}
+        animate={{ opacity: mobileMenuOpen ? 1 : 0, pointerEvents: mobileMenuOpen ? 'auto' : 'none' }}
         transition={{ duration: 0.3 }}
         className="md:hidden fixed inset-0 z-40 bg-white/95 backdrop-blur-xl"
       >
         <motion.div
-          className="flex flex-col items-center justify-center h-full space-y-8 px-8"
+          className="flex flex-col items-center justify-center h-full space-y-7 px-8"
           initial="closed"
-          animate={mobileMenuOpen ? "open" : "closed"}
+          animate={mobileMenuOpen ? 'open' : 'closed'}
           variants={{
-            open: {
-              transition: { staggerChildren: 0.07, delayChildren: 0.2 }
-            },
-            closed: {
-              transition: { staggerChildren: 0.05, staggerDirection: -1 }
-            }
+            open: { transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
+            closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
           }}
         >
-          {navItems.map((item, index) => {
-            const isPageLink = pageLinks.includes(item)
-            const href = isPageLink ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`
-            const isActive = isPageLink && router.pathname.startsWith(`/${item.toLowerCase()}`)
-
-            return (
-              <motion.div
-                key={item}
-                variants={{
-                  open: {
-                    y: 0,
-                    opacity: 1,
-                    transition: {
-                      y: { stiffness: 1000, velocity: -100 }
-                    }
-                  },
-                  closed: {
-                    y: 50,
-                    opacity: 0,
-                    transition: {
-                      y: { stiffness: 1000 }
-                    }
-                  }
-                }}
-              >
-                {isPageLink ? (
-                  <Link href={href} passHref legacyBehavior>
-                    <motion.a
-                      className={`text-3xl font-semibold cursor-pointer ${
-                        isActive ? 'text-apple-blue' : 'text-apple-text'
-                      }`}
-                      whileHover={{ scale: 1.05, color: '#0071e3' }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item}
-                    </motion.a>
-                  </Link>
-                ) : (
-                  <motion.a
-                    href={href}
-                    className="text-3xl font-semibold text-apple-text"
-                    whileHover={{ scale: 1.05, color: '#0071e3' }}
-                    whileTap={{ scale: 0.95 }}
+          {navItems.map((item) => (
+            <motion.div
+              key={item}
+              variants={{
+                open: { y: 0, opacity: 1, transition: { y: { stiffness: 1000, velocity: -100 } } },
+                closed: { y: 50, opacity: 0, transition: { y: { stiffness: 1000 } } },
+              }}
+            >
+              {pageLinks.includes(item) ? (
+                <Link href={hrefFor(item)} passHref legacyBehavior>
+                  <a
+                    className={`font-display text-3xl font-bold cursor-pointer ${isActive(item) ? 'text-brand-indigo' : 'text-brand-ink'}`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item}
-                  </motion.a>
-                )}
-              </motion.div>
-            )
-          })}
+                  </a>
+                </Link>
+              ) : (
+                <a
+                  href={hrefFor(item)}
+                  className="font-display text-3xl font-bold text-brand-ink"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item}
+                </a>
+              )}
+            </motion.div>
+          ))}
 
-          {/* Mobile CTA Button */}
           <motion.div
             variants={{
-              open: {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  y: { stiffness: 1000, velocity: -100 }
-                }
-              },
-              closed: {
-                y: 50,
-                opacity: 0,
-                transition: {
-                  y: { stiffness: 1000 }
-                }
-              }
+              open: { y: 0, opacity: 1, transition: { y: { stiffness: 1000, velocity: -100 } } },
+              closed: { y: 50, opacity: 0, transition: { y: { stiffness: 1000 } } },
             }}
           >
-            <motion.a
-              href="#contact"
-              className="bg-apple-blue text-white px-8 py-4 rounded-full text-lg font-medium inline-block"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <a
+              href="/#contact"
+              className="mono-label text-sm bg-brand-ink text-white px-8 py-4 rounded-lg inline-block"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Get in Touch
-            </motion.a>
+              Let&apos;s Talk
+            </a>
           </motion.div>
         </motion.div>
       </motion.div>
     </motion.nav>
   )
 }
-
-

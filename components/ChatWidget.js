@@ -2,8 +2,13 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
 
-// Change this to your deployed RAG API URL
+// Change this to your deployed RAG API URL (set NEXT_PUBLIC_RAG_API_URL in your env)
 const API_URL = process.env.NEXT_PUBLIC_RAG_API_URL || 'http://localhost:8000'
+
+// Only treat the assistant as live when a real (non-localhost) backend is configured.
+// Prevents the deployed site from silently calling localhost for every visitor.
+const IS_BACKEND_CONFIGURED =
+  !!process.env.NEXT_PUBLIC_RAG_API_URL && !/localhost|127\.0\.0\.1/.test(API_URL)
 
 export default function ChatWidget({ isOpen, setIsOpen }) {
   const [messages, setMessages] = useState([
@@ -28,6 +33,16 @@ export default function ChatWidget({ isOpen, setIsOpen }) {
     const userMessage = input.trim()
     setInput('')
     setMessages(prev => [...prev, { role: 'user', content: userMessage }])
+
+    // Backend not wired up yet — respond gracefully instead of hitting localhost.
+    if (!IS_BACKEND_CONFIGURED) {
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: "Thanks for your message! The AI assistant is being set up. In the meantime, feel free to reach me directly at Onkar032@gmail.com and I'll get back to you personally."
+      }])
+      return
+    }
+
     setLoading(true)
 
     try {
